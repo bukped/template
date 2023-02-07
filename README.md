@@ -6,7 +6,7 @@ Template Buku Pedia, mohon perhatikan ketentuan di bawah ini
 
 ![image](https://user-images.githubusercontent.com/11188109/217132416-58a07f1e-6cd8-4b58-86fa-d3aa831a51a9.png)
 
-Desain yang kekinian dan menarik minat pembaca
+Desain yang kekinian dan menarik minat pembaca, nama penulis tanpa gelar
 
 ## Balik Halaman Sampul
 
@@ -20,6 +20,7 @@ Desain yang kekinian dan menarik minat pembaca
 
 ![image](https://user-images.githubusercontent.com/11188109/217132649-ec5c802e-8ee2-41d2-95e8-d686628c9fb1.png)
 
+* nama penulis tanpa gelar
 * posisi tengah atau vertical center
 * Font : Calibri, 16
 * Line space : 1
@@ -40,6 +41,7 @@ Logo tanpa jarak dari margin bawah
 
 ![image](https://user-images.githubusercontent.com/11188109/217132936-53875aac-f5c1-4a12-9a82-21ace28c7335.png)
 
+* nama penulis tanpa gelar
 * Tanpa jarak dari margin bawah
 * Font : Book Antiqua, 8
 * Line space : 1

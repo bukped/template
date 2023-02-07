@@ -49,6 +49,12 @@ Logo tanpa jarak dari margin bawah
 
 ## Kata Pengantar
 
+Berisi :
+1. Berisi data faktual (statistik) dari badan resmi terpercaya tentang pentingnya ada buku ini diterbitkan 
+2. Berisi tata cara membaca buku atau metode penyampaian setiap bab
+3. Disertakan link github yang sudah dipindahkan ke repo bukped. Sudah di sesuaikan dengan folder jumlah bab dan cara pembagian nama file dan folder di github tersebut.
+
+
 ![image](https://user-images.githubusercontent.com/11188109/217135139-18d012be-2d6f-4fc9-8d8f-5576263d39ad.png)
 
 * Font Calibri 
@@ -57,10 +63,7 @@ Logo tanpa jarak dari margin bawah
 * Huruf pertama : 61,5
 * Line space : 1,15
 
-berisi :
-1. Berisi data faktual (statistik) dari badan resmi terpercaya tentang pentingnya ada buku ini diterbitkan 
-2. Berisi tata cara membaca buku atau metode penyampaian setiap bab
-3. Disertakan link github yang sudah di sesuaikan dengan folder jumlah bab dan cara pembagian nama file dan folder di github tersebut.
+
 
 
 ![image](https://user-images.githubusercontent.com/11188109/217134185-5e01684c-3818-421b-9b90-6dd3356aeaa3.png)
@@ -90,4 +93,14 @@ No.	Petunjuk	Keterangan	Ukuran
 4.	Ukuran Buku	B5	15,5 x 23 Cm
 5.	Font	Calibri	11
 6.	Line Spacing	Jarak antar tulisan	1
+
+## Link Github
+
+Ketentuan link github:
+![image](https://user-images.githubusercontent.com/11188109/217219944-f62fcc0d-29e0-4c20-93cd-42949f201e3c.png)
+1. Sebelum masuk ke tahap akhir SPI, repository di transfer kepemilikan dahulu(di menu setting) ke user awangga untuk di pindahkan ke repo bukped.
+2. Setelah dipindahkan ke repo bukped. URL link dari repo github bukped yang dimasukkan ke dalam kata pengantar
+3. Pastikan setiap bab atau chapter memiliki folder masing-masing dan didalamnya ada contoh kodingan dari bab tersebut
+4. Setiap bab wajib mengandung kode program
+5. Contoh : https://github.com/bukped/Prediksi-Harga-Token-Kripto-Menggunakan-Python
 

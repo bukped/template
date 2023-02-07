@@ -47,6 +47,8 @@ Logo tanpa jarak dari margin bawah
 
 ## Kata Pengantar
 
+![image](https://user-images.githubusercontent.com/11188109/217135139-18d012be-2d6f-4fc9-8d8f-5576263d39ad.png)
+
 * Font Calibri 
 * Judul :18
 * Body : 11

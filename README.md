@@ -43,7 +43,7 @@ Logo tanpa jarak dari margin bawah
 * Tanpa jarak dari margin bawah
 * Font : Book Antiqua, 8
 * Line space : 1
-* Bold pada bagian atribut saja.
+* Bold dan Italic pada bagian atribut saja.
 
 ## Kata Pengantar
 

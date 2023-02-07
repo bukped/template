@@ -52,6 +52,7 @@ Logo tanpa jarak dari margin bawah
 * Font Calibri 
 * Judul :18
 * Body : 11
+* Huruf pertama : 61,5
 * Line space : 1,15
 
 berisi :

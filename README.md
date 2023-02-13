@@ -6,9 +6,9 @@ Template Buku Pedia, mohon perhatikan ketentuan di bawah ini
 
 ![image](https://user-images.githubusercontent.com/11188109/217132416-58a07f1e-6cd8-4b58-86fa-d3aa831a51a9.png)
 
-Desain yang kekinian dan menarik minat pembaca, nama penulis tanpa gelar
+Desain yang kekinian dan menarik minat pembaca. Berisi : nama penulis tanpa gelar, judul buku, logo penerbit
 
-## Balik Halaman Sampul
+## Halaman Judul
 
 ![image](https://user-images.githubusercontent.com/11188109/217132564-a75b51c2-5816-4b95-878a-f06a8770e42c.png)
 
@@ -21,11 +21,11 @@ Desain yang kekinian dan menarik minat pembaca, nama penulis tanpa gelar
 ![image](https://user-images.githubusercontent.com/11188109/217132649-ec5c802e-8ee2-41d2-95e8-d686628c9fb1.png)
 
 * nama penulis tanpa gelar
-* posisi tengah atau vertical center
+* posisi tengah halaman atau vertical center
 * Font : Calibri, 16
 * Line space : 1
 
-![image](https://user-images.githubusercontent.com/11188109/217132690-81e53b07-1de1-4ccc-ba20-a84c79991008.png)
+![image](https://user-images.githubusercontent.com/11188109/218597417-da8615db-9ce4-4fa2-9fe1-5eeb5fe64f69.png)
 
 Logo tanpa jarak dari margin bawah
 
@@ -43,32 +43,28 @@ Logo tanpa jarak dari margin bawah
 
 * nama penulis tanpa gelar
 * Tanpa jarak dari margin bawah
-* Font : Book Antiqua, 8
+* Font : Calibri, 8
 * Line space : 1
 * Bold dan Italic pada bagian atribut saja.
 
-## Kata Pengantar
+## Prakata
+
+![image](https://user-images.githubusercontent.com/11188109/218597643-959b394a-4c40-4834-941e-1a595ef0b55e.png)
 
 Berisi :
 1. Berisi data faktual (statistik) dari badan resmi terpercaya tentang pentingnya ada buku ini diterbitkan 
-2. Berisi tata cara membaca buku atau metode penyampaian setiap bab
+2. Terdapat tujuan penulisan, pembaca sasaran, keunggulan buku, amanat/pesan untuk pembaca sasaran, tata cara membaca buku atau metode penyampaian setiap bab
 3. Disertakan link github yang sudah dipindahkan ke repo bukped. Sudah di sesuaikan dengan folder jumlah bab dan cara pembagian nama file dan folder di github tersebut.
-
-
-![image](https://user-images.githubusercontent.com/11188109/217135139-18d012be-2d6f-4fc9-8d8f-5576263d39ad.png)
 
 * Font Calibri 
 * Judul :18
 * Body : 11
 * Huruf pertama : 61,5
-* Line space : 1,15
+* Line space : 1
 
+![image](https://user-images.githubusercontent.com/11188109/218597802-beee2614-8124-449e-b915-a873320b3b3e.png)
 
-
-
-![image](https://user-images.githubusercontent.com/11188109/217134185-5e01684c-3818-421b-9b90-6dd3356aeaa3.png)
-
-Mulai awal nomor halaman menggunakan romawi
+Disini dimulai awal nomor halaman menggunakan romawi
 
 ## Daftar Isi
 

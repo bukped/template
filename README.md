@@ -39,7 +39,7 @@ Logo tanpa jarak dari margin bawah
 * Sub Judul : 10
 * Line space : 1
 
-![image](https://user-images.githubusercontent.com/11188109/217132936-53875aac-f5c1-4a12-9a82-21ace28c7335.png)
+![image](https://user-images.githubusercontent.com/11188109/218598447-369e0c5b-8001-4565-bdbb-0e491257a9a9.png)
 
 * nama penulis tanpa gelar
 * Tanpa jarak dari margin bawah

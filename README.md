@@ -94,8 +94,8 @@ No.	Petunjuk	Keterangan	Ukuran
 
 Ketentuan link github:
 ![image](https://user-images.githubusercontent.com/11188109/217219944-f62fcc0d-29e0-4c20-93cd-42949f201e3c.png)
-1. Sebelum masuk ke tahap akhir SPI, repository di transfer kepemilikan dahulu(di menu setting) ke user awangga untuk di pindahkan ke repo bukped.
-2. Setelah dipindahkan ke repo bukped. URL link dari repo github bukped yang dimasukkan ke dalam kata pengantar
+1. Sebelum masuk ke tahap akhir SPI, repository di transfer kepemilikan dahulu(di menu setting) ke organisasi bukped untuk di pindahkan ke repo bukped.
+2. Setelah dipindahkan ke repo bukped. URL link dari repo github bukped yang dimasukkan ke dalam prakata.
 3. Pastikan setiap bab atau chapter memiliki folder masing-masing dan didalamnya ada contoh kodingan dari bab tersebut
 4. Setiap bab wajib mengandung kode program
 5. Contoh : https://github.com/bukped/Prediksi-Harga-Token-Kripto-Menggunakan-Python

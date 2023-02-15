@@ -13,7 +13,7 @@ Desain yang kekinian dan menarik minat pembaca. Berisi : nama penulis tanpa gela
 1.	Margin atas bawah	Atas dan bawah	2 cm
 2.	Margin samping	Kanan dan kiri	1,5 cm
 3.	Gutter	kiri	0 cm
-4.	Ukuran Buku	B5	15,5 x 23 Cm
+4.	Ukuran Buku	Unesco :	15,5 x 23 Cm
 5.	Line Spacing	Jarak antar tulisan	1
 
 ## Halaman Judul

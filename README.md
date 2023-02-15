@@ -10,7 +10,6 @@ Desain yang kekinian dan menarik minat pembaca. Berisi : nama penulis tanpa gela
 
 ## Margin dan Ukuran
 
-No.	Petunjuk	Keterangan	Ukuran
 1.	Margin atas bawah	Atas dan bawah	2 cm
 2.	Margin samping	Kanan dan kiri	1,5 cm
 3.	Gutter	kiri	0 cm

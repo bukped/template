@@ -1,6 +1,19 @@
 # Template Buku Pedia
 
-Template Buku Pedia, mohon perhatikan ketentuan di bawah ini
+Template Buku Pedia, minimal terdapat ketentuan di bawah ini
+
+## Link Github
+
+Ketentuan link github:
+![image](https://user-images.githubusercontent.com/11188109/217219944-f62fcc0d-29e0-4c20-93cd-42949f201e3c.png)
+1. Sebelum masuk ke tahap selanjutnya, repository di transfer kepemilikan dahulu(di menu setting) ke organisasi bukped untuk di pindahkan ke repo bukped.
+2. Setelah dipindahkan ke repo bukped. URL link dari repo github bukped yang dimasukkan ke dalam prakata.
+3. Pastikan setiap bab atau chapter memiliki folder masing-masing dan didalamnya ada contoh kodingan dari bab tersebut
+4. Setiap bab wajib mengandung kode program
+5. Dilarang memasukkan dokumen naskah ke dalam repo
+6. Pada bagian depan, terdapat file README.md, coverbuku.jpg,fotopenulis.jpg
+7. README.md berisi judul buku, sinopsis dan bibtex
+8. Contoh : https://github.com/bukped/Prediksi-Harga-Token-Kripto-Menggunakan-Python
 
 ## Halaman Sampul
 
@@ -90,16 +103,7 @@ Disini dimulai awal nomor halaman menggunakan romawi(i)
 * Body : calibri 11
 * Mulai halaman no 1
 
-## Link Github
+## Kredit Gambar
 
-Ketentuan link github:
-![image](https://user-images.githubusercontent.com/11188109/217219944-f62fcc0d-29e0-4c20-93cd-42949f201e3c.png)
-1. Sebelum masuk ke tahap selanjutnya, repository di transfer kepemilikan dahulu(di menu setting) ke organisasi bukped untuk di pindahkan ke repo bukped.
-2. Setelah dipindahkan ke repo bukped. URL link dari repo github bukped yang dimasukkan ke dalam prakata.
-3. Pastikan setiap bab atau chapter memiliki folder masing-masing dan didalamnya ada contoh kodingan dari bab tersebut
-4. Setiap bab wajib mengandung kode program
-5. Dilarang memasukkan dokumen naskah ke dalam repo
-6. Pada bagian depan, terdapat file README.md, coverbuku.jpg,fotopenulis.jpg
-7. README.md berisi judul buku, sinopsis dan bibtex
-8. Contoh : https://github.com/bukped/Prediksi-Harga-Token-Kripto-Menggunakan-Python
+Jika gambar bukan dari penulis maka sertakan referensinya dalam kredit gambar
 

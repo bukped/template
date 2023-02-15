@@ -105,5 +105,5 @@ Disini dimulai awal nomor halaman menggunakan romawi(i)
 
 ## Kredit Gambar
 
-Jika gambar bukan dari penulis maka sertakan referensinya dalam kredit gambar
+Jika gambar bukan dari penulis maka sertakan referensinya dalam halaman kredit gambar
 

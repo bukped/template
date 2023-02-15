@@ -72,7 +72,7 @@ Disini dimulai awal nomor halaman menggunakan romawi
 
 * Judul : Calibri 18
 * Body : calibri 11
-* Halaman romawi melanjutkan kata pengantar
+* Halaman romawi melanjutkan prakata
 
 ## Isi buku
 

@@ -79,7 +79,7 @@ Disini dimulai awal nomor halaman menggunakan romawi
 * Judul Bab : Calibri 24
 * Sub Bab : Calibri 12
 * Body : calibri 11
-* Mulai halaman 1
+* Mulai halaman no 1
 
 ## Margin dan Ukuran
 

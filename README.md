@@ -51,7 +51,8 @@ Logo tanpa jarak dari margin bawah
 
 * nama penulis tanpa gelar
 * Tanpa jarak dari margin bawah
-* Font : Calibri, 8
+* Font : Calibri, 
+* Ukuran : 8
 * Line space : 1
 * Bold dan Italic pada bagian atribut saja.
 

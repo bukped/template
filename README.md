@@ -112,15 +112,18 @@ Disini dimulai awal nomor halaman menggunakan romawi(i)
 * Sub Sub Bab atau List 
   * Mengikuti First Indent Sub Bab
   * Identasi isi ditambah dengan 0.625 CM
+* Perpindahan antar sub bab diberi jarak satu baris baru/enter, untuk sub sub bab tidak diberi jarak
 * Tidak ada indentasi lagi selain yang diatas
 
-## Tabel
+### Tabel
+![image](https://user-images.githubusercontent.com/11188109/219246782-50cdab7b-21a2-45c4-b28b-fa6e27f8f476.png)
 
 * Ukuran font : 8
 * Caption tabel di taruh dibagian atas
 * Dibuat Menempel border Tidak ada Spasi Vertikal di dalamnya
 
 ## Kredit Gambar
+![image](https://user-images.githubusercontent.com/11188109/219246893-eee13a31-bd5b-4f85-9b39-a1c95b55a0d2.png)
 
 Jika gambar bukan dari penulis maka sertakan referensinya dalam halaman kredit gambar
 

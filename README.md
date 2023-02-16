@@ -109,7 +109,7 @@ Disini dimulai awal nomor halaman menggunakan romawi(i)
 * Left & Hanging Indent : Menempel pada margin kiri
 * First Indent : Maksimal 0.625 CM
 * Sub Bab Menempel Pada Margin Kiri
-* Sub Sub Bab atau List 
+* Sub Sub Bab atau List yang satu identasi dengan sub sub bab
   * Mengikuti First Indent Sub Bab
   * Identasi isi ditambah dengan 0.625 CM
 * Perpindahan antar sub bab diberi jarak satu baris baru/enter, untuk sub sub bab tidak diberi jarak

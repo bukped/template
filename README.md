@@ -103,6 +103,23 @@ Disini dimulai awal nomor halaman menggunakan romawi(i)
 * Body : calibri 11
 * Mulai halaman no 1
 
+### Heading Styles
+![image](https://user-images.githubusercontent.com/11188109/219240894-93eb6969-fa61-4dc8-b2a9-db2d3574b68e.png)
+
+* Left & Hanging Indent : Menempel pada margin kiri
+* First Indent : Maksimal 0.625 CM
+* Sub Bab Menempel Pada Margin Kiri
+* Sub Sub Bab atau List 
+  * Mengikuti First Indent Sub Bab
+  * Identasi isi ditambah dengan 0.625 CM
+* Tidak ada indentasi lagi selain yang diatas
+
+## Tabel
+
+* Ukuran font : 8
+* Caption tabel di taruh dibagian atas
+* Dibuat Menempel border Tidak ada Spasi Vertikal di dalamnya
+
 ## Kredit Gambar
 
 Jika gambar bukan dari penulis maka sertakan referensinya dalam halaman kredit gambar

@@ -113,7 +113,7 @@ Disini dimulai awal nomor halaman menggunakan romawi(i)
   * Mengikuti First Indent Sub Bab
   * Identasi isi ditambah dengan 0.625 CM
 * Perpindahan antar sub bab diberi jarak satu baris baru/enter, untuk sub sub bab tidak diberi jarak
-* Tidak ada indentasi lagi selain yang diatas
+* Jika naskah anda masih terdapat sub sub sub bab atau list yang satu identasi dengan sub sub sub bab maka pecah bab tersebut menjadi beberapa bab.
 
 ### Tabel
 ![image](https://user-images.githubusercontent.com/11188109/219246782-50cdab7b-21a2-45c4-b28b-fa6e27f8f476.png)

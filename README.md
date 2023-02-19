@@ -76,7 +76,7 @@ Prakata **bukanlah** kata pengantar.
 
 ![image](https://user-images.githubusercontent.com/11188109/218597643-959b394a-4c40-4834-941e-1a595ef0b55e.png)
 
-Prakta Berisi :
+Prakata Berisi :
 1. Berisi data faktual (statistik) terpercaya tentang topik bahasan buku disambungkan dengan pentingnya ada buku ini diterbitkan 
 2. Terdapat tujuan penulisan, pembaca sasaran, keunggulan buku, amanat/pesan untuk pembaca sasaran, tata cara membaca buku atau metode penyampaian setiap bab
 3. Disertakan link github yang sudah dipindahkan ke repo bukped. Sudah di sesuaikan dengan folder jumlah bab dan cara pembagian nama file dan folder di github tersebut.

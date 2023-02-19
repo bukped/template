@@ -48,7 +48,7 @@ Desain yang kekinian dan menarik minat pembaca. Berisi : nama penulis tanpa gela
 
 ![image](https://user-images.githubusercontent.com/11188109/218597417-da8615db-9ce4-4fa2-9fe1-5eeb5fe64f69.png)
 
-Logo tanpa jarak dari margin bawah
+Logo tanpa jarak dari margin bawah, **tidak ada** nomor halaman
 
 ## Halaman Redaksi
 
@@ -68,15 +68,19 @@ Logo tanpa jarak dari margin bawah
 * Ukuran : 8
 * Line space : 1
 * Bold dan Italic pada bagian atribut saja.
+* **Tidak ada** nomor halaman
 
 ## Prakata
 
+Prakata **bukanlah** kata pengantar.
+
 ![image](https://user-images.githubusercontent.com/11188109/218597643-959b394a-4c40-4834-941e-1a595ef0b55e.png)
 
-Berisi :
+Prakta Berisi :
 1. Berisi data faktual (statistik) terpercaya tentang topik bahasan buku disambungkan dengan pentingnya ada buku ini diterbitkan 
 2. Terdapat tujuan penulisan, pembaca sasaran, keunggulan buku, amanat/pesan untuk pembaca sasaran, tata cara membaca buku atau metode penyampaian setiap bab
 3. Disertakan link github yang sudah dipindahkan ke repo bukped. Sudah di sesuaikan dengan folder jumlah bab dan cara pembagian nama file dan folder di github tersebut.
+4. **Tidak ada penulisan** tempat, tanggal dan Penulis Naskah pada bagian setelah akhir paragraf seperti Kata Pengantar
 
 * Font Calibri 
 * Judul :18
@@ -86,7 +90,7 @@ Berisi :
 
 ![image](https://user-images.githubusercontent.com/11188109/218597802-beee2614-8124-449e-b915-a873320b3b3e.png)
 
-Disini dimulai awal nomor halaman menggunakan romawi(i)
+Bagian Prakata dimulai awal nomor halaman menggunakan romawi(i)
 
 ## Daftar Isi
 

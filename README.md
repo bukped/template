@@ -106,6 +106,7 @@ Bagian Prakata dimulai awal nomor halaman menggunakan romawi(i)
 * Sub Bab : Calibri 12
 * Body : calibri 11
 * Mulai halaman no 1
+* Minimal 50 Halaman ISI (tanpa lampiran, cover, daftar isi dll)
 
 ### Heading Styles
 ![image](https://user-images.githubusercontent.com/11188109/219240894-93eb6969-fa61-4dc8-b2a9-db2d3574b68e.png)

@@ -12,7 +12,7 @@ Ketentuan link github:
 4. Setiap bab wajib mengandung kode program
 5. Dilarang memasukkan dokumen naskah ke dalam repo
 6. Pada bagian depan, terdapat file README.md, coverbuku.jpg,fotopenulis.jpg
-7. README.md berisi judul buku, sinopsis dan bibtex
+7. README.md berisi judul buku, sinopsis, link katalog dan link profile penulis. Boleh menambahkan cara mensitasi buku jika buku sudah terbit.
 8. Contoh : https://github.com/bukped/Prediksi-Harga-Token-Kripto-Menggunakan-Python
 
 ## Halaman Sampul

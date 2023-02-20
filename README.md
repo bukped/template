@@ -10,7 +10,7 @@ Ketentuan link github:
 2. Setelah dipindahkan ke repo bukped. URL link dari repo github bukped yang dimasukkan ke dalam prakata.
 3. Pastikan setiap bab atau chapter memiliki folder masing-masing dan didalamnya ada contoh kodingan dari bab tersebut
 4. Setiap bab wajib mengandung kode program
-5. Dilarang memasukkan dokumen naskah ke dalam repo
+5. **Dilarang** memasukkan dokumen naskah ke dalam repo
 6. Pada bagian depan, terdapat file README.md, coverbuku.jpg,fotopenulis.jpg
 7. README.md berisi judul buku, sinopsis, link katalog dan link profile penulis. Boleh menambahkan cara mensitasi buku jika buku sudah terbit.
 8. Contoh : https://github.com/bukped/FluPy

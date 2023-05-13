@@ -19,7 +19,10 @@ Ketentuan link github:
 
 ![image](https://user-images.githubusercontent.com/11188109/217132416-58a07f1e-6cd8-4b58-86fa-d3aa831a51a9.png)
 
-Desain yang kekinian dan menarik minat pembaca. Berisi : nama penulis tanpa gelar, judul buku, logo penerbit
+Pastikan :
+1. Desain yang kekinian dan menarik minat pembaca. Berisi : nama penulis tanpa gelar, judul buku, logo penerbit
+2. Nama dan Urutan Penulis Konsisten, tidak menggunakan gelar tidak menggunakan tanda baca(titik/koma/seru/tanda tanya dll).
+3. Tidak terdapat tanda baca pada judul (titik/koma/titik dua/titik koma/tanda seru/tanda tanya)
 
 ## Margin dan Ukuran
 

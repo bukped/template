@@ -21,8 +21,9 @@ Ketentuan link github:
 
 Pastikan :
 1. Desain yang kekinian dan menarik minat pembaca. Berisi : nama penulis tanpa gelar, judul buku, logo penerbit
-2. Nama dan Urutan Penulis Konsisten, tidak menggunakan gelar tidak menggunakan tanda baca(titik/koma/seru/tanda tanya dll).
-3. Tidak terdapat tanda baca pada judul (titik/koma/titik dua/titik koma/tanda seru/tanda tanya)
+2. Nama dan Urutan Penulis Konsisten antara halaman sampul, halaman judul, halaman redaksi dan halaman yang lainnya jika ada.
+3. Nama Penulis tidak menggunakan gelar dan tidak menggunakan tanda baca(titik/koma/tanda seru/tanda tanya dsb)
+4. Tidak terdapat tanda baca pada judul (titik/koma/titik dua/titik koma/tanda seru/tanda tanya dsb)
 
 ## Margin dan Ukuran
 

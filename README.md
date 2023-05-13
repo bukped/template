@@ -80,7 +80,8 @@ Prakata Berisi :
 1. Berisi data faktual (statistik) terpercaya tentang topik bahasan buku disambungkan dengan pentingnya ada buku ini diterbitkan 
 2. Terdapat tujuan penulisan, pembaca sasaran, keunggulan buku, amanat/pesan untuk pembaca sasaran, tata cara membaca buku atau metode penyampaian setiap bab
 3. Disertakan link github yang sudah dipindahkan ke repo bukped. Sudah di sesuaikan dengan folder jumlah bab dan cara pembagian nama file dan folder di github tersebut.
-4. **Tidak ada penulisan** tempat, tanggal dan Penulis Naskah pada bagian setelah akhir paragraf seperti Kata Pengantar
+4. **Tidak ada penulisan** tempat, tanggal dan Penulis Naskah pada bagian setelah akhir paragraf Prakata.
+5. **Tidak ada penulisan** ucapan terima kasih atau persembahan pada prakata.
 
 * Font Calibri 
 * Judul :18

@@ -1,6 +1,6 @@
 # Template Buku Pedia
 
-[Template Buku Pedia](./TEMPLATEUNESCOBUKUPEDIA.docx), minimal terdapat ketentuan di bawah ini
+[Unduh Template Buku Pedia di sini](./TEMPLATEUNESCOBUKUPEDIA.docx), perhatikan *minimal* terdapat ketentuan di bawah ini
 
 ## Link Github
 

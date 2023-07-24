@@ -2,7 +2,7 @@
 
 [Unduh Template Buku Pedia di sini](./TEMPLATEUNESCOBUKUPEDIA.docx), perhatikan **minimal** terdapat ketentuan di bawah ini
 
-## Link Github
+## Untuk Naskah Topik Pemrograman
 
 Untuk topik naskah yg terdapat bahasa pemrograman atau pengolahan dari dataset. Umumnya buku populer atau buku tutorial yg terdapat kode program didalamnya maka wajib dilampirkan link repositori kode program di github. Agar isi buku lebih enak dibaca dan proporsional penjelasannya. Kode program tidak boleh di tampilkan di dalam buku sampai memakan setengah sampai satu halaman penuh. Dalam buku dijelaskan per bagian atau per fungsi program tidak satu file penuh. Sehingga pembaca bisa memahami kode program per barisnya. 
 

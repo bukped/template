@@ -4,16 +4,20 @@
 
 ## Link Github
 
+Untuk topik naskah yg terdapat bahasa pemrograman atau pengolahan dari dataset. Umumnya buku populer atau buku tutorial yg terdapat kode program didalamnya maka wajib dilampirkan link repositori kode program di github. Agar isi buku lebih enak dibaca dan proporsional penjelasannya. Kode program tidak boleh di tampilkan di dalam buku sampai memakan setengah sampai satu halaman penuh. Dalam buku dijelaskan per bagian atau per fungsi program tidak satu file penuh. Sehingga pembaca bisa memahami kode program per barisnya. 
+
 Ketentuan link github:
 ![image](https://user-images.githubusercontent.com/11188109/217219944-f62fcc0d-29e0-4c20-93cd-42949f201e3c.png)
 1. Sebelum masuk ke tahap selanjutnya, repository di transfer kepemilikan dahulu(di menu setting) ke organisasi bukped untuk di pindahkan ke repo bukped.
 2. Setelah dipindahkan ke repo bukped. URL link dari repo github bukped yang dimasukkan ke dalam prakata.
 3. Pastikan setiap bab atau chapter memiliki folder masing-masing dan didalamnya ada contoh kodingan dari bab tersebut
-4. Setiap bab wajib mengandung kode program
+4. Setiap bab pada buku populer atau tutorial biasanya mengandung kode program
 5. **Dilarang** memasukkan dokumen naskah ke dalam repo
 6. Pada bagian depan, terdapat file README.md, coverbuku.jpg,fotopenulis.jpg
 7. README.md berisi judul buku, sinopsis, link katalog dan link profile penulis. Boleh menambahkan cara mensitasi buku jika buku sudah terbit.
 8. Contoh : https://github.com/bukped/FluPy
+
+Jika Hal diatas tidak dipenuhi, biasanya buku akan di tolak perpusnas karena dianggap mebukukan laporan penelitian, skripsi, TA, tesis atau Desertasi.
 
 ## Halaman Sampul
 

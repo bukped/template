@@ -73,9 +73,13 @@
 % Tabel: "Tabel 1.1. ..." (titik) di atas tabel.
 % Gambar: "Gambar 1.1 ..." (spasi) di bawah gambar.
 \DeclareCaptionFont{delapan}{\fontsize{8}{10}\selectfont}
-\captionsetup{font=delapan, justification=centering}
+\captionsetup{font=delapan, justification=centering, skip=3pt}
 \captionsetup[table]{labelsep=period}
 \captionsetup[figure]{labelsep=space}
+% Di docx tabel/gambar menyatu rapat dengan teks di sekitarnya;
+% jarak float dirapatkan agar serupa
+\setlength{\intextsep}{4pt}
+\setlength{\textfloatsep}{8pt}
 
 % ---------- Format daftar isi (mengikuti docx) ----------
 % Tanpa titik-titik penghubung, nomor halaman rata kanan,

@@ -25,6 +25,9 @@ sebelum mengubah apa pun yang berkaitan dengan tampilan.
   (sitasi dari `reference.bib`).
 - Kelas memperingatkan metadata kosong/placeholder dan berkas cover/logo hilang;
   properti Title/Author/Subject PDF terisi otomatis dari metadata.
+- Lampiran pengajuan ISBN (halaman judul s.d. daftar isi): `pdflatex lampiran-isbn`
+  (lintas OS) atau `make lampiran` (Linux/macOS) → `lampiran-isbn.pdf`; batas
+  halaman ditulis kelas ke `lampiran-batas.txt` saat kompilasi.
 - Cover dimuat dari `cover/depan.pdf|png` dan `cover/belakang.pdf|png` (15,5x23 cm) —
   untuk ganti cover cukup timpa berkasnya, jangan menggambar cover di main.tex.
 

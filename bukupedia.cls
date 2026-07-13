@@ -486,6 +486,19 @@ Email : irc@ulbi.ac.id}
   \chapter*{#1}%
   \addcontentsline{toc}{chapter}{#1}}
 
+% ---------- Penanda batas bagian awal ----------
+% Saat \mainmatter dipanggil, nomor halaman fisik terakhir bagian awal
+% (halaman judul s.d. daftar isi) dicatat ke lampiran-batas.txt.
+% Dipakai lampiran-isbn.tex (lintas OS, murni TeX) dan "make lampiran"
+% untuk memotong lampiran pengajuan ISBN dari main.pdf.
+\newwrite\bkp@lampiranwrite
+\let\bkp@mainmatterasli\mainmatter
+\renewcommand{\mainmatter}{%
+  \bkp@mainmatterasli
+  \immediate\openout\bkp@lampiranwrite=lampiran-batas.txt
+  \immediate\write\bkp@lampiranwrite{\the\ReadonlyShipoutCounter}%
+  \immediate\closeout\bkp@lampiranwrite}
+
 % Judul indeks "INDEKS" (bawaan babel indonesian: "Indeks")
 \addto\captionsindonesian{\renewcommand{\indexname}{INDEKS}}
 \newcommand{\cetakindeks}{%

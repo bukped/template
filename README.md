@@ -110,6 +110,12 @@ bergaya modul (TIU/TIK, "Uraian Materi", "Latihan"); gunakan padanan bergaya buk
 umum. Pastikan juga tidak ada placeholder tersisa (biografi penulis, sinopsis
 cover belakang, dsb.).
 
+Pengajuan ISBN butuh lampiran berisi halaman judul s.d. daftar isi (halaman 2
+sampai sebelum BAB 1). Buat otomatis dengan `make lampiran` (Linux/macOS,
+butuh poppler-utils), atau lintas OS cukup dengan TeX:
+`pdflatex lampiran-isbn` setelah buku dikompilasi — keduanya menghasilkan
+`lampiran-isbn.pdf` dengan batas halaman yang dideteksi otomatis.
+
 ---
 
 ## Instalasi LaTeX (TinyTeX)
@@ -136,7 +142,7 @@ TinyTeX ringan dan berjalan di **Windows, macOS, dan Linux**.
    (Command Prompt/PowerShell/Terminal):
 
    ```
-   tlmgr install carlito babel-indonesian geometry setspace booktabs enumitem listings xcolor colortbl pgf lettrine tocloft caption hyperref xurl apacite titlesec fontaxes psnfss cm-super makeindex bibtex latexmk
+   tlmgr install carlito babel-indonesian geometry setspace booktabs enumitem listings xcolor colortbl pgf lettrine tocloft caption hyperref xurl apacite titlesec fontaxes psnfss cm-super pdfpages makeindex bibtex latexmk
    ```
 
 Alternatif tanpa R: install **TeX Live** penuh (Linux/macOS) atau **MiKTeX**

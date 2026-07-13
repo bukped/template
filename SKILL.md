@@ -21,9 +21,9 @@ Sumber resmi:
 
 > **Catatan (Claude Desktop / skill dari zip):** bila skill ini terpasang dari paket
 > zip, berkas template (`bukupedia.cls`, `main.ist`, `latexmkrc`→`.latexmkrc`,
-> `bahasa.apc`, `indonesian.apc`, `Makefile`, `contoh-main.tex`,
-> `contoh-reference.bib`, `cover/`) **sudah tersedia di folder skill ini** — salin
-> langsung ke folder proyek penulis, tidak perlu mengunduh.
+> `bahasa.apc`, `indonesian.apc`, `Makefile`, `lampiran-isbn.tex`,
+> `contoh-main.tex`, `contoh-reference.bib`, `cover/`) **sudah tersedia di folder
+> skill ini** — salin langsung ke folder proyek penulis, tidak perlu mengunduh.
 
 Jalankan di root folder proyek penulis (jangan menimpa naskah mereka):
 
@@ -36,6 +36,7 @@ curl -fLO $BASE/bahasa.apc
 curl -fLO $BASE/indonesian.apc
 curl -fLO $BASE/.latexmkrc
 curl -fLO $BASE/Makefile
+curl -fLO $BASE/lampiran-isbn.tex
 curl -fL  -o contoh-main.tex $BASE/main.tex        # contoh naskah, sebagai acuan struktur
 curl -fL  -o contoh-reference.bib $BASE/reference.bib
 curl -fL --create-dirs -o cover/depan.pdf    $BASE/cover/depan.pdf
@@ -53,7 +54,7 @@ lokasinya dengan `\logopenerbit{path/berkas.png}` di preamble. Varian yang terse
 
 Jika penulis belum punya TeX: install TinyTeX (panduan di
 <https://universitas.bukupedia.co.id/latex/>) lalu
-`tlmgr install carlito babel-indonesian geometry setspace booktabs enumitem listings xcolor colortbl pgf lettrine tocloft caption hyperref xurl apacite titlesec fontaxes psnfss cm-super makeindex bibtex latexmk`.
+`tlmgr install carlito babel-indonesian geometry setspace booktabs enumitem listings xcolor colortbl pgf lettrine tocloft caption hyperref xurl apacite titlesec fontaxes psnfss cm-super pdfpages makeindex bibtex latexmk`.
 
 ## Langkah 2 — Pahami aturannya (jangan dilanggar)
 
@@ -129,3 +130,7 @@ Bila ada pelanggaran, perbaiki naskah (bukan kelasnya) dan kompilasi ulang.
   (di luar halaman romawi), ditujukan untuk masyarakat luas, bukan modul/diktat
   internal, bukan laporan penelitian mentah atau tugas kuliah, dan tidak ada
   placeholder tersisa (biografi, sinopsis cover belakang, dsb.).
+* **Lampiran pengajuan ISBN** (halaman judul s.d. daftar isi): buat dengan
+  `pdflatex lampiran-isbn` (lintas OS, setelah buku terkompilasi) atau
+  `make lampiran` (Linux/macOS) → `lampiran-isbn.pdf`; batas halamannya
+  terdeteksi otomatis.

@@ -29,3 +29,8 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Berkas bantu lampiran ISBN
+lampiran-batas.txt
+lampiran-isbn.pdf
+lampiran-hal-*.pdf

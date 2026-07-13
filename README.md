@@ -15,8 +15,10 @@ Penulis yang memakai **Claude Code** (atau asisten AI lain) cukup menempelkan UR
 ke sesinya, lalu meminta "sesuaikan naskah saya dengan template ini":
 
 ```
-https://raw.githubusercontent.com/bukped/template/main/SKILL.md
+https://universitas.bukupedia.co.id/template/SKILL
 ```
+
+(Alternatif markdown mentah: `https://raw.githubusercontent.com/bukped/template/main/SKILL.md`)
 
 [SKILL.md](./SKILL.md) berisi instruksi lengkap yang bisa dieksekusi AI: mengunduh
 kelas `bukupedia.cls` ke folder proyek penulis, menyusun `main.tex` dari naskah yang

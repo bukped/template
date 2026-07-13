@@ -25,6 +25,16 @@ kelas `bukupedia.cls` ke folder proyek penulis, menyusun `main.tex` dari naskah 
 sudah ada (struktur bab, prakata, referensi BibTeX, indeks, glosarium, cover), sampai
 kompilasi dengan log bersih.
 
+**Pengguna Claude Desktop / claude.ai** memasang skill lewat unggahan zip:
+
+1. Unduh paket skill: <https://universitas.bukupedia.co.id/template/template-bukupedia-skill.zip>
+2. Buka **Settings → Capabilities → Skills → Upload skill**, pilih zip tersebut.
+3. Di percakapan, minta: *"pakai skill template-bukupedia, sesuaikan naskah saya"*.
+
+Zip berisi `SKILL.md` beserta berkas inti template (`bukupedia.cls`, contoh naskah,
+cover bawaan, dll.) sehingga Claude punya salinan lokal tanpa perlu mengunduh.
+Regenerasi paket: `make skill`.
+
 Versi LaTeX ini adalah konversi setia dari template asli penerbit
 ([TEMPLATEUNESCOBUKUPEDIA.docx](./TEMPLATEUNESCOBUKUPEDIA.docx)): setiap halaman sudah
 diverifikasi berdampingan dengan render docx, dan ukuran font diambil langsung dari XML

@@ -1,4 +1,4 @@
-.PHONY: all cover clean
+.PHONY: all cover skill clean
 
 all: main.pdf
 
@@ -20,6 +20,22 @@ cover: cover/desain.tex
 	  && mv halaman-1.pdf depan.pdf \
 	  && mv halaman-2.pdf belakang.pdf \
 	  && rm -f desain.aux desain.log desain.pdf
+
+# Paket skill untuk pengguna Claude Desktop/claude.ai:
+# zip berisi folder template-bukupedia/ (SKILL.md + berkas inti
+# template) yang tinggal diunggah di Settings -> Capabilities ->
+# Skills. Jalankan ulang target ini setiap SKILL.md/kelas berubah.
+skill:
+	rm -rf template-bukupedia template-bukupedia-skill.zip
+	mkdir -p template-bukupedia/cover
+	cp SKILL.md bukupedia.cls main.ist bahasa.apc indonesian.apc \
+	   Makefile template-bukupedia/
+	cp .latexmkrc template-bukupedia/latexmkrc
+	cp main.tex template-bukupedia/contoh-main.tex
+	cp reference.bib template-bukupedia/contoh-reference.bib
+	cp cover/depan.pdf cover/belakang.pdf template-bukupedia/cover/
+	zip -qr template-bukupedia-skill.zip template-bukupedia
+	rm -rf template-bukupedia
 
 clean:
 	rm -f main.aux main.log main.toc main.lof main.lot main.out \

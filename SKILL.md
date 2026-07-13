@@ -18,6 +18,12 @@ Sumber resmi:
 
 ## Langkah 1 — Unduh berkas template ke folder proyek
 
+> **Catatan (Claude Desktop / skill dari zip):** bila skill ini terpasang dari paket
+> zip, berkas template (`bukupedia.cls`, `main.ist`, `latexmkrc`→`.latexmkrc`,
+> `bahasa.apc`, `indonesian.apc`, `Makefile`, `contoh-main.tex`,
+> `contoh-reference.bib`, `cover/`) **sudah tersedia di folder skill ini** — salin
+> langsung ke folder proyek penulis, tidak perlu mengunduh.
+
 Jalankan di root folder proyek penulis (jangan menimpa naskah mereka):
 
 ```bash
@@ -25,6 +31,8 @@ BASE=https://cdn.jsdelivr.net/gh/bukped/template@latest
 # fallback bila CDN bermasalah: BASE=https://raw.githubusercontent.com/bukped/template/main
 curl -fLO $BASE/bukupedia.cls
 curl -fLO $BASE/main.ist
+curl -fLO $BASE/bahasa.apc
+curl -fLO $BASE/indonesian.apc
 curl -fLO $BASE/.latexmkrc
 curl -fLO $BASE/Makefile
 curl -fL  -o contoh-main.tex $BASE/main.tex        # contoh naskah, sebagai acuan struktur

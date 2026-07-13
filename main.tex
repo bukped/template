@@ -130,41 +130,53 @@
 \pagestyle{plain}
 
 % ============================================================
-% COVER DEPAN (dummy)
+% COVER DEPAN (mengikuti tata letak docx)
+% Pita hitam di atas dengan logo Bukupedia kanan-atas; gambar
+% jaringan blockchain memenuhi 3/4 bagian bawah; logo JS besar
+% rata kiri dengan judul di kanannya (angka "3" merah); logo
+% Solana di bawah JS; nama penulis (serif bold) di bawah tengah.
 % Halaman cover tidak diberi nomor dan tidak ikut penomoran
 % (penomoran "Alph" tersembunyi agar tidak bentrok dengan hyperref).
 % ============================================================
 \pagenumbering{Alph}
 \thispagestyle{empty}
 \begin{tikzpicture}[remember picture, overlay]
-  % Latar belakang penuh (gambar jaringan blockchain)
-  \node at (current page.center)
-    {\includegraphics[height=\paperheight]{images/image4.jpg}};
-  % Lapisan gelap agar teks terbaca
-  \fill[black, opacity=0.45]
+  % Dasar hitam penuh
+  \fill[black]
     (current page.south west) rectangle (current page.north east);
-  % Nama penerbit di bagian atas
-  \node[anchor=north, text=white] at ([yshift=-1.2cm]current page.north)
-    {\fontsize{10}{12}\selectfont PT. PENERBIT BUKU PEDIA};
-  % Judul dan sub judul
-  \node[anchor=north, text=white, align=center, text width=12cm]
-    at ([yshift=-4.5cm]current page.north)
-    {{\fontsize{24}{29}\selectfont\bfseries \judulbuku}\\[10pt]
-     {\fontsize{12}{15}\selectfont \subjudulbuku}};
-  % Ilustrasi dummy (JavaScript dan Solana)
-  \node[anchor=center] at ([yshift=-0.5cm]current page.center)
-    {\includegraphics[width=4.2cm]{images/image2.jpg}%
-     \hspace{0.6cm}%
-     \includegraphics[width=2.7cm]{images/image3.jpg}};
-  % Nama penulis
-  \node[anchor=south, text=white, align=center]
-    at ([yshift=3.2cm]current page.south)
-    {{\fontsize{13}{16}\selectfont\bfseries Rolly Maulana Awangga}\\[4pt]
-     {\fontsize{13}{16}\selectfont\bfseries Idam Fadilah}};
-  % Logo penerbit dalam kotak putih di bagian bawah
-  \node[anchor=south, fill=white, rounded corners=2pt, inner sep=5pt]
-    at ([yshift=1cm]current page.south)
-    {\includegraphics[width=2.6cm]{images/image6.png}};
+  % Gambar jaringan blockchain memenuhi ~76% bagian bawah
+  % (diregangkan selebar halaman seperti pada docx)
+  \node[anchor=south, inner sep=0pt] at (current page.south)
+    {\includegraphics[width=\paperwidth, height=0.76\paperheight]{images/image4.jpg}};
+  % Logo Bukupedia (varian putih) di kanan atas
+  \node[anchor=north east]
+    at ([xshift=-0.7cm, yshift=-0.8cm]current page.north east)
+    {\includegraphics[width=2.2cm]{images/image1_white.png}};
+  % Kolom hitam menerus di belakang logo JS dan Solana
+  \fill[black] ([yshift=-6.6cm]current page.north west)
+    rectangle ([xshift=5.9cm, yshift=-15.6cm]current page.north west);
+  % Logo JS besar, menempel tepi kiri
+  \node[anchor=west, inner sep=0pt] at ([yshift=3.0cm]current page.west)
+    {\includegraphics[width=5.7cm]{images/image2.jpg}};
+  % Logo Solana di bawah logo JS
+  \node[anchor=west, inner sep=0pt]
+    at ([xshift=1.0cm, yshift=-1.3cm]current page.west)
+    {\includegraphics[width=3.8cm]{images/image3.jpg}};
+  % Judul di kanan logo JS ("3" berwarna merah)
+  \node[anchor=center, text=white, align=center,
+        font=\fontsize{26}{34}\selectfont\bfseries]
+    at ([xshift=2.9cm, yshift=3.6cm]current page.center)
+    {JAVASCRIPT DAN\\ SOLANA WEB\textcolor{red}{3}};
+  % Sub judul di bawah judul (pemenggalan baris mengikuti docx)
+  \node[anchor=north, text=white, align=center,
+        font=\fontsize{12}{15}\selectfont]
+    at ([xshift=2.9cm, yshift=2.0cm]current page.center)
+    {Tantangan Membangun Aplikasi di Era\\ Disrupsi 4.0};
+  % Nama penulis (serif bold, Idam lebih dulu seperti docx)
+  \node[anchor=south, text=white, align=center,
+        font=\fontfamily{pplx}\fontsize{15}{19}\selectfont\bfseries]
+    at ([yshift=3.0cm]current page.south)
+    {Idam Fadilah\\[2pt] Rolly Maulana Awangga};
 \end{tikzpicture}
 \clearpage
 
@@ -751,60 +763,53 @@ Aplikasi Kementrian Hukum dan Ham, Team DevOps Pekan Olahraga Nasional,
 Cloud Architect Aplikasi Asesment Madrasah Kementrian Agama.
 
 % ============================================================
-% COVER BELAKANG (dummy, tanpa nomor halaman)
+% COVER BELAKANG (mengikuti tata letak docx)
+% Pita hitam di atas dengan logo JS kiri-atas dan Solana
+% kanan-atas; teks sinopsis putih; logo Bukupedia kiri-bawah.
+% Teks sinopsis diambil dari docx (placeholder tentang cara
+% menulis sinopsis).
 % ============================================================
 \clearpage
 \thispagestyle{empty}
-\definecolor{coverblue}{RGB}{10,30,54}
 \begin{tikzpicture}[remember picture, overlay]
-  % Latar belakang biru gelap penuh
-  \fill[coverblue]
+  % Dasar hitam penuh
+  \fill[black]
     (current page.south west) rectangle (current page.north east);
-  % Judul kecil di bagian atas
-  \node[anchor=north, text=white, align=center, text width=11.5cm]
-    at ([yshift=-2cm]current page.north)
-    {{\fontsize{14}{17}\selectfont\bfseries \judulbuku}\\[6pt]
-     {\fontsize{10}{13}\selectfont \subjudulbuku}};
-  % Sinopsis (dummy)
-  \node[anchor=north, text=white, align=justify, text width=11.5cm]
-    at ([yshift=-5cm]current page.north)
-    {\fontsize{10}{14}\selectfont
-     Bagian ini merupakan sinopsis buku yang dicetak pada cover
-     belakang. Sinopsis ditulis ringkas dalam 2--3 paragraf, memuat
-     gambaran besar isi buku, pembaca sasaran, serta manfaat yang akan
-     diperoleh pembaca setelah menyelesaikan buku ini.\\[8pt]
-     Buku ini membahas pengembangan aplikasi Web3 menggunakan JavaScript
-     di atas blockchain Solana. Pembahasan disajikan bertahap untuk
-     pembaca pemula: setiap bab dibuka dengan definisi dan kerangka
-     kerja, dilanjutkan praktik kode program baris per baris, dan
-     ditutup dengan latihan beserta rangkuman. Seluruh kode program
-     dapat diakses melalui repositori GitHub yang disertakan pada
-     setiap bab.};
-  % Logo + alamat penerbit di kiri bawah
-  \node[anchor=south west, fill=white, rounded corners=2pt,
-        inner sep=5pt]
-    at ([xshift=1.5cm, yshift=1.2cm]current page.south west)
-    {\includegraphics[width=2.4cm]{images/image6.png}};
-  \node[anchor=south west, text=white]
-    at ([xshift=4.6cm, yshift=1.2cm]current page.south west)
-    {\fontsize{8}{10}\selectfont
-     \begin{tabular}{@{}l@{}}
-       \textbf{PT. Penerbit Buku Pedia}\\
-       Athena Residence Blok. E No. 1,\\
-       Desa Ciwaruga, Kec. Parongpong,\\
-       Kab. Bandung Barat 40559\\
-       penerbit@bukupedia.co.id
-     \end{tabular}};
-  % Kotak ISBN (placeholder barcode) di kanan bawah
-  \node[anchor=south east, fill=white, inner sep=6pt]
-    (isbn) at ([xshift=-1.5cm, yshift=1.2cm]current page.south east)
-    {\begin{tabular}{@{}c@{}}
-       \fontsize{8}{10}\selectfont ISBN 978-XXX-XXXX-XX-X\\[3pt]
-       \tikz{\foreach \x/\w in {0/0.4, 0.6/0.2, 1.0/0.5, 1.7/0.2,
-             2.1/0.4, 2.7/0.2, 3.1/0.3, 3.6/0.5, 4.3/0.2}
-             {\fill[black] (\x*5mm, 0) rectangle
-              (\x*5mm+\w*5mm, 7mm);}}
-     \end{tabular}};
+  % Gambar jaringan blockchain memenuhi ~84% bagian bawah
+  % (diregangkan selebar halaman seperti pada docx)
+  \node[anchor=south, inner sep=0pt] at (current page.south)
+    {\includegraphics[width=\paperwidth, height=0.84\paperheight]{images/image4.jpg}};
+  % Logo JS menempel sudut kiri atas
+  \node[anchor=north west] at (current page.north west)
+    {\includegraphics[width=5.7cm]{images/image2.jpg}};
+  % Logo Solana di kanan atas (di dalam pita hitam)
+  \node[anchor=north east, inner sep=0pt]
+    at ([yshift=-0.4cm]current page.north east)
+    {\includegraphics[width=2.9cm]{images/image3.jpg}};
+  % Sinopsis (teks placeholder dari docx)
+  \node[anchor=north west, text=white, align=justify, text width=11.7cm]
+    at ([xshift=2.4cm, yshift=-4.4cm]current page.north west)
+    {\fontsize{11}{15}\selectfont
+     Melihat berbagai contoh sinopsis buku mungkin terlihat mudah
+     untuk dipraktekan langsung. Supaya memang terasa sangat mudah
+     maka kamu perlu memahami sinopsis buku dengan mendalam. Bisa
+     dimulai dari pengertiannya terlebih dahulu. Sinopsis buku
+     diketahui merupakan ringkasan suatu buku yang ditulis dalam
+     bentuk narasi. Bentuknya yang berupa ringkasan kemudian sering
+     disalah artikan sebagai resensi. Tentunya antara sinopsis dan
+     resensi adalah dua hal yang berbeda. Resensi juga berupa
+     ringkasan yang condong ke arah ulasan, sehingga di dalamnya
+     terdapat pemaparan kelebihan dan kekurangan buku. Sedangkan
+     sinopsis murni berisi ringkasan dari isi suatu buku, sehingga
+     tidak ada unsur kelebihan dan kekurangan di dalamnya. Sebagai
+     ringkasan, sinopsis kemudian perlu berisi detail alur cerita dan
+     konflik di dalam buku yang disampaikan sekilas. Selain itu,
+     perlu diberi bumbu untuk menciptakan rasa tertarik dan penasaran
+     bagi para pembaca.};
+  % Logo Bukupedia (varian putih) di kiri bawah
+  \node[anchor=south west]
+    at ([xshift=1.2cm, yshift=1.0cm]current page.south west)
+    {\includegraphics[width=1.9cm]{images/image1_white.png}};
 \end{tikzpicture}
 
 \end{document}

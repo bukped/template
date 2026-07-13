@@ -63,6 +63,10 @@
 \RequirePackage{tabularx}
 \RequirePackage{booktabs}
 \RequirePackage{enumitem}
+% Jarak vertikal list dirapatkan agar senada dengan spasi 1 naskah
+% (bawaan kelas book ~9pt antar butir dan ~7pt ke paragraf sekitarnya —
+% terlihat renggang di 11pt spasi 1); berlaku untuk enumerate & itemize
+\setlist{itemsep=2pt, parsep=0pt, topsep=2pt, partopsep=0pt}
 \RequirePackage{listings}
 \RequirePackage{xcolor}
 \RequirePackage{colortbl} % shading sel/baris tabel

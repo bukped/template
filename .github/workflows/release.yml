@@ -33,7 +33,7 @@ jobs:
           err=$(grep -cE '^!' main.log || true)
           ovf=$(grep -c 'Overfull' main.log || true)
           unf=$(grep -c 'Underfull' main.log || true)
-          wrn=$(grep -iE 'warning' main.log | grep -viE 'infwarerr|Package: ' | wc -l)
+          wrn=$(grep -iE 'warning' main.log | grep -viE 'infwarerr|Package: ' | wc -l || true)
           echo "errors=$err overfull=$ovf underfull=$unf warnings=$wrn"
           test "$err" -eq 0 -a "$ovf" -eq 0 -a "$unf" -eq 0 -a "$wrn" -eq 0
 

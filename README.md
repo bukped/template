@@ -9,6 +9,20 @@ metadata dan naskah di [`main.tex`](./main.tex). Hasil jadi: [main.pdf](./main.p
 * Rilis + PDF terbangun otomatis: <https://github.com/bukped/template/releases>
 * Kelas dokumen via CDN: <https://cdn.jsdelivr.net/gh/bukped/template@latest/bukupedia.cls>
 
+## Penulis memakai Claude/AI? Tempelkan SKILL.md
+
+Penulis yang memakai **Claude Code** (atau asisten AI lain) cukup menempelkan URL ini
+ke sesinya, lalu meminta "sesuaikan naskah saya dengan template ini":
+
+```
+https://raw.githubusercontent.com/bukped/template/main/SKILL.md
+```
+
+[SKILL.md](./SKILL.md) berisi instruksi lengkap yang bisa dieksekusi AI: mengunduh
+kelas `bukupedia.cls` ke folder proyek penulis, menyusun `main.tex` dari naskah yang
+sudah ada (struktur bab, prakata, referensi BibTeX, indeks, glosarium, cover), sampai
+kompilasi dengan log bersih.
+
 Versi LaTeX ini adalah konversi setia dari template asli penerbit
 ([TEMPLATEUNESCOBUKUPEDIA.docx](./TEMPLATEUNESCOBUKUPEDIA.docx)): setiap halaman sudah
 diverifikasi berdampingan dengan render docx, dan ukuran font diambil langsung dari XML

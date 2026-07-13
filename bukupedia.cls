@@ -49,7 +49,9 @@
 \RequirePackage[sfdefault,lf]{carlito}
 
 % ---------- Bahasa ----------
-\RequirePackage[bahasa]{babel}
+% "indonesian" adalah nama resmi; nama lama "bahasa" sudah usang
+% di babel baru dan memicu warning
+\RequirePackage[indonesian]{babel}
 
 % ---------- Spasi 1 ----------
 \RequirePackage{setspace}

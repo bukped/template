@@ -52,9 +52,19 @@
 \usepackage{url}
 \usepackage{tikz}
 \usepackage{lettrine} % drop cap pada paragraf pembuka prakata
+\usepackage{indentfirst} % paragraf pertama setelah judul ikut menjorok (seperti docx)
 \usepackage{makeidx}
 \usepackage[titles]{tocloft}
+\usepackage{caption}
 \usepackage[hidelinks]{hyperref}
+
+% ---------- Format caption (mengikuti docx: 8pt, tengah) ----------
+% Tabel: "Tabel 1.1. ..." (titik) di atas tabel.
+% Gambar: "Gambar 1.1 ..." (spasi) di bawah gambar.
+\DeclareCaptionFont{delapan}{\fontsize{8}{10}\selectfont}
+\captionsetup{font=delapan, justification=centering}
+\captionsetup[table]{labelsep=period}
+\captionsetup[figure]{labelsep=space}
 
 % ---------- Format daftar isi (mengikuti docx) ----------
 % Tanpa titik-titik penghubung, nomor halaman rata kanan,
@@ -75,28 +85,36 @@
 \renewcommand{\thesection}{\Alph{section}}
 \renewcommand{\thesubsection}{\alph{subsection})}
 
-% ---------- Format judul bab: Calibri 16, sub judul 10 ----------
+% ---------- Format judul bab dan section (mengikuti docx) ----------
+% Bab bernomor : "BAB 1" + judul, 24pt bold, rata kanan,
+%                dengan garis horizontal di bawahnya.
+% Bab tak bernomor (PRAKATA dll.): 16pt bold, tengah.
+% Section      : 12pt bold, "A. JUDUL SECTION".
 \usepackage{titlesec}
+\definecolor{garisbab}{RGB}{155,194,230}
 \titleformat{\chapter}[display]
+  {\raggedleft\bfseries}
+  {\fontsize{24}{29}\selectfont BAB \thechapter}
+  {6pt}
+  {\fontsize{24}{29}\selectfont\MakeUppercase}
+  [{\color{garisbab}\titlerule[1.2pt]}]
+\titleformat{name=\chapter, numberless}[display]
   {\centering\bfseries}
-  {\fontsize{16}{19}\selectfont BAB \thechapter}
-  {4pt}
+  {}
+  {0pt}
   {\fontsize{16}{19}\selectfont\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{-20pt}{20pt}
 \titleformat{\section}
-  {\bfseries\fontsize{11}{13}\selectfont}
+  {\bfseries\fontsize{12}{14}\selectfont}
   {\thesection.}{0.5em}{\MakeUppercase}
 
 % ---------- Format kode program ----------
+% Docx menyajikan kode secara polos (tanpa kotak dan warna);
+% di sini dipakai huruf monospace agar indentasi kode terjaga.
 \lstset{
   language=Python,
   basicstyle=\ttfamily\small,
-  keywordstyle=\color{blue},
-  commentstyle=\color{gray},
-  stringstyle=\color{red!60!black},
   showstringspaces=false,
-  frame=single,
-  framerule=0.3pt,
   breaklines=true,
   aboveskip=1em,
   belowskip=1em
@@ -323,26 +341,27 @@ sajian materi yang akan di sampaikan.
   \centering
   \caption{Catatan Penting dalam Penyusunan Buku}
   \label{tab:catatan-buku}
-  \begin{tabularx}{\textwidth}{@{}c l X l@{}}
-    \toprule
+  {\fontsize{8}{10}\selectfont
+  \begin{tabularx}{\textwidth}{|c|l|X|l|}
+    \hline
     \textbf{No.} & \textbf{Petunjuk} & \textbf{Keterangan} & \textbf{Ukuran} \\
-    \midrule
-    1. & Margin atas bawah & Atas dan bawah & 2 cm \\
-    2. & Margin samping    & Kanan dan kiri & 1,5 cm \\
-    3. & Gutter            & Kiri           & 0 cm \\
-    4. & Ukuran Buku       & B5             & 15,5 x 23 cm \\
-    5. & Font              & Calibri        & 11 \\
-    6. & Line Spacing      & Jarak antar tulisan & 1 \\
+    \hline
+    1. & Margin atas bawah & Atas dan bawah & 2 cm \\ \hline
+    2. & Margin samping    & Kanan dan kiri & 1,5 cm \\ \hline
+    3. & Gutter            & Kiri           & 0 cm \\ \hline
+    4. & Ukuran Buku       & B5             & 15,5 x 23 cm \\ \hline
+    5. & Font              & Calibri        & 11 \\ \hline
+    6. & Line Spacing      & Jarak antar tulisan & 1 \\ \hline
     7. & Halaman redaksi   & Informasi Redaksi Penerbitan setelah
          halaman judul menggunakan Font Book Antiqua posisi melekat
-         dari bagian bawah & 8 \\
+         dari bagian bawah & 8 \\ \cline{3-4}
        &                   & Judul yang melekat pada bagian atas dengan
-         font Calibri 16 untuk judul dan 10 untuk sub judul & 16 dan 10 \\
+         font Calibri 16 untuk judul dan 10 untuk sub judul & 16 dan 10 \\ \hline
     8. & Kata pengantar    & Berisi data faktual penyebab buku terbit,
          penjelasan tata cara membaca buku dan link github dari kode
          program & \\
-    \bottomrule
-  \end{tabularx}
+    \hline
+  \end{tabularx}}
 \end{table}
 
 \section{Tujuan Intruksional dan Capaian Pembelajaran}
@@ -431,10 +450,12 @@ referensi bisa dilihat pada Tabel~\ref{tab:buku-referensi}.
   \centering
   \caption{Catatan Penting dalam Penyusunan Buku Referensi}
   \label{tab:buku-referensi}
+  {\fontsize{8}{10}\selectfont
   \begin{tabularx}{\textwidth}{|X|}
     \hline
-    \textbf{CATATAN PENTING YANG PERLU DICERMATI}\newline
-    \textbf{PENYUSUNAN BUKU REFERENSI} \\
+    {\centering
+     \textbf{CATATAN PENTING YANG PERLU DICERMATI}\par
+     \textbf{PENYUSUNAN BUKU REFERENSI}\par} \\
     \hline
     \begin{enumerate}[leftmargin=*, nosep, before=\vspace{2pt}, after=\vspace{2pt}]
       \item Merupakan hasil penelitian
@@ -456,7 +477,7 @@ referensi bisa dilihat pada Tabel~\ref{tab:buku-referensi}.
             penerbitan buku hasil penelitian)
     \end{enumerate} \\
     \hline
-  \end{tabularx}
+  \end{tabularx}}
 \end{table}
 
 \section{Buku Monograph}
@@ -474,10 +495,12 @@ buku monograph bisa dilihat pada Tabel~\ref{tab:buku-monograph}.
   \centering
   \caption{Catatan Penting dalam Penyusunan Buku Monograph}
   \label{tab:buku-monograph}
+  {\fontsize{8}{10}\selectfont
   \begin{tabularx}{\textwidth}{|X|}
     \hline
-    \textbf{CATATAN PENTING YANG PERLU DICERMATI}\newline
-    \textbf{PENYUSUNAN BUKU MONOGRAPH} \\
+    {\centering
+     \textbf{CATATAN PENTING YANG PERLU DICERMATI}\par
+     \textbf{PENYUSUNAN BUKU MONOGRAPH}\par} \\
     \hline
     \begin{enumerate}[leftmargin=*, nosep, before=\vspace{2pt}, after=\vspace{2pt}]
       \item Merupakan hasil penelitian
@@ -499,7 +522,7 @@ buku monograph bisa dilihat pada Tabel~\ref{tab:buku-monograph}.
             penerbitan buku hasil penelitian)
     \end{enumerate} \\
     \hline
-  \end{tabularx}
+  \end{tabularx}}
 \end{table}
 
 \section{Daftar Pustaka}

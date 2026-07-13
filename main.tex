@@ -49,7 +49,8 @@
 \usepackage{enumitem}
 \usepackage{listings}
 \usepackage{xcolor}
-\usepackage{url}
+\usepackage{colortbl} % shading sel/baris tabel
+\definecolor{kepalatabel}{gray}{0.92} % abu muda header tabel (seperti docx)
 \usepackage{tikz}
 \usepackage{lettrine} % drop cap pada paragraf pembuka prakata
 \usepackage{indentfirst} % paragraf pertama setelah judul ikut menjorok (seperti docx)
@@ -57,6 +58,11 @@
 \usepackage[titles]{tocloft}
 \usepackage{caption}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xurl} % dimuat setelah hyperref: \url boleh patah baris di titik mana pun
+\setlength{\Urlmuskip}{0mu plus 1mu} % beri kelenturan antar karakter URL
+\renewcommand\UrlBreakPenalty{100}   % izinkan patah URL dengan penalti rendah
+\renewcommand\UrlBigBreakPenalty{100}
+\emergencystretch=1.5em % cadangan kelenturan agar baris tidak melebihi margin
 
 % ---------- Format caption (mengikuti docx: 8pt, tengah) ----------
 % Tabel: "Tabel 1.1. ..." (titik) di atas tabel.
@@ -107,18 +113,34 @@
 \titleformat{\section}
   {\bfseries\fontsize{12}{14}\selectfont}
   {\thesection.}{0.5em}{\MakeUppercase}
+% Sub section "a) ..." : tidak bold, menjorok sejajar indentasi paragraf
+\titleformat{\subsection}
+  {\fontsize{11}{13}\selectfont}
+  {\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{\parindent}{6pt}{3pt}
 
 % ---------- Format kode program ----------
-% Docx menyajikan kode secara polos (tanpa kotak dan warna);
-% di sini dipakai huruf monospace agar indentasi kode terjaga.
+% Kode program disajikan dalam kotak berbingkai tipis dengan
+% latar abu muda agar batasnya jelas dan proporsional, memakai
+% huruf monospace agar indentasi kode terjaga.
 \lstset{
   language=Python,
   basicstyle=\ttfamily\small,
   showstringspaces=false,
   breaklines=true,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{black!60},
+  backgroundcolor=\color{black!4},
+  xleftmargin=3pt,
+  xrightmargin=3pt,
   aboveskip=1em,
   belowskip=1em
 }
+% Lingkungan kode yang tidak terpotong pindah halaman
+\lstnewenvironment{kodeprogram}
+  {\noindent\minipage{\linewidth}}
+  {\endminipage}
 
 % ---------- Metadata buku ----------
 \newcommand{\judulbuku}{JAVASCRIPT DAN SOLANA WEB3}
@@ -227,7 +249,9 @@ Idam Fadilah\\
 Rolly Maulana Awangga
 
 \bigskip
-\noindent\textbf{\textit{ISBN}}:
+% Baris kosong di bawah ISBN diisi nomor ISBN setelah terbit
+\noindent\textbf{\textit{ISBN}}:\\
+\mbox{}
 
 \bigskip
 \noindent\textbf{\textit{Editor:}}\\
@@ -280,7 +304,7 @@ dengan cara apa pun tanpa ijin tertulis dari penerbit\par
 \chapter*{PRAKATA}
 \addcontentsline{toc}{chapter}{PRAKATA}
 
-\lettrine[lines=3]{M}{embuat} prakata menggunakan font Calibri, ukuran 11 dengan spasi 1. Di
+\lettrine[lines=3, findent=2pt, nindent=0pt]{M}{embuat} prakata menggunakan font Calibri, ukuran 11 dengan spasi 1. Di
 dalam prakata penulis menyampaikan sekurang-kurangnya tujuan penulisan,
 pembaca sasaran, keunggulan buku, amanat/pesan untuk pembaca sasaran
 serta tata cara menyajikan kodingan dalam link github yang sudah di atur
@@ -356,7 +380,9 @@ sajian materi yang akan di sampaikan.
   {\fontsize{8}{10}\selectfont
   \begin{tabularx}{\textwidth}{|c|l|X|l|}
     \hline
-    \textbf{No.} & \textbf{Petunjuk} & \textbf{Keterangan} & \textbf{Ukuran} \\
+    \rowcolor{kepalatabel}
+    \textbf{No.} & \multicolumn{1}{c|}{\textbf{Petunjuk}} &
+    \textbf{Keterangan} & \multicolumn{1}{c|}{\textbf{Ukuran}} \\
     \hline
     1. & Margin atas bawah & Atas dan bawah & 2 cm \\ \hline
     2. & Margin samping    & Kanan dan kiri & 1,5 cm \\ \hline
@@ -424,11 +450,11 @@ secara rinci melalui pembahasan sub bab. Untuk contoh bagaimana
 menyajikan kode program bisa dilihat pada contoh dibawah ini. Program
 menggunakan Bahasa pemrograman python\index{Python}.
 
-\begin{lstlisting}
+\begin{kodeprogram}
 def bad_function(new_elem, starter_list=[]):
     starter_list.append(new_elem)
     return starter_list
-\end{lstlisting}
+\end{kodeprogram}
 
 \section{Rangkuman Materi}
 Calibri, ukuran 11 dengan spasi 1, pada bagian ini berisi ulasan singkat
@@ -465,6 +491,7 @@ referensi\index{Buku referensi} bisa dilihat pada Tabel~\ref{tab:buku-referensi}
   {\fontsize{8}{10}\selectfont
   \begin{tabularx}{\textwidth}{|X|}
     \hline
+    \rowcolor{kepalatabel}
     {\centering
      \textbf{CATATAN PENTING YANG PERLU DICERMATI}\par
      \textbf{PENYUSUNAN BUKU REFERENSI}\par} \\
@@ -510,6 +537,7 @@ buku monograph\index{Buku monograph} bisa dilihat pada Tabel~\ref{tab:buku-monog
   {\fontsize{8}{10}\selectfont
   \begin{tabularx}{\textwidth}{|X|}
     \hline
+    \rowcolor{kepalatabel}
     {\centering
      \textbf{CATATAN PENTING YANG PERLU DICERMATI}\par
      \textbf{PENYUSUNAN BUKU MONOGRAPH}\par} \\
@@ -545,36 +573,31 @@ ilmiah yang ditulis oleh akademisi jurusan ilmu sosial dan psikologi.
 Dikutip dari lib.ui.ac.id, contoh penulisan sitasi berdasarkan APA
 Style.
 
-\begin{enumerate}[label=\alph*), leftmargin=*]
-  \item Artikel Jurnal
-  \begin{quote}
+% Label a) b) c) menjorok sejajar indentasi paragraf; isi tiap
+% poin sejajar dengan teks poinnya; tanpa jarak ekstra dari
+% paragraf di atasnya maupun antar poin (seperti docx)
+\begin{enumerate}[label=\alph*), labelindent=\parindent, leftmargin=*, nosep]
+  \item Artikel Jurnal\\
     Mellers, B. A. (2000). Choice and the relative pleasure of
     consequences. Psychological Bulletin, 126, 910--924
-  \end{quote}
-  \item Buku
-  \begin{quote}
+  \item Buku\\
     Gerhardt, S. (2004). Why love matters: How affection shapes a
     baby's brain. New York: Brunner-Routledge.
-  \end{quote}
-  \item Database Online
-  \begin{quote}
+  \item Database Online\\
     Borman, W. C., Hanson, M. A., Oppler, S. H., Pulakos, E. D., \&
     White, L. A. (1993). Role of early supervisory experience in
     supervisor performance. Journal of Applied Psychology, 78,
     443--449. Retrieved October 23, 2000, from the PsycARTICLES
     database
-  \end{quote}
-  \item Situs web
-  \begin{quote}
+  \item Situs web\\
     Fredrickson, B. L. (2000, March 7). Cultivating positive emotions
     to optimize health and well-being. Prevention \& Treatment, 3,
     Article 0001a. Retrieved November 20, 2000, from
-    http://journals.apa.org/prevention/volume3/pre0030001a.html
-  \end{quote}
+    \url{http://journals.apa.org/prevention/volume3/pre0030001a.html}
 \end{enumerate}
 
 Pada template LaTeX ini, seluruh referensi ditulis terpisah di file
-\texttt{reference.bib}\index{BibTeX} dan disitasi di dalam naskah menggunakan perintah
+\path{reference.bib}\index{BibTeX} dan disitasi di dalam naskah menggunakan perintah
 \verb|\cite{kunci}|, misalnya sitasi buku \cite{ali2017milenial} dan
 artikel jurnal \cite{aziri2011job, bencsik2016generations,
 berkup2014working}. Daftar pustaka akan tersusun otomatis dalam gaya

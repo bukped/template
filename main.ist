@@ -1,0 +1,9 @@
+% Gaya indeks mengikuti template docx:
+% - tiap kelompok huruf diberi kepala huruf bold (A, B, C, ...)
+% - nomor halaman dipisah spasi tanpa koma ("Istilah 35")
+headings_flag 1
+heading_prefix "{\\bfseries "
+heading_suffix "}\\nopagebreak\n"
+delim_0 " "
+delim_1 " "
+delim_2 " "

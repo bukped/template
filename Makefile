@@ -2,10 +2,10 @@
 
 all: main.pdf
 
-main.pdf: main.tex reference.bib
+main.pdf: main.tex reference.bib main.ist
 	pdflatex -interaction=nonstopmode main
 	bibtex main
-	makeindex main
+	makeindex -s main.ist main
 	pdflatex -interaction=nonstopmode main
 	pdflatex -interaction=nonstopmode main
 

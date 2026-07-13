@@ -66,12 +66,10 @@ semuanya — tidak perlu membongkar ulang docx.
 \halamanredaksi          % dibangun otomatis dari metadata
 
 \frontmatter
-\chapter*{PRAKATA}
-\addcontentsline{toc}{chapter}{PRAKATA}
+\babtambahan{PRAKATA}    % bab tak bernomor + entri daftar isi yang benar
 % paragraf pembuka pakai drop cap:
 % \lettrine[lines=3, findent=2pt, nindent=0pt]{M}{embuat} ...
-\tableofcontents
-\addcontentsline{toc}{chapter}{DAFTAR ISI}
+\daftarisi               % daftar isi + entri TOC di halaman awalnya
 
 \mainmatter
 \chapter{JUDUL BAB}
@@ -80,14 +78,37 @@ semuanya — tidak perlu membongkar ulang docx.
 
 \backmatter
 \daftarpustaka{reference}   % DAFTAR PUSTAKA gaya APA dari reference.bib
-% ... glosarium, kredit gambar, \printindex, tentang penulis ...
+\babtambahan{GLOSARIUM}
+% ... \glosletter{A}, \glosentry{Istilah}{Definisi} ...
+\babtambahan{KREDIT GAMBAR}
+\cetakindeks             % INDEKS + entri TOC di halaman awalnya
+\babtambahan{TENTANG PENULIS}
 \coverbelakang           % dari berkas cover/belakang.pdf|png
 \end{document}
 ```
 
 Perintah lain dari kelas: lingkungan `kodeprogram` (kotak kode yang tidak terpotong
-halaman), `isisubsek` (isi sub bab sejajar judulnya), dan
-`\glosletterfirst{A}` / `\glosletter{B}` / `\glosentry{Istilah}{Definisi}` untuk glosarium.
+halaman; bahasa bawaan Python, ganti per blok dengan `\begin{kodeprogram}[Java]`),
+`isisubsek` (isi sub bab sejajar judulnya), dan
+`\glosletter{A}` / `\glosentry{Istilah}{Definisi}` untuk glosarium (pemakaian
+`\glosletter` pertama otomatis tanpa garis pemisah; `\glosletterfirst` lama tetap
+dikenali).
+
+Kemudahan bawaan kelas: metadata penting yang masih kosong/placeholder dan berkas
+cover/logo yang hilang dilaporkan sebagai peringatan/error dengan pesan yang jelas,
+dan properti Title/Author/Subject pada PDF terisi otomatis dari metadata buku.
+
+---
+
+## Kelayakan ISBN
+
+Sebelum naskah diajukan, audit terhadap rubrik resmi:
+<https://naskah.bukupedia.co.id/llmreview/isbn/>. Ringkasnya: minimal **60 halaman
+isi** (di luar halaman romawi), ditujukan bagi masyarakat luas, bukan modul/diktat
+internal maupun laporan penelitian mentah/tugas kuliah — hindari judul bagian
+bergaya modul (TIU/TIK, "Uraian Materi", "Latihan"); gunakan padanan bergaya buku
+umum. Pastikan juga tidak ada placeholder tersisa (biografi penulis, sinopsis
+cover belakang, dsb.).
 
 ---
 
@@ -203,7 +224,7 @@ https://cdn.jsdelivr.net/gh/bukped/template@latest/main.pdf
 | `.github/workflows/release.yml` | CI: build + quality gate + auto tag & release |
 | `cover/` | `depan.pdf` + `belakang.pdf` (cover), `desain.tex` (sumber desain bawaan) |
 | `images/` | Gambar naskah contoh; `image6.png` = logo penerbit yang dipakai halaman judul (**wajib ada**, path bisa diganti via `\logopenerbit{...}`) |
-| `logo/` | Aset logo resmi Bukupedia (varian utama, banner, favicon, putih/monokrom) untuk cover atau kebutuhan lain |
+| `logo/` | Aset logo resmi Bukupedia untuk cover/halaman judul atau kebutuhan lain, dipakai via `\logopenerbit{logo/berkas.png}`: `logobukped.png` (utama), `logobukped-removebg-preview.png` (utama, latar transparan), `bukpedpanjang.png`/`bukpedpanjangweb.png` (banner memanjang), `hitamputih.png` (monokrom), `putih.png` (putih — untuk latar gelap, mis. cover belakang), `dobelitem.png`, `favicon*` (ikon web, bukan untuk cetak) |
 
 ## Mengganti Cover
 
@@ -248,7 +269,7 @@ Semua sudah diimplementasikan di `bukupedia.cls`. Angka bersumber dari XML docx 
 | Elemen | Spesifikasi |
 |---|---|
 | **Halaman judul** | judul **22pt bold** menempel margin atas; sub judul **12pt**; nama penulis **16pt bold** (±9 cm dari atas); logo penerbit 5 cm + "PT. Penerbit Buku Pedia / tahun" **biru (RGB 31,78,121) bold 10pt** di bawah |
-| **Halaman redaksi** | judul **16pt bold** + sub judul **10pt** menempel atas; blok info **8pt spasi 1** menempel bawah; label *bold italic*; antar kelompok satu baris kosong; baris kosong di bawah `ISBN:` untuk diisi nanti; 4 baris penutup rapat. (Tabel 1.1 docx menyebut "Book Antiqua", tetapi docx-nya sendiri memakai Calibri 8pt — praktik docx yang diikuti) |
+| **Halaman redaksi** | judul **16pt bold** + sub judul **10pt** menempel atas; blok info **8pt spasi 1** menempel bawah; label *bold italic*; antar kelompok satu baris kosong; baris kosong di bawah `ISBN:` untuk diisi nanti; 4 baris penutup rapat. Label `Font:` dan `Distributor:` tidak dicetak (distributor Bukupedia banyak; `\fontbuku`/`\distributor` tetap dikenali demi kompatibilitas). (Tabel 1.1 docx menyebut "Book Antiqua", tetapi docx-nya sendiri memakai Calibri 8pt — praktik docx yang diikuti) |
 | **Prakata** | judul 16pt bold tengah; paragraf pembuka ber-**drop cap 3 baris** |
 | **Daftar isi** | tanpa dot leader, nomor rata kanan, entri bab "BAB 1 ...", huruf section "A." bertitik, kedalaman sampai section saja, entri utama bold |
 

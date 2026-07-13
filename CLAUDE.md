@@ -15,11 +15,16 @@ sebelum mengubah apa pun yang berkaitan dengan tampilan.
   `\tahun` (bawaan: tahun kompilasi), `\logopenerbit` (bawaan: `images/image6.png`,
   dipakai halaman judul — berkas ini wajib ada; varian logo resmi lain di `logo/`).
 - Perintah halaman dari kelas: `\coverdepan`, `\halamanjudul`, `\halamanredaksi`,
-  `\daftarpustaka{reference}`, `\coverbelakang`.
-- Lingkungan/perintah isi: `kodeprogram` (kode dalam kotak, tak terpotong halaman),
-  `isisubsek` (isi sub bab sejajar judulnya), `\glosletterfirst`/`\glosletter`/
-  `\glosentry` (glosarium), `\index{...}` (indeks), `\cite{kunci}` (sitasi dari
-  `reference.bib`).
+  `\daftarisi`, `\babtambahan{JUDUL}` (bab tak bernomor + entri TOC yang benar),
+  `\daftarpustaka{reference}`, `\cetakindeks`, `\coverbelakang`. Jangan merakit
+  `\chapter*` + `\addcontentsline` manual — pakai perintah-perintah ini.
+- Lingkungan/perintah isi: `kodeprogram` (kode dalam kotak, tak terpotong halaman;
+  bahasa bawaan Python, per blok bisa `[Java]` dll.), `isisubsek` (isi sub bab
+  sejajar judulnya), `\glosletter`/`\glosentry` (glosarium; pemakaian `\glosletter`
+  pertama otomatis tanpa garis pemisah), `\index{...}` (indeks), `\cite{kunci}`
+  (sitasi dari `reference.bib`).
+- Kelas memperingatkan metadata kosong/placeholder dan berkas cover/logo hilang;
+  properti Title/Author/Subject PDF terisi otomatis dari metadata.
 - Cover dimuat dari `cover/depan.pdf|png` dan `cover/belakang.pdf|png` (15,5x23 cm) —
   untuk ganti cover cukup timpa berkasnya, jangan menggambar cover di main.tex.
 
@@ -33,6 +38,15 @@ sebelum mengubah apa pun yang berkaitan dengan tampilan.
 4. Timpa `cover/depan.pdf` dan `cover/belakang.pdf`.
 5. Kode program: tampilkan potongan pendek dalam `kodeprogram` dengan penjelasan per
    baris; kode lengkap dirujuk ke repo GitHub (ketentuan penerbit — lihat README).
+
+## Kelayakan ISBN
+
+Naskah yang dibangun dari template ini pada akhirnya diajukan ISBN. Saat mereview
+atau menyusun naskah, audit terhadap rubrik resmi
+<https://naskah.bukupedia.co.id/llmreview/isbn/>: minimal 60 halaman isi (di luar
+halaman romawi), untuk masyarakat luas, bukan modul/diktat internal (hindari judul
+bagian TIU/TIK, "Uraian Materi", "Latihan" — pakai padanan bergaya buku umum),
+bukan laporan penelitian mentah/tugas kuliah, tanpa placeholder tersisa.
 
 ## Kompilasi dan standar mutu
 

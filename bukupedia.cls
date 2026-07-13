@@ -184,17 +184,28 @@
   aboveskip=1em,
   belowskip=1em
 }
-% Lingkungan kode yang tidak terpotong pindah halaman
-\lstnewenvironment{kodeprogram}
-  {\noindent\minipage{\linewidth}}
+% Lingkungan kode yang tidak terpotong pindah halaman.
+% Bahasa bawaan Python; ganti per blok lewat argumen opsional,
+% mis. \begin{kodeprogram}[Java] ... (nama bahasa mengikuti listings)
+\lstnewenvironment{kodeprogram}[1][Python]
+  {\lstset{language=#1}\noindent\minipage{\linewidth}}
   {\endminipage}
 
 % ---------- Entri glosarium ----------
-% \glosletterfirst{A} untuk huruf pertama, \glosletter{B} dst.
-% (dengan garis pemisah), \glosentry{istilah}{definisi}.
+% \glosletter{A} untuk tiap kepala huruf (pemakaian pertama tanpa
+% garis pemisah, berikutnya otomatis dengan garis),
+% \glosentry{istilah}{definisi} untuk tiap entri.
+% \glosletterfirst{A} tetap tersedia untuk naskah lama.
 \newcommand{\glosentry}[2]{\noindent #1: #2\par\medskip}
-\newcommand{\glosletterfirst}[1]{\noindent #1\par\medskip}
-\newcommand{\glosletter}[1]{\par\smallskip\noindent\rule{\textwidth}{0.4pt}\par\medskip\noindent #1\par\medskip}
+\newif\ifbkp@glosperdana
+\bkp@glosperdanatrue
+\newcommand{\glosletter}[1]{%
+  \ifbkp@glosperdana
+    \noindent #1\par\medskip\global\bkp@glosperdanafalse
+  \else
+    \par\smallskip\noindent\rule{\textwidth}{0.4pt}\par\medskip\noindent #1\par\medskip
+  \fi}
+\newcommand{\glosletterfirst}[1]{\global\bkp@glosperdanatrue\glosletter{#1}}
 
 % ============================================================
 % METADATA BUKU
@@ -246,6 +257,64 @@ Email : irc@ulbi.ac.id}
 \newcommand{\judulbuku}{\bkp@judul}
 \newcommand{\subjudulbuku}{\bkp@subjudul}
 
+% ---------- Pemeriksaan metadata ----------
+% Metadata yang masih placeholder/kosong lolos diam-diam ke naskah
+% (judul "JUDUL BUKU", label redaksi tanpa isian). Peringatkan di log
+% agar tertangkap standar "log bersih". \isbn{} sengaja tidak
+% diperiksa: memang kosong sampai nomor ISBN terbit.
+\newcommand{\bkp@judulbawaan}{JUDUL BUKU}
+\newcommand{\bkp@penulisbawaan}{Nama Penulis}
+% Pembanding kosong dibuat dengan \newcommand juga agar status \long-nya
+% sama dengan makro metadata (\ifx terhadap \@empty selalu gagal)
+\newcommand{\bkp@kosong}{}
+\AtBeginDocument{%
+  \ifx\bkp@judul\bkp@judulbawaan
+    \ClassWarning{bukupedia}{\string\judul{...} belum diisi (masih placeholder "JUDUL BUKU")}\fi
+  \ifx\bkp@penulis\bkp@penulisbawaan
+    \ClassWarning{bukupedia}{\string\penulis{...} belum diisi (masih placeholder "Nama Penulis")}\fi
+  \ifx\bkp@editor\bkp@kosong
+    \ClassWarning{bukupedia}{\string\editor{...} belum diisi; label Editor di halaman redaksi akan kosong}\fi
+  \ifx\bkp@penyunting\bkp@kosong
+    \ClassWarning{bukupedia}{\string\penyunting{...} belum diisi; label Penyunting di halaman redaksi akan kosong}\fi
+  \ifx\bkp@desainsampul\bkp@kosong
+    \ClassWarning{bukupedia}{\string\desainsampul{...} belum diisi; label Desain sampul di halaman redaksi akan kosong}\fi}
+
+% ---------- Metadata PDF ----------
+% Properti Title/Author/Subject PDF diisi otomatis dari metadata buku.
+% Pemisah baris \\ (termasuk bentuk \\[jarak]) pada judul/nama diubah
+% menjadi koma agar menjadi string PDF yang valid tanpa warning.
+\ExplSyntaxOn
+\seq_new:N \bkpPdfSeq
+\tl_new:N \bkpPdfItem
+\tl_new:N \bkpPdfJudul
+\tl_new:N \bkpPdfPenulis
+\tl_new:N \bkpPdfSubjudul
+\cs_new_protected:Npn \bkp_pdf_bersih:nN #1#2
+  {
+    \seq_set_split:Nnn \bkpPdfSeq { \\ } {#1}
+    \tl_clear:N #2
+    \bool_set_true:N \l_tmpa_bool
+    \seq_map_inline:Nn \bkpPdfSeq
+      {
+        \tl_set:Nn \bkpPdfItem {##1}
+        \regex_replace_once:nnN { \A \[ [^\]]* \] \s* } {} \bkpPdfItem
+        \bool_if:NTF \l_tmpa_bool
+          { \bool_set_false:N \l_tmpa_bool }
+          { \tl_put_right:Nn #2 { ,~ } }
+        \tl_put_right:NV #2 \bkpPdfItem
+      }
+  }
+\cs_generate_variant:Nn \bkp_pdf_bersih:nN { oN }
+\NewDocumentCommand \BkpPdfBersih { m m } { \bkp_pdf_bersih:oN {#1} #2 }
+\ExplSyntaxOff
+\AtBeginDocument{%
+  \BkpPdfBersih{\bkp@judul}{\bkpPdfJudul}%
+  \BkpPdfBersih{\bkp@penulis}{\bkpPdfPenulis}%
+  \BkpPdfBersih{\bkp@subjudul}{\bkpPdfSubjudul}%
+  \hypersetup{pdftitle={\bkpPdfJudul},
+              pdfauthor={\bkpPdfPenulis},
+              pdfsubject={\bkpPdfSubjudul}}}
+
 \definecolor{penerbitblue}{RGB}{31,78,121}
 
 % Nomor halaman di bawah-tengah, tanpa running header (sesuai docx)
@@ -261,7 +330,18 @@ Email : irc@ulbi.ac.id}
 % Halaman cover tidak diberi nomor dan tidak ikut penomoran
 % (penomoran "Alph" tersembunyi agar tidak bentrok dg hyperref).
 % ============================================================
+% Pengaman: hentikan kompilasi dengan pesan yang jelas bila berkas
+% cover belum ada (tanpa ini pengguna disambut error LaTeX kriptik)
+\newcommand{\bkp@wajibgambar}[2]{%
+  \IfFileExists{#1.pdf}{}{%
+    \IfFileExists{#1.png}{}{%
+      \IfFileExists{#1.jpg}{}{%
+        \ClassError{bukupedia}{Berkas '#1' (.pdf/.png/.jpg) tidak ditemukan}{#2}}}}}
+
 \newcommand{\coverdepan}{%
+  \bkp@wajibgambar{cover/depan}{Letakkan desain cover depan ukuran
+    15,5 x 23 cm sebagai cover/depan.pdf (atau .png/.jpg), atau
+    jalankan "make cover" untuk desain bawaan.}%
   \pagenumbering{Alph}%
   \thispagestyle{empty}%
   \begin{tikzpicture}[remember picture, overlay]
@@ -271,6 +351,9 @@ Email : irc@ulbi.ac.id}
   \clearpage}
 
 \newcommand{\coverbelakang}{%
+  \bkp@wajibgambar{cover/belakang}{Letakkan desain cover belakang ukuran
+    15,5 x 23 cm sebagai cover/belakang.pdf (atau .png/.jpg), atau
+    jalankan "make cover" untuk desain bawaan.}%
   \clearpage
   \thispagestyle{empty}%
   \begin{tikzpicture}[remember picture, overlay]
@@ -293,13 +376,24 @@ Email : irc@ulbi.ac.id}
     \vspace{5cm}
     {\fontsize{16}{19}\selectfont\bfseries \bkp@penulis\par}
     \vfill
-    \begin{tabular}{@{}c@{\hspace{1em}}l@{}}
-      \raisebox{-0.45\height}{\includegraphics[width=5cm]{\bkp@logopenerbit}} &
-      \begin{tabular}[c]{@{}l@{}}
-        \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries \bkp@penerbit}\\[2pt]
-        \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries \tahunterbit}
-      \end{tabular}
-    \end{tabular}\par
+    % Logo penerbit; bila berkasnya tidak ada, halaman judul tetap
+    % tercetak (nama penerbit saja) disertai peringatan di log
+    \IfFileExists{\bkp@logopenerbit}{%
+      \begin{tabular}{@{}c@{\hspace{1em}}l@{}}
+        \raisebox{-0.45\height}{\includegraphics[width=5cm]{\bkp@logopenerbit}} &
+        \begin{tabular}[c]{@{}l@{}}
+          \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries \bkp@penerbit}\\[2pt]
+          \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries \tahunterbit}
+        \end{tabular}
+      \end{tabular}\par
+    }{%
+      \ClassWarning{bukupedia}{Logo penerbit '\bkp@logopenerbit' tidak
+        ditemukan; halaman judul dicetak tanpa logo. Sediakan berkasnya
+        atau arahkan dengan \string\logopenerbit{...}}%
+      {\textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries \bkp@penerbit}\par}
+      \vspace{2pt}
+      {\textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries \tahunterbit}\par}%
+    }%
   }%
   \clearpage}
 
@@ -308,7 +402,9 @@ Email : irc@ulbi.ac.id}
 % Halaman redaksi: judul 16pt/sub judul 10pt melekat di atas,
 % info redaksi 8pt spasi 1 melekat di bawah. Tanpa nomor halaman.
 % Baris kosong di bawah ISBN diisi lewat \isbn{...} begitu
-% nomor ISBN terbit.
+% nomor ISBN terbit. Label "Font:" dan "Distributor:" tidak lagi
+% dicetak (distributor Bukupedia banyak); \fontbuku dan \distributor
+% tetap dikenali demi kompatibilitas naskah lama.
 % ============================================================
 \newcommand{\halamanredaksi}{%
   \thispagestyle{empty}%
@@ -339,20 +435,12 @@ Email : irc@ulbi.ac.id}
   \bkp@desainsampul
 
   \bigskip
-  \noindent\textbf{\textit{Font:}}\\
-  \bkp@fontbuku
-
-  \bigskip
   \noindent\textbf{\textit{Penerbit:}}\\
   \bkp@penerbit
 
   \bigskip
   \noindent\textbf{\textit{Redaksi:}}\\
   \bkp@alamatredaksi
-
-  \bigskip
-  \noindent\textbf{\textit{Distributor:}}\\
-  \bkp@distributor
 
   \bigskip
   \noindent Cetakan Pertama, \tahunterbit\\
@@ -370,5 +458,34 @@ Email : irc@ulbi.ac.id}
   \renewcommand{\bibname}{DAFTAR PUSTAKA}%
   \bibliographystyle{apacite}%
   \bibliography{#1}}
+
+% ============================================================
+% Perintah bagian buku
+% Membungkus pasangan \chapter*/\addcontentsline (dan resep khusus
+% daftar isi/indeks) yang dulu harus dirakit tangan di main.tex dan
+% rawan salah urutan (entri daftar isi menunjuk halaman keliru).
+%
+%   \daftarisi         daftar isi + entri TOC di halaman awalnya
+%   \babtambahan{X}    bab tak bernomor (PRAKATA, GLOSARIUM, dll.)
+%                      dengan entri TOC yang benar
+%   \cetakindeks       cetak INDEKS + entri TOC di halaman awalnya
+% ============================================================
+\newcommand{\daftarisi}{%
+  \clearpage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{DAFTAR ISI}%
+  \tableofcontents}
+
+\newcommand{\babtambahan}[1]{%
+  \chapter*{#1}%
+  \addcontentsline{toc}{chapter}{#1}}
+
+% Judul indeks "INDEKS" (bawaan babel indonesian: "Indeks")
+\addto\captionsindonesian{\renewcommand{\indexname}{INDEKS}}
+\newcommand{\cetakindeks}{%
+  \clearpage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{INDEKS}%
+  \printindex}
 
 \endinput

@@ -38,8 +38,7 @@
 \frontmatter
 
 % ---------- PRAKATA ----------
-\chapter*{PRAKATA}
-\addcontentsline{toc}{chapter}{PRAKATA}
+\babtambahan{PRAKATA}
 
 \lettrine[lines=3, findent=2pt, nindent=0pt]{M}{embuat} prakata menggunakan font Calibri, ukuran 11 dengan spasi 1. Di
 dalam prakata penulis menyampaikan sekurang-kurangnya tujuan penulisan,
@@ -90,8 +89,7 @@ program yang bisa diakses melalui link:
 
 % ---------- DAFTAR ISI ----------
 % (Template docx tidak memuat daftar tabel/gambar tersendiri.)
-\tableofcontents
-\addcontentsline{toc}{chapter}{DAFTAR ISI}
+\daftarisi
 
 % ============================================================
 % BAGIAN ISI BUKU
@@ -138,53 +136,44 @@ sajian materi yang akan di sampaikan.
   \end{tabularx}}
 \end{table}
 
-\section{Tujuan Intruksional dan Capaian Pembelajaran}
-Calibri, ukuran 11 dengan spasi 1. Secara garis besar, tujuan
-instruksional dalam buku ajar maupun pengajar memiliki esensi yang sama.
-Yaitu memberikan keterampilan, pengetahuan dan memberikan ketrampilan
-kepada peserta didik. Tujuan instruksional memiliki dua macam, yaitu
-Tujuan Instruksional Umum (TIU)\index{Tujuan Instruksional Umum (TIU)} dan Tujuan Instruksional Khusus (TIK)\index{Tujuan Instruksional Khusus (TIK)}.
+\section{Apa yang Akan Anda Pelajari}
+Setiap bab sebaiknya dibuka dengan bagian yang memberi tahu pembaca apa
+yang akan mereka peroleh, ditulis dengan bahasa pembaca umum. Hindari
+judul bagian bergaya modul perguruan tinggi seperti ``Tujuan
+Instruksional'', ``TIU/TIK'', ``Uraian Materi'', atau ``Latihan'' ---
+rubrik kelayakan ISBN\index{ISBN} Perpusnas menolak naskah yang terbaca
+sebagai diktat internal (lihat
+\url{https://naskah.bukupedia.co.id/llmreview/isbn/}). Gunakan padanan
+yang lebih luwes: ``Apa yang Akan Anda Pelajari'' untuk capaian
+pembelajaran\index{Capaian pembelajaran}, langsung judul topik untuk
+tiap \verb|\section| isi, lalu ``Refleksi dan Penerapan'', ``Intisari
+Bab'', dan ``Sumber dan Bacaan Lanjutan'' sebagai penutup bab.
 
-\subsection{TIU}
+Sub bab otomatis berlabel a), b), c) dan lingkungan \verb|isisubsek|
+membuat isinya sejajar dengan judul sub bab, seperti dua contoh berikut.
+
+\subsection{Untuk Pembaca Akademis}
 \begin{isisubsek}
-TIU lebih fokus pada hasil yang harus dicapai oleh peserta didik.
-Berbeda dengan TIK, yang lebih menekankan pada pokok bahasan terkait
-dengan cabang ilmu yang lebih spesifik. Misal mengulas tentang Fisika,
-maka isi buku ajar mengulas banyak hal tentang ilmu Fisika.
+Sisi akademis bab menyajikan kerangka teori dan rujukan yang dapat
+ditelusuri, sehingga buku tetap bernilai sebagai referensi perkuliahan
+tanpa harus memakai kerangka administratif diktat.
 \end{isisubsek}
 
-\subsection{TIK}
+\subsection{Untuk Praktisi}
 \begin{isisubsek}
-TIK memiliki dua aspek yang tidak kalah penting, yaitu aspek perilaku
-peserta didik dan aspek pesan isi yang disampaikan. Jadi
-guru/dosen/pengajar secara tidak langsung berperan untuk mendidik
-perilaku agar berkelakuan baik dan dapat mengamalkan ilmu yang telah di
-dapatkan.
-
-Komponen membuat rumusan TIK yang lengkap meliputi tiga hal, yaitu
-\textit{terminal behavior}\index{Terminal behavior}, \textit{conditional of demonstration or
-rest} dan \textit{standard of performance}\index{Standard of performance}. \textit{Terminal behavior}
-sering juga disebut dengan tingkah laku akhir yang diharapkan. Misalnya,
-siswa bisa menjadi lebih paham.
-
-Berbeda dengan \textit{conditional of demonstration or rest} atau yang
-disebut dengan kondisi demonstrasi. Jadi komponen pendidik diharapkan
-mampu memberikan demonstrasi yang mudah dipahami oleh peserta didik.
-
-Misal, ketika guru/dosen melakukan demonstrasi, peserta didik ketika
-diminta untuk menjelaskan kembali, mereka bisa mendemonstrasikan ulang
-menggunakan cara mereka sendiri, namun inti pesan masih sama. Terakhir
-adalah \textit{Standard of Performance} atau lebih akrab di dengar
-dengan standar keberhasilan. Jadi di tahap inilah pendidik/dosen/guru
-menekankan pada hasil yang telah dicapai.
+Sisi praktis bab menerjemahkan teori menjadi langkah yang bisa langsung
+diterapkan, misalnya daftar periksa, kerangka kerja, atau contoh kasus.
+Dua sisi ini berjalan beriringan dalam bab yang sama sehingga buku dapat
+dibaca masyarakat luas.
 \end{isisubsek}
 
-\section{Pembahasan Materi Materi}
-Calibri, ukuran 11 dengan spasi 1, pada bagian ini berisi ulasan lengkap
-terkait materi pembahasan untuk tema setiap bab nya, dan dapat disajikan
-secara rinci melalui pembahasan sub bab. Untuk contoh bagaimana
-menyajikan kode program bisa dilihat pada contoh dibawah ini. Program
-menggunakan Bahasa pemrograman python\index{Python}.
+\section{Menyajikan Kode Program}
+Isi bab disajikan sebagai \verb|\section| dengan judul topiknya
+masing-masing (bukan satu bagian ``Uraian Materi''), dan dapat dirinci
+melalui sub bab. Untuk contoh bagaimana menyajikan kode program bisa
+dilihat pada contoh dibawah ini. Program menggunakan Bahasa pemrograman
+python\index{Python}; bahasa lain cukup lewat argumen opsional, mis.
+\verb|\begin{kodeprogram}[Java]|.
 
 \begin{kodeprogram}
 def bad_function(new_elem, starter_list=[]):
@@ -192,7 +181,7 @@ def bad_function(new_elem, starter_list=[]):
     return starter_list
 \end{kodeprogram}
 
-\section{Rangkuman Materi}
+\section{Intisari Bab}
 Calibri, ukuran 11 dengan spasi 1, pada bagian ini berisi ulasan singkat
 terkait materi pokok pembahasan, penyajian rangkuman bisa dalam bentuk
 narasi atau berupa penjelasan secara numerik.
@@ -204,10 +193,11 @@ narasi atau berupa penjelasan secara numerik.
   \label{fig:logo-bukupedia}
 \end{figure}
 
-\section{Latihan}
-Calibri, ukuran 11 dengan spasi 1, di dalam buku ajar dilengkapi
-soal-soal latihan untuk memperdalam pemahaman siswa dan menguji
-kemampuan siswa dalam memahami materi yang telah disampaikan.
+\section{Refleksi dan Penerapan}
+Calibri, ukuran 11 dengan spasi 1. Bab dapat ditutup dengan pertanyaan
+pemahaman, bahan diskusi, atau ajakan menerapkan materi pada situasi
+pembaca — bermanfaat bagi pengajar maupun pembaca umum, tanpa membuat
+buku terbaca sebagai kumpulan soal ujian.
 
 \section{Buku Referensi}
 Struktur pembasahan Memenuhi kaidah ilmiah dan estetika keilmuan yang
@@ -348,13 +338,12 @@ APA pada bagian akhir buku, hanya memuat pustaka yang disitasi.
 \daftarpustaka{reference}
 
 % ---------- GLOSARIUM ----------
-\chapter*{GLOSARIUM}
-\addcontentsline{toc}{chapter}{GLOSARIUM}
+\babtambahan{GLOSARIUM}
 
 % Entri glosarium memakai perintah dari kelas:
-% \glosletterfirst{A} huruf pertama, \glosletter{B} huruf berikutnya
-% (dengan garis pemisah), \glosentry{istilah}{definisi}.
-\glosletterfirst{A}
+% \glosletter{A} untuk tiap kepala huruf (pemakaian pertama otomatis
+% tanpa garis pemisah), \glosentry{istilah}{definisi} untuk entrinya.
+\glosletter{A}
 
 \glosentry{\textbf{Anggaran}}{Suatu rencana yang disusun secara
 sistematis dalam bentuk angka dan dinyatakan dalam unit moneter meliputi
@@ -475,8 +464,7 @@ biaya kegiatan perusahaan relatif terhadap biaya tidak langsung.}
 \glosletter{Y}
 
 % ---------- KREDIT GAMBAR ----------
-\chapter*{KREDIT GAMBAR}
-\addcontentsline{toc}{chapter}{KREDIT GAMBAR}
+\babtambahan{KREDIT GAMBAR}
 
 \noindent Halaman ini memuat daftar kepemilikan hak cipta/perizinan penggunaan
 gambar/foto berikut nomor halaman keberadaan gambar/foto tersebut.
@@ -484,13 +472,10 @@ gambar/foto berikut nomor halaman keberadaan gambar/foto tersebut.
 % ---------- INDEKS ----------
 % Istilah diindeks di dalam naskah dengan \index{istilah},
 % lalu dicetak otomatis di sini oleh makeindex.
-\renewcommand{\indexname}{INDEKS}
-\addcontentsline{toc}{chapter}{INDEKS}
-\printindex
+\cetakindeks
 
 % ---------- TENTANG PENULIS ----------
-\chapter*{TENTANG PENULIS}
-\addcontentsline{toc}{chapter}{TENTANG PENULIS}
+\babtambahan{TENTANG PENULIS}
 
 \noindent
 \begin{minipage}[t]{0.25\textwidth}

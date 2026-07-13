@@ -51,6 +51,11 @@
 \usepackage{xcolor}
 \usepackage{colortbl} % shading sel/baris tabel
 \definecolor{kepalatabel}{gray}{0.92} % abu muda header tabel (seperti docx)
+% Isi sel tabel rata tengah vertikal (bukan rata atas), seperti docx
+\renewcommand\tabularxcolumn[1]{m{#1}}
+% Garis tabel sedikit lebih tebal agar border (termasuk garis atas
+% header yang berimpit dengan shading) terlihat jelas
+\setlength{\arrayrulewidth}{0.6pt}
 \usepackage{tikz}
 \usepackage{lettrine} % drop cap pada paragraf pembuka prakata
 \usepackage{indentfirst} % paragraf pertama setelah judul ikut menjorok (seperti docx)
@@ -166,53 +171,20 @@
 \pagestyle{plain}
 
 % ============================================================
-% COVER DEPAN (mengikuti tata letak docx)
-% Pita hitam di atas dengan logo Bukupedia kanan-atas; gambar
-% jaringan blockchain memenuhi 3/4 bagian bawah; logo JS besar
-% rata kiri dengan judul di kanannya (angka "3" merah); logo
-% Solana di bawah JS; nama penulis (serif bold) di bawah tengah.
+% COVER DEPAN
+% Diambil dari file gambar cover/depan.pdf (atau .png/.jpg --
+% ditulis tanpa ekstensi agar fleksibel). Untuk mengganti cover,
+% cukup timpa file tersebut dengan desain berukuran 15,5 x 23 cm.
+% Desain bawaan dibuat dari cover/desain.tex (regenerasi:
+% "make cover").
 % Halaman cover tidak diberi nomor dan tidak ikut penomoran
 % (penomoran "Alph" tersembunyi agar tidak bentrok dengan hyperref).
 % ============================================================
 \pagenumbering{Alph}
 \thispagestyle{empty}
 \begin{tikzpicture}[remember picture, overlay]
-  % Dasar hitam penuh
-  \fill[black]
-    (current page.south west) rectangle (current page.north east);
-  % Gambar jaringan blockchain memenuhi ~76% bagian bawah
-  % (diregangkan selebar halaman seperti pada docx)
-  \node[anchor=south, inner sep=0pt] at (current page.south)
-    {\includegraphics[width=\paperwidth, height=0.76\paperheight]{images/image4.jpg}};
-  % Logo Bukupedia (varian putih) di kanan atas
-  \node[anchor=north east]
-    at ([xshift=-0.7cm, yshift=-0.8cm]current page.north east)
-    {\includegraphics[width=2.2cm]{images/image1_white.png}};
-  % Kolom hitam menerus di belakang logo JS dan Solana
-  \fill[black] ([yshift=-6.6cm]current page.north west)
-    rectangle ([xshift=5.9cm, yshift=-15.6cm]current page.north west);
-  % Logo JS besar, menempel tepi kiri
-  \node[anchor=west, inner sep=0pt] at ([yshift=3.0cm]current page.west)
-    {\includegraphics[width=5.7cm]{images/image2.jpg}};
-  % Logo Solana di bawah logo JS
-  \node[anchor=west, inner sep=0pt]
-    at ([xshift=1.0cm, yshift=-1.3cm]current page.west)
-    {\includegraphics[width=3.8cm]{images/image3.jpg}};
-  % Judul di kanan logo JS ("3" berwarna merah)
-  \node[anchor=center, text=white, align=center,
-        font=\fontsize{26}{34}\selectfont\bfseries]
-    at ([xshift=2.9cm, yshift=3.6cm]current page.center)
-    {JAVASCRIPT DAN\\ SOLANA WEB\textcolor{red}{3}};
-  % Sub judul di bawah judul (pemenggalan baris mengikuti docx)
-  \node[anchor=north, text=white, align=center,
-        font=\fontsize{12}{15}\selectfont]
-    at ([xshift=2.9cm, yshift=2.0cm]current page.center)
-    {Tantangan Membangun Aplikasi di Era\\ Disrupsi 4.0};
-  % Nama penulis (serif bold, Idam lebih dulu seperti docx)
-  \node[anchor=south, text=white, align=center,
-        font=\fontfamily{pplx}\fontsize{15}{19}\selectfont\bfseries]
-    at ([yshift=3.0cm]current page.south)
-    {Idam Fadilah\\[2pt] Rolly Maulana Awangga};
+  \node[inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth, height=\paperheight]{cover/depan}};
 \end{tikzpicture}
 \clearpage
 
@@ -800,53 +772,18 @@ Aplikasi Kementrian Hukum dan Ham, Team DevOps Pekan Olahraga Nasional,
 Cloud Architect Aplikasi Asesment Madrasah Kementrian Agama.
 
 % ============================================================
-% COVER BELAKANG (mengikuti tata letak docx)
-% Pita hitam di atas dengan logo JS kiri-atas dan Solana
-% kanan-atas; teks sinopsis putih; logo Bukupedia kiri-bawah.
-% Teks sinopsis diambil dari docx (placeholder tentang cara
-% menulis sinopsis).
+% COVER BELAKANG
+% Diambil dari file gambar cover/belakang.pdf (atau .png/.jpg --
+% ditulis tanpa ekstensi agar fleksibel). Untuk mengganti cover,
+% cukup timpa file tersebut dengan desain berukuran 15,5 x 23 cm.
+% Desain bawaan dibuat dari cover/desain.tex (regenerasi:
+% "make cover").
 % ============================================================
 \clearpage
 \thispagestyle{empty}
 \begin{tikzpicture}[remember picture, overlay]
-  % Dasar hitam penuh
-  \fill[black]
-    (current page.south west) rectangle (current page.north east);
-  % Gambar jaringan blockchain memenuhi ~84% bagian bawah
-  % (diregangkan selebar halaman seperti pada docx)
-  \node[anchor=south, inner sep=0pt] at (current page.south)
-    {\includegraphics[width=\paperwidth, height=0.84\paperheight]{images/image4.jpg}};
-  % Logo JS menempel sudut kiri atas
-  \node[anchor=north west] at (current page.north west)
-    {\includegraphics[width=5.7cm]{images/image2.jpg}};
-  % Logo Solana di kanan atas (di dalam pita hitam)
-  \node[anchor=north east, inner sep=0pt]
-    at ([yshift=-0.4cm]current page.north east)
-    {\includegraphics[width=2.9cm]{images/image3.jpg}};
-  % Sinopsis (teks placeholder dari docx)
-  \node[anchor=north west, text=white, align=justify, text width=11.7cm]
-    at ([xshift=2.4cm, yshift=-4.4cm]current page.north west)
-    {\fontsize{11}{15}\selectfont
-     Melihat berbagai contoh sinopsis buku mungkin terlihat mudah
-     untuk dipraktekan langsung. Supaya memang terasa sangat mudah
-     maka kamu perlu memahami sinopsis buku dengan mendalam. Bisa
-     dimulai dari pengertiannya terlebih dahulu. Sinopsis buku
-     diketahui merupakan ringkasan suatu buku yang ditulis dalam
-     bentuk narasi. Bentuknya yang berupa ringkasan kemudian sering
-     disalah artikan sebagai resensi. Tentunya antara sinopsis dan
-     resensi adalah dua hal yang berbeda. Resensi juga berupa
-     ringkasan yang condong ke arah ulasan, sehingga di dalamnya
-     terdapat pemaparan kelebihan dan kekurangan buku. Sedangkan
-     sinopsis murni berisi ringkasan dari isi suatu buku, sehingga
-     tidak ada unsur kelebihan dan kekurangan di dalamnya. Sebagai
-     ringkasan, sinopsis kemudian perlu berisi detail alur cerita dan
-     konflik di dalam buku yang disampaikan sekilas. Selain itu,
-     perlu diberi bumbu untuk menciptakan rasa tertarik dan penasaran
-     bagi para pembaca.};
-  % Logo Bukupedia (varian putih) di kiri bawah
-  \node[anchor=south west]
-    at ([xshift=1.2cm, yshift=1.0cm]current page.south west)
-    {\includegraphics[width=1.9cm]{images/image1_white.png}};
+  \node[inner sep=0pt] at (current page.center)
+    {\includegraphics[width=\paperwidth, height=\paperheight]{cover/belakang}};
 \end{tikzpicture}
 
 \end{document}

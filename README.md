@@ -2,6 +2,56 @@
 
 [Unduh Template Buku Pedia di sini](./TEMPLATEUNESCOBUKUPEDIA.docx), perhatikan **minimal** terdapat ketentuan di bawah ini
 
+## Versi LaTeX
+
+Repositori ini juga menyediakan versi LaTeX dari template ([main.tex](./main.tex)) dengan hasil jadi [main.pdf](./main.pdf).
+
+### Ukuran kertas dan margin
+
+| Pengaturan | Nilai |
+|---|---|
+| Ukuran kertas (UNESCO) | **15,5 x 23 cm** |
+| Margin atas dan bawah | **2 cm** |
+| Margin kiri dan kanan | **1,5 cm** |
+| Gutter | **0 cm** |
+| Font | Carlito 11pt (kembaran metrik Calibri), spasi 1 |
+
+Semua nilai di atas sudah diatur di preamble `main.tex` melalui paket `geometry`.
+
+### Kompilasi
+
+Membutuhkan TeX Live (pdflatex, bibtex, makeindex). Jalankan:
+
+```
+make        # menghasilkan main.pdf
+make clean  # membersihkan berkas hasil kompilasi
+```
+
+### Struktur berkas
+
+| Berkas/Folder | Isi |
+|---|---|
+| `main.tex` | Naskah utama (halaman judul, redaksi, prakata, daftar isi, bab, glosarium, indeks, dst.) |
+| `reference.bib` | Daftar pustaka terpisah (BibTeX, gaya APA via `apacite`); sitasi dengan `\cite{kunci}` |
+| `main.ist` | Gaya indeks (kepala huruf A/B/C, nomor halaman tanpa koma) |
+| `cover/` | Cover depan dan belakang |
+| `images/` | Gambar yang dipakai naskah |
+| `logo/` | Aset logo resmi Bukupedia |
+
+### Mengganti cover
+
+Cover depan dan belakang dimuat dari berkas gambar, **bukan** dibuat di `main.tex`. Untuk mengganti cover cukup timpa:
+
+* `cover/depan.pdf` (atau hapus lalu taruh `cover/depan.png`)
+* `cover/belakang.pdf` (atau hapus lalu taruh `cover/belakang.png`)
+
+dengan desain berukuran **15,5 x 23 cm**. Desain bawaan bersumber dari `cover/desain.tex` dan bisa diregenerasi dengan `make cover`.
+
+### Lain-lain
+
+* Tahun terbit pada halaman judul dan redaksi otomatis mengikuti tahun kompilasi (`\tahunterbit` di `main.tex`; ganti dengan angka bila perlu tahun tetap).
+* Penomoran halaman: cover, halaman judul, dan redaksi tanpa nomor; prakata s.d. daftar isi memakai romawi (i, ii, ...); isi buku mulai BAB 1 memakai angka (1, 2, ...).
+
 ## Untuk Naskah Topik Pemrograman
 
 Untuk topik naskah yg terdapat bahasa pemrograman atau pengolahan dari dataset. Umumnya buku populer atau buku tutorial yg terdapat kode program didalamnya maka wajib dilampirkan link repositori kode program di github. 

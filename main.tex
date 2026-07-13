@@ -140,40 +140,18 @@
 \clearpage
 
 % ============================================================
-% HALAMAN SAMPUL / JUDUL (tanpa nomor halaman)
+% HALAMAN JUDUL + REDAKSI (tanpa nomor halaman, tanpa logo)
+% Judul melekat di bagian atas: Calibri 16 untuk judul dan
+% 10 untuk sub judul (Tabel 1.1 butir 7). Info redaksi melekat
+% di bagian bawah dengan font Book Antiqua ukuran 8.
 % ============================================================
 \thispagestyle{empty}
-{\centering
-  \includegraphics[width=2.2cm]{images/image1.png}\par
-  \vspace{3cm}
-  {\fontsize{20}{24}\selectfont\bfseries \judulbuku\par}
-  \vspace{0.5em}
-  {\large \subjudulbuku\par}
-  \vspace{3cm}
-  {\large\bfseries Rolly Maulana Awangga\par}
-  \vspace{0.3em}
-  {\large\bfseries Idam Fadilah\par}
-  \vfill
-  \begin{tabular}{@{}c@{\hspace{1.5em}}l@{}}
-    \raisebox{-0.4\height}{\includegraphics[width=3.5cm]{images/image6.png}} &
-    \begin{tabular}[c]{@{}l@{}}
-      \textbf{PT. Penerbit Buku Pedia}\\[2pt]
-      \textbf{2023}
-    \end{tabular}
-  \end{tabular}\par
-}
-\clearpage
-
-% ============================================================
-% HALAMAN REDAKSI
-% (Font Book Antiqua ukuran 8, melekat di bagian bawah halaman)
-% ============================================================
-\thispagestyle{empty}
-{\fontfamily{pplx}\fontsize{8}{10}\selectfont % pplx = Palatino, pengganti Book Antiqua
-\noindent\textbf{\judulbuku}\\
-\subjudulbuku
+\noindent{\fontsize{16}{19}\selectfont\bfseries \judulbuku}\\[2pt]
+{\fontsize{10}{12}\selectfont \subjudulbuku}
 
 \vfill
+
+{\fontfamily{pplx}\fontsize{8}{10}\selectfont % pplx = Palatino, pengganti Book Antiqua
 
 \noindent\textbf{\textit{Penulis:}}\\
 Idam Fadilah\\

@@ -2,7 +2,7 @@
 
 all: main.pdf
 
-main.pdf: main.tex reference.bib main.ist
+main.pdf: main.tex bukupedia.cls reference.bib main.ist
 	pdflatex -interaction=nonstopmode main
 	bibtex main
 	makeindex -s main.ist main

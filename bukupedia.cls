@@ -13,12 +13,18 @@
 %   \halamanjudul
 %   \halamanredaksi
 %   \frontmatter
-%   ... prakata, \tableofcontents ...
+%   \babtambahan{PRAKATA}
+%   ... isi prakata ...
+%   \daftarisi
 %   \mainmatter
 %   ... isi bab ...
-%   \daftarpustaka{reference}
 %   \backmatter
-%   ... glosarium, indeks, dst ...
+%   \daftarpustaka{reference}
+%   \babtambahan{GLOSARIUM}
+%   ... \glosletter{A}, \glosentry{Istilah}{Definisi} ...
+%   \babtambahan{KREDIT GAMBAR}
+%   \cetakindeks
+%   \babtambahan{TENTANG PENULIS}
 %   \coverbelakang
 %   \end{document}
 %
@@ -30,7 +36,7 @@
 %   - Referensi BibTeX gaya APA (apacite)
 % ============================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{bukupedia}[2026/07/13 v1.0 Template buku UNESCO PT. Penerbit Buku Pedia]
+\ProvidesClass{bukupedia}[2026/07/13 v1.1 Template buku UNESCO PT. Penerbit Buku Pedia]
 
 % Opsi lain diteruskan ke kelas book
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}

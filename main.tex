@@ -141,25 +141,26 @@
 
 % ============================================================
 % HALAMAN JUDUL (tanpa nomor halaman, tanpa logo di atas)
-% Ukuran font mengikuti spesifikasi template:
-% judul 16, sub judul 10 (Tabel 1.1 butir 7).
+% Judul melekat di margin atas. Ukuran font mengikuti docx:
+% judul 22 bold, sub judul 12, nama penulis 16 bold.
+% Logo dan nama penerbit (biru) berada di bagian bawah halaman.
 % ============================================================
+\definecolor{penerbitblue}{RGB}{31,78,121}
 \thispagestyle{empty}
 {\centering
-  \vspace*{3cm}
-  {\fontsize{16}{19}\selectfont\bfseries \judulbuku\par}
+  {\fontsize{22}{26}\selectfont\bfseries \judulbuku\par}
   \vspace{0.5em}
-  {\fontsize{10}{12}\selectfont \subjudulbuku\par}
-  \vspace{3cm}
-  {\fontsize{11}{13}\selectfont\bfseries Rolly Maulana Awangga\par}
+  {\fontsize{12}{15}\selectfont \subjudulbuku\par}
+  \vspace{5cm}
+  {\fontsize{16}{19}\selectfont\bfseries Rolly Maulana Awangga\par}
   \vspace{0.3em}
-  {\fontsize{11}{13}\selectfont\bfseries Idam Fadilah\par}
+  {\fontsize{16}{19}\selectfont\bfseries Idam Fadilah\par}
   \vfill
-  \begin{tabular}{@{}c@{\hspace{1.5em}}l@{}}
-    \raisebox{-0.4\height}{\includegraphics[width=3.5cm]{images/image6.png}} &
+  \begin{tabular}{@{}c@{\hspace{1em}}l@{}}
+    \raisebox{-0.45\height}{\includegraphics[width=5cm]{images/image6.png}} &
     \begin{tabular}[c]{@{}l@{}}
-      \textbf{PT. Penerbit Buku Pedia}\\[2pt]
-      \textbf{2023}
+      \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries PT. Penerbit Buku Pedia}\\[2pt]
+      \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries 2023}
     \end{tabular}
   \end{tabular}\par
 }

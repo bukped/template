@@ -1,226 +1,323 @@
-# Template Buku Pedia
+# Template Buku Pedia (LaTeX)
 
-[Unduh Template Buku Pedia di sini](./TEMPLATEUNESCOBUKUPEDIA.docx), perhatikan **minimal** terdapat ketentuan di bawah ini
+Template buku standar UNESCO **PT. Penerbit Buku Pedia**. Seluruh aturan format
+dikemas dalam kelas dokumen [`bukupedia.cls`](./bukupedia.cls) — penulis cukup mengisi
+metadata dan naskah di [`main.tex`](./main.tex). Hasil jadi: [main.pdf](./main.pdf).
 
-## Versi LaTeX
+* Repositori: <https://github.com/bukped/template>
+* Dokumentasi (GitHub Pages): <https://universitas.bukupedia.co.id/template/>
+* Rilis + PDF terbangun otomatis: <https://github.com/bukped/template/releases>
+* Kelas dokumen via CDN: <https://cdn.jsdelivr.net/gh/bukped/template@latest/bukupedia.cls>
 
-Repositori ini juga menyediakan versi LaTeX dari template dengan hasil jadi [main.pdf](./main.pdf). Seluruh aturan format dikemas dalam kelas dokumen [`bukupedia.cls`](./bukupedia.cls) — penulis cukup mengisi metadata dan naskah di [`main.tex`](./main.tex):
+Versi LaTeX ini adalah konversi setia dari template asli penerbit
+([TEMPLATEUNESCOBUKUPEDIA.docx](./TEMPLATEUNESCOBUKUPEDIA.docx)): setiap halaman sudah
+diverifikasi berdampingan dengan render docx, dan ukuran font diambil langsung dari XML
+di dalam docx. Bagian [Spesifikasi Format](#spesifikasi-format) mendokumentasikan
+semuanya — tidak perlu membongkar ulang docx.
+
+---
+
+## Mulai Cepat
 
 ```latex
 \documentclass{bukupedia}
 
+% ---------- Metadata buku ----------
 \judul{JUDUL BUKU}
 \subjudul{Sub Judul Buku}
-\penulis{Penulis Satu\\ Penulis Dua}
+\penulis{Penulis Satu\\ Penulis Dua}        % urutan pada halaman judul
+\penulisredaksi{Penulis Dua\\ Penulis Satu} % opsional, bila urutan di redaksi berbeda
 \isbn{}                  % diisi begitu nomor ISBN terbit
 \editor{Nama Editor}
 \penyunting{Nama Penyunting}
 \desainsampul{Nama Desainer}
 % \tahun{2023}           % bawaan: tahun saat kompilasi
+% \penerbit{...} \alamatredaksi{...} \distributor{...} % sudah ber-default Bukupedia
 
 \begin{document}
 \coverdepan              % dari berkas cover/depan.pdf|png
 \halamanjudul            % dibangun otomatis dari metadata
 \halamanredaksi          % dibangun otomatis dari metadata
+
 \frontmatter
-% ... prakata, \tableofcontents ...
+\chapter*{PRAKATA}
+\addcontentsline{toc}{chapter}{PRAKATA}
+% paragraf pembuka pakai drop cap:
+% \lettrine[lines=3, findent=2pt, nindent=0pt]{M}{embuat} ...
+\tableofcontents
+\addcontentsline{toc}{chapter}{DAFTAR ISI}
+
 \mainmatter
-% ... isi bab ...
+\chapter{JUDUL BAB}
+\section{Pendahuluan}
+% ... sitasi dengan \cite{kunci} dari reference.bib ...
+
 \backmatter
-\daftarpustaka{reference} % DAFTAR PUSTAKA gaya APA dari reference.bib
-% ... glosarium, indeks, tentang penulis ...
+\daftarpustaka{reference}   % DAFTAR PUSTAKA gaya APA dari reference.bib
+% ... glosarium, kredit gambar, \printindex, tentang penulis ...
 \coverbelakang           % dari berkas cover/belakang.pdf|png
 \end{document}
 ```
 
-Perintah lain yang disediakan kelas: lingkungan `kodeprogram` (kotak kode yang tidak terpotong halaman), `isisubsek` (isi sub bab sejajar judulnya), serta `\glosletterfirst`/`\glosletter`/`\glosentry` untuk glosarium.
+Perintah lain dari kelas: lingkungan `kodeprogram` (kotak kode yang tidak terpotong
+halaman), `isisubsek` (isi sub bab sejajar judulnya), dan
+`\glosletterfirst{A}` / `\glosletter{B}` / `\glosentry{Istilah}{Definisi}` untuk glosarium.
 
-### Ukuran kertas dan margin
+---
+
+## Instalasi LaTeX (TinyTeX)
+
+Mengikuti panduan resmi: <https://universitas.bukupedia.co.id/latex/>.
+TinyTeX ringan dan berjalan di **Windows, macOS, dan Linux**.
+
+1. **Install R** dari <https://cran.r-project.org/> (TinyTeX dipasang lewat R).
+2. **Install TinyTeX** — jalankan di R Console:
+
+   ```r
+   install.packages('tinytex')
+   tinytex::install_tinytex()
+   ```
+
+3. **Verifikasi:**
+
+   ```r
+   tinytex::tinytex_root()
+   tinytex::tlmgr("--version")
+   ```
+
+4. **Install paket yang dibutuhkan template ini** — jalankan di terminal
+   (Command Prompt/PowerShell/Terminal):
+
+   ```
+   tlmgr install carlito babel-indonesian geometry setspace booktabs enumitem listings xcolor colortbl pgf lettrine tocloft caption hyperref xurl apacite titlesec fontaxes psnfss cm-super makeindex bibtex latexmk
+   ```
+
+Alternatif tanpa R: install **TeX Live** penuh (Linux/macOS) atau **MiKTeX**
+(Windows, paket terunduh otomatis saat kompilasi pertama).
+
+Editor yang disarankan panduan: Antigravity/VS Code dengan ekstensi *vscode-pdf*
+(atau LaTeX Workshop).
+
+---
+
+## Kompilasi (semua OS)
+
+**Cara termudah — `latexmk`** (Windows/macOS/Linux, konfigurasi sudah disediakan di
+[`.latexmkrc`](./.latexmkrc)):
+
+```
+latexmk -pdf main
+```
+
+Satu perintah itu otomatis menjalankan pdflatex + bibtex + makeindex (dengan gaya
+indeks `main.ist`) sebanyak yang diperlukan, menghasilkan `main.pdf`.
+
+**Manual** (bila tidak ada latexmk; jalan di Command Prompt/PowerShell/Terminal):
+
+```
+pdflatex main
+bibtex main
+makeindex -s main.ist main
+pdflatex main
+pdflatex main
+```
+
+**Dengan make** (Linux/macOS): `make` untuk kompilasi, `make clean` untuk bersih-bersih,
+`make cover` untuk regenerasi desain cover bawaan (butuh `pdfseparate` dari
+poppler-utils; di Windows cukup timpa langsung berkas cover — lihat di bawah).
+
+### Standar kualitas kompilasi
+
+Log kompilasi (`main.log`) **wajib bersih**: 0 error, 0 overfull, 0 underfull, dan
+0 warning. Standar ini dijaga otomatis oleh CI (lihat bawah) dan bisa dicek lokal:
+
+```bash
+grep -cE '^!' main.log            # harus 0 (error)
+grep -c 'Overfull' main.log       # harus 0
+grep -c 'Underfull' main.log      # harus 0
+grep -iE 'warning' main.log | grep -viE 'infwarerr|Package: '  # harus kosong
+```
+
+Penunjang kebersihan log yang sudah terpasang di kelas: `xurl` + `\emergencystretch`
+(URL/baris tidak melebihi margin), `\hbadness`/`\vbadness` 3000 (baris agak renggang
+yang tak kasat mata tidak dilaporkan), `\LettrineTextFont` tegak (Carlito tidak punya
+small caps), dan `bahasa.apc` lokal (apacite tidak menyertakan definisi bahasa
+Indonesia).
+
+### Rilis otomatis, git tag, dan CDN jsDelivr
+
+Setiap push ke `main`, GitHub Actions ([`.github/workflows/release.yml`](./.github/workflows/release.yml)):
+
+1. mengompilasi PDF di container TeX Live,
+2. menegakkan standar kualitas di atas (build **gagal** bila log tidak bersih),
+3. membuat git tag `v1.0.<n>` dan **GitHub Release** berisi `main.pdf` + `bukupedia.cls`,
+   lengkap dengan tautan CDN jsDelivr yang terpaku pada versi tersebut.
+
+Berkas rilis bisa diambil via jsDelivr tanpa clone:
+
+```
+https://cdn.jsdelivr.net/gh/bukped/template@latest/bukupedia.cls   (rilis terbaru)
+https://cdn.jsdelivr.net/gh/bukped/template@v1.0.5/bukupedia.cls   (terpaku versi)
+https://cdn.jsdelivr.net/gh/bukped/template@latest/main.pdf
+```
+
+---
+
+## Struktur Berkas
+
+| Berkas/Folder | Isi |
+|---|---|
+| `bukupedia.cls` | Kelas dokumen: **seluruh aturan format** template |
+| `main.tex` | Naskah contoh: metadata buku + isi |
+| `reference.bib` | Daftar pustaka terpisah (BibTeX); sitasi dengan `\cite{kunci}` |
+| `main.ist` | Gaya makeindex (kepala huruf bold, nomor halaman tanpa koma) |
+| `bahasa.apc` | Definisi bahasa apacite untuk babel `bahasa` (menghilangkan warning) |
+| `.latexmkrc` | Konfigurasi latexmk (kompilasi satu perintah, lintas OS) |
+| `Makefile` | Alur kompilasi untuk pengguna make |
+| `.github/workflows/release.yml` | CI: build + quality gate + auto tag & release |
+| `cover/` | `depan.pdf` + `belakang.pdf` (cover), `desain.tex` (sumber desain bawaan) |
+| `images/` | Gambar naskah contoh |
+| `logo/` | Aset logo resmi Bukupedia |
+
+## Mengganti Cover
+
+Cover **tidak** digambar di `main.tex` — dimuat dari berkas gambar (tanpa ekstensi,
+menerima `.pdf`/`.png`/`.jpg`). Cukup timpa dengan desain berukuran **15,5 x 23 cm**:
+
+* `cover/depan.pdf` (atau hapus lalu taruh `depan.png`)
+* `cover/belakang.pdf` (atau `belakang.png`)
+
+Desain bawaan bersumber dari `cover/desain.tex`; regenerasi dengan `make cover`
+(kompilasi 2x pass — wajib, karena `remember picture` — lalu halaman 1 menjadi
+`depan.pdf` dan halaman 2 menjadi `belakang.pdf`).
+
+---
+
+## Spesifikasi Format
+
+Semua sudah diimplementasikan di `bukupedia.cls`. Angka bersumber dari XML docx asli.
+
+### Kertas, margin, font
 
 | Pengaturan | Nilai |
 |---|---|
 | Ukuran kertas (UNESCO) | **15,5 x 23 cm** |
 | Margin atas dan bawah | **2 cm** |
 | Margin kiri dan kanan | **1,5 cm** |
-| Gutter | **0 cm** |
-| Font | Carlito 11pt (kembaran metrik Calibri), spasi 1 |
+| Gutter | **0 cm** (kelas memakai `oneside`: margin simetris, tanpa halaman kosong sisipan) |
+| Font | **Carlito 11pt**, spasi 1 — kembaran metrik Calibri (Calibri tidak tersedia di TeX) |
+| Indentasi paragraf | semua paragraf menjorok, **termasuk paragraf pertama setelah judul** (`indentfirst`) |
 
-Semua nilai di atas sudah diatur di preamble `main.tex` melalui paket `geometry`.
+### Penomoran halaman
 
-### Kompilasi
-
-Membutuhkan TeX Live (pdflatex, bibtex, makeindex). Jalankan:
-
-```
-make        # menghasilkan main.pdf
-make clean  # membersihkan berkas hasil kompilasi
-```
-
-### Struktur berkas
-
-| Berkas/Folder | Isi |
+| Bagian | Nomor |
 |---|---|
-| `bukupedia.cls` | Kelas dokumen: seluruh aturan format template (ukuran, margin, font, gaya judul, tabel, dll.) |
-| `main.tex` | Naskah: metadata buku + isi (prakata, bab, glosarium, indeks, dst.) |
-| `reference.bib` | Daftar pustaka terpisah (BibTeX, gaya APA via `apacite`); sitasi dengan `\cite{kunci}` |
-| `main.ist` | Gaya indeks (kepala huruf A/B/C, nomor halaman tanpa koma) |
-| `cover/` | Cover depan dan belakang |
-| `images/` | Gambar yang dipakai naskah |
-| `logo/` | Aset logo resmi Bukupedia |
+| Cover, halaman judul, halaman redaksi | tanpa nomor |
+| Prakata s.d. daftar isi (`\frontmatter`) | romawi i, ii, ... |
+| BAB 1 s.d. tentang penulis | arab 1, 2, ... |
+| Posisi | bawah-tengah (gaya `plain`), tanpa running header |
 
-### Mengganti cover
+### Halaman depan
 
-Cover depan dan belakang dimuat dari berkas gambar, **bukan** dibuat di `main.tex`. Untuk mengganti cover cukup timpa:
+| Elemen | Spesifikasi |
+|---|---|
+| **Halaman judul** | judul **22pt bold** menempel margin atas; sub judul **12pt**; nama penulis **16pt bold** (±9 cm dari atas); logo penerbit 5 cm + "PT. Penerbit Buku Pedia / tahun" **biru (RGB 31,78,121) bold 10pt** di bawah |
+| **Halaman redaksi** | judul **16pt bold** + sub judul **10pt** menempel atas; blok info **8pt spasi 1** menempel bawah; label *bold italic*; antar kelompok satu baris kosong; baris kosong di bawah `ISBN:` untuk diisi nanti; 4 baris penutup rapat. (Tabel 1.1 docx menyebut "Book Antiqua", tetapi docx-nya sendiri memakai Calibri 8pt — praktik docx yang diikuti) |
+| **Prakata** | judul 16pt bold tengah; paragraf pembuka ber-**drop cap 3 baris** |
+| **Daftar isi** | tanpa dot leader, nomor rata kanan, entri bab "BAB 1 ...", huruf section "A." bertitik, kedalaman sampai section saja, entri utama bold |
 
-* `cover/depan.pdf` (atau hapus lalu taruh `cover/depan.png`)
-* `cover/belakang.pdf` (atau hapus lalu taruh `cover/belakang.png`)
+### Isi buku
 
-dengan desain berukuran **15,5 x 23 cm**. Desain bawaan bersumber dari `cover/desain.tex` dan bisa diregenerasi dengan `make cover`.
+| Elemen | Spesifikasi |
+|---|---|
+| **Judul bab bernomor** | "BAB 1" + judul, **24pt bold rata kanan**, garis **biru muda (RGB 155,194,230)** 1.2pt di bawahnya |
+| **Judul bab tak bernomor** (PRAKATA dll.) | **16pt bold tengah** |
+| **Section** | "A. JUDUL" **12pt bold** kapital; jarak 8pt di atas, **2pt (tipis) ke konten** |
+| **Sub section** | "a) Judul" **11pt tidak bold**, menjorok sejajar indentasi paragraf; label berlebar tetap 1.5em; isi via lingkungan `isisubsek` sehingga **huruf pertama judul dan isi segaris vertikal** |
+| **Poin a) b) c)** dalam teks | label menjorok sejajar indentasi paragraf, isi sejajar teks label, **tanpa jarak** dari paragraf di atas maupun antar poin |
+| **Kode program** | lingkungan `kodeprogram`: monospace kecil, kotak 0.4pt latar abu 4%, **tidak terpotong halaman**, tanpa pewarnaan sintaks |
+| **Tabel** | isi **8pt**, grid penuh **0.6pt**, header **shading abu muda** (gray 0.92) bold; sel **rata tengah vertikal** (kolom `X` → `m{}`); header dua baris dibuat sebagai dua baris `\multicolumn` agar tingginya pas |
+| **Caption** | **8pt tengah**; tabel "Tabel 1.1. ..." (titik, di atas); gambar "Gambar 1.1 ..." (spasi, di bawah); jarak caption-objek 3pt; float rapat (`\intextsep` 4pt, `\textfloatsep` 8pt) |
+| **URL panjang** | tidak melebihi margin (`xurl` setelah hyperref + penalti rendah + `\emergencystretch`) |
 
-### Lain-lain
+### Bagian belakang
 
-* Tahun terbit pada halaman judul dan redaksi otomatis mengikuti tahun kompilasi (`\tahunterbit` di `main.tex`; ganti dengan angka bila perlu tahun tetap).
-* Penomoran halaman: cover, halaman judul, dan redaksi tanpa nomor; prakata s.d. daftar isi memakai romawi (i, ii, ...); isi buku mulai BAB 1 memakai angka (1, 2, ...).
+| Elemen | Spesifikasi |
+|---|---|
+| **Daftar pustaka** | `\daftarpustaka{reference}` — gaya **APA** (`apacite`), hanya pustaka yang disitasi |
+| **Glosarium** | huruf kepala **polos**, antar kelompok huruf dipisah **garis horizontal tipis** |
+| **Indeks** | otomatis dari `\index{...}`; kepala huruf **bold**, nomor halaman dipisah **spasi tanpa koma** |
+| **Tentang penulis** | foto kiri ±25% lebar, teks mengalir di sampingnya; nama **tidak bold** |
 
-## Untuk Naskah Topik Pemrograman
+### Cover bawaan (meniru docx)
 
-Untuk topik naskah yg terdapat bahasa pemrograman atau pengolahan dari dataset. Umumnya buku populer atau buku tutorial yg terdapat kode program didalamnya maka wajib dilampirkan link repositori kode program di github. 
-Agar isi buku lebih enak dibaca dan proporsional penjelasannya. Kode program tidak boleh di tampilkan di dalam buku sampai memakan setengah sampai satu halaman penuh, tapi di referensikan dalam URL github file nya. Dalam buku hanya dijelaskan per bagian atau baris atau per fungsi program disambung/diselingi langsung dengan penjelasan, sehingga pembaca tidak perlu kembali lagi ke halaman sebelumnya untuk melihat kode programmnya. Sehingga pembaca bisa memahami kode program per barisnya. 
+* **Depan**: dasar hitam; gambar blockchain diregangkan selebar halaman di 76% bagian
+  bawah; logo Bukupedia **putih** kanan-atas; kolom hitam kiri berisi logo JS besar dan
+  Solana; judul 26pt bold putih dengan angka **"3" merah**; sub judul 12pt; nama penulis
+  **serif (Palatino) bold 15pt** bawah-tengah.
+* **Belakang**: pita hitam atas (JS kiri, Solana kanan); sinopsis putih 11pt justify;
+  logo Bukupedia putih kiri-bawah. Tanpa kotak ISBN/alamat (docx tidak memilikinya).
 
-Ketentuan link github:
-![image](https://user-images.githubusercontent.com/11188109/217219944-f62fcc0d-29e0-4c20-93cd-42949f201e3c.png)
-1. Sebelum masuk ke tahap selanjutnya, repository di transfer kepemilikan dahulu(di menu setting) ke organisasi bukped untuk di pindahkan ke repo bukped.
-2. Setelah dipindahkan ke repo bukped. URL link dari repo github bukped yang dimasukkan ke dalam prakata.
-3. Pastikan setiap bab atau chapter memiliki folder masing-masing dan didalamnya ada contoh kodingan dari bab tersebut
-4. Setiap bab pada buku populer atau tutorial biasanya mengandung kode program
-5. **Dilarang** memasukkan dokumen naskah ke dalam repo
-6. Pada bagian depan, terdapat file README.md, coverbuku.jpg,fotopenulis.jpg
-7. README.md berisi judul buku, sinopsis, link katalog dan link profile penulis. Boleh menambahkan cara mensitasi buku jika buku sudah terbit.
-8. Contoh : https://github.com/bukped/FluPy
+---
 
-Jika Hal diatas tidak dipenuhi, biasanya buku akan di tolak perpusnas karena dianggap mebukukan laporan penelitian, skripsi, TA, tesis atau Desertasi.
+## Keputusan Desain (perbedaan yang disengaja terhadap docx)
 
-## Halaman Sampul
+Didokumentasikan supaya sesi/kontributor berikutnya **tidak "memperbaiki"** hal-hal ini:
 
-![image](https://user-images.githubusercontent.com/11188109/217132416-58a07f1e-6cd8-4b58-86fa-d3aa831a51a9.png)
+1. **Carlito, bukan Calibri** — Calibri milik Microsoft, tak tersedia di TeX; Carlito
+   kembaran metriknya. Book Antiqua pada cover diganti Palatino dengan alasan sama.
+2. **Tahun otomatis** — `\tahunterbit` mengikuti tahun kompilasi; ganti dengan
+   `\tahun{2023}` bila perlu tetap. Docx menulis 2023 statis.
+3. **Daftar isi otomatis** dengan nomor halaman sungguhan. Daftar isi docx berisi entri
+   dummy statis (KATA PENGANTAR dan BAB 2 fiktif) — tidak direplikasi.
+4. **Indeks otomatis** dari `\index{}` pada istilah yang benar-benar ada di naskah.
+   Entri indeks docx adalah dummy dari buku lain; yang direplikasi **formatnya**.
+5. **Daftar pustaka hanya memuat yang disitasi** (4 entri, sama seperti docx). Empat
+   contoh APA di bagian H ditampilkan sebagai teks kutipan dan tetap tersedia di
+   `reference.bib` tanpa disitasi. Judul entri mengikuti kaidah APA yang benar
+   (sentence case, nama jurnal miring) — docx-nya sendiri tidak konsisten.
+6. **Tanpa halaman kosong sisa luapan** — docx punya halaman hampir kosong (artefak
+   Word); tidak direplikasi, sehingga total halaman PDF (19) ≠ docx (21) dan nomor
+   halaman bagian belakang bergeser sedikit.
+7. **Kode program monospace dalam kotak** agar indentasi terjaga dan blok kode
+   proporsional (di docx kodenya Calibri polos dan indentasinya hilang).
 
-Pastikan :
-1. Desain yang kekinian dan menarik minat pembaca. Berisi : nama penulis tanpa gelar, judul buku, logo penerbit
-2. Nama dan Urutan Penulis Konsisten antara halaman sampul, halaman judul, halaman redaksi dan halaman yang lainnya jika ada.
-3. Nama Penulis tidak menggunakan gelar dan tidak menggunakan tanda baca(titik/koma/tanda seru/tanda tanya dsb)
-4. Tidak terdapat tanda baca pada judul (titik/koma/titik dua/titik koma/tanda seru/tanda tanya dsb)
+## Cara Memverifikasi Kesesuaian dengan Docx
 
-## Margin dan Ukuran
+```bash
+# render docx pembanding
+libreoffice --headless --convert-to pdf TEMPLATEUNESCOBUKUPEDIA.docx
+# render kedua PDF per halaman lalu sandingkan
+pdftoppm -png -r 60 main.pdf halaman-latex
+pdftoppm -png -r 60 TEMPLATEUNESCOBUKUPEDIA.pdf halaman-docx
+# ukuran font pasti dibaca dari XML docx (w:sz = setengah-poin; 44 = 22pt):
+unzip -p TEMPLATEUNESCOBUKUPEDIA.docx word/document.xml | grep -o '<w:sz w:val="[0-9]*"'
+```
 
-1.	Margin atas bawah	Atas dan bawah	2 cm
-2.	Margin samping	Kanan dan kiri	1,5 cm
-3.	Gutter	kiri	0 cm
-4.	Ukuran Buku	Unesco :	15,5 x 23 Cm
-5.	Line Spacing	Jarak antar tulisan	1
+Ukuran kertas dan margin `main.pdf` sudah diverifikasi empiris: 439.37 x 651.97 pt =
+tepat 15,5 x 23 cm; posisi tinta teks konsisten dengan margin 2/2/1,5/1,5 cm (nomor
+halaman di area footer ±1 cm dari tepi bawah, sama seperti docx).
 
-## Halaman Judul
+---
 
-![image](https://user-images.githubusercontent.com/11188109/217132564-a75b51c2-5816-4b95-878a-f06a8770e42c.png)
+## Ketentuan Naskah dari Penerbit (ringkas)
 
-* Tanpa jarak dari margin atas
-* Font : Calibri
-* Judul : 22
-* Sub Judul : 12
-* Line space : 1
+* **Minimal 50 halaman isi** (di luar cover, daftar isi, lampiran, dll.).
+* **Nama penulis tanpa gelar dan tanpa tanda baca**; judul tanpa tanda baca. Nama dan
+  urutan penulis **konsisten** antara sampul, halaman judul, dan halaman redaksi.
+* **Prakata** dibuka dengan data faktual (statistik) terpercaya; memuat tujuan
+  penulisan, pembaca sasaran, keunggulan buku, dan cara membaca buku. **Dilarang**
+  menulis tempat/tanggal/nama penulis di akhir prakata, dan ucapan terima
+  kasih/persembahan.
+* **Naskah topik pemrograman**: wajib melampirkan link repositori GitHub yang sudah
+  ditransfer ke organisasi [bukped](https://github.com/bukped); satu folder per bab;
+  link ditulis di prakata. Kode program **tidak boleh** ditampilkan setengah-satu
+  halaman penuh — jelaskan per baris/fungsi diselingi penjelasan, sisanya dirujuk ke
+  GitHub. Dilarang memasukkan dokumen naskah ke repo. Repo berisi `README.md`
+  (judul, sinopsis, link katalog, profil penulis), `coverbuku.jpg`, `fotopenulis.jpg`.
+  Contoh: <https://github.com/bukped/FluPy>.
+* Jika gambar bukan karya penulis, cantumkan referensinya di halaman **kredit gambar**.
+* Naskah yang tidak memenuhi ketentuan biasanya ditolak Perpusnas karena dianggap
+  membukukan laporan penelitian/skripsi/tesis/disertasi.
 
-![image](https://user-images.githubusercontent.com/11188109/217132649-ec5c802e-8ee2-41d2-95e8-d686628c9fb1.png)
-
-* nama penulis tanpa gelar
-* posisi tengah halaman atau vertical center
-* Font : Calibri, 16
-* Line space : 1
-
-![image](https://user-images.githubusercontent.com/11188109/218597417-da8615db-9ce4-4fa2-9fe1-5eeb5fe64f69.png)
-
-Logo tanpa jarak dari margin bawah, **tidak ada** nomor halaman
-
-## Halaman Redaksi
-
-![image](https://user-images.githubusercontent.com/11188109/217132834-2f103ca8-ae2c-4dcb-9686-4467545b125f.png)
-
-* Tanpa jarak dari margin atas
-* Font : Calibri
-* Judul : 16
-* Sub Judul : 10
-* Line space : 1
-
-![image](https://user-images.githubusercontent.com/11188109/218598447-369e0c5b-8001-4565-bdbb-0e491257a9a9.png)
-
-* nama penulis tanpa gelar
-* Tanpa jarak dari margin bawah
-* Font : Calibri, 
-* Ukuran : 8
-* Line space : 1
-* Bold dan Italic pada bagian atribut saja.
-* **Tidak ada** nomor halaman
-
-## Prakata
-
-Prakata **bukanlah** kata pengantar.
-
-![image](https://user-images.githubusercontent.com/11188109/218597643-959b394a-4c40-4834-941e-1a595ef0b55e.png)
-
-Prakata Berisi :
-1. Berisi data faktual (statistik) terpercaya tentang topik bahasan buku disambungkan dengan pentingnya ada buku ini diterbitkan 
-2. Terdapat tujuan penulisan, pembaca sasaran, keunggulan buku, amanat/pesan untuk pembaca sasaran, tata cara membaca buku atau metode penyampaian setiap bab
-3. Disertakan link github yang sudah dipindahkan ke repo bukped. Sudah di sesuaikan dengan folder jumlah bab dan cara pembagian nama file dan folder di github tersebut.
-
-Di dalam prakata **Tidak ada penulisan** :
-1. **Tidak ada penulisan** tempat, tanggal dan Penulis Naskah pada bagian setelah akhir paragraf Prakata.
-2. **Tidak ada penulisan** ucapan terima kasih atau persembahan pada prakata.
-
-* Font Calibri 
-* Judul :18
-* Body : 11
-* Huruf pertama : 61,5
-* Line space : 1
-
-![image](https://user-images.githubusercontent.com/11188109/218597802-beee2614-8124-449e-b915-a873320b3b3e.png)
-
-Bagian Prakata dimulai awal nomor halaman menggunakan romawi(i)
-
-## Daftar Isi
-
-![image](https://user-images.githubusercontent.com/11188109/217134335-3f011600-d938-48f2-8ca5-d9d2eb90eaaa.png)
-
-* Judul : Calibri 18
-* Body : calibri 11
-* Halaman romawi melanjutkan prakata
-
-## Isi buku
-
-* Judul Bab : Calibri 24
-* Sub Bab : Calibri 12
-* Body : calibri 11
-* Mulai halaman no 1
-* Minimal 50 Halaman ISI (tanpa lampiran, cover, daftar isi dll)
-
-### Heading Styles
-![image](https://user-images.githubusercontent.com/11188109/219240894-93eb6969-fa61-4dc8-b2a9-db2d3574b68e.png)
-
-* Left & Hanging Indent : Menempel pada margin kiri
-* First Indent : Maksimal 0.625 CM
-* Sub Bab Menempel Pada Margin Kiri
-* Sub Sub Bab atau List yang satu identasi dengan sub sub bab
-  * Mengikuti First Indent Sub Bab
-  * Identasi isi ditambah dengan 0.625 CM
-* Perpindahan antar sub bab diberi jarak satu baris baru/enter, untuk sub sub bab tidak diberi jarak
-* Jika naskah anda masih terdapat sub sub sub bab atau list yang satu identasi dengan sub sub sub bab maka pecah bab tersebut menjadi beberapa bab.
-
-### Tabel
-![image](https://user-images.githubusercontent.com/11188109/219246782-50cdab7b-21a2-45c4-b28b-fa6e27f8f476.png)
-
-* Ukuran font : 8
-* Caption tabel di taruh dibagian atas
-* Dibuat Menempel border Tidak ada Spasi Vertikal di dalamnya
-
-## Kredit Gambar
-![image](https://user-images.githubusercontent.com/11188109/219246893-eee13a31-bd5b-4f85-9b39-a1c95b55a0d2.png)
-
-Jika gambar bukan dari penulis maka sertakan referensinya dalam halaman kredit gambar
-
+Template docx asli beserta ketentuan lengkap bergambar: [TEMPLATEUNESCOBUKUPEDIA.docx](./TEMPLATEUNESCOBUKUPEDIA.docx).

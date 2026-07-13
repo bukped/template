@@ -72,6 +72,9 @@
 \setlength{\arrayrulewidth}{0.6pt}
 \RequirePackage{tikz}
 \RequirePackage{lettrine} % drop cap pada paragraf pembuka prakata
+% Teks setelah huruf drop cap dibiarkan tegak biasa (bawaan lettrine
+% adalah small caps yang tidak dimiliki Carlito dan memicu warning font)
+\renewcommand{\LettrineTextFont}{\upshape}
 \RequirePackage{indentfirst} % paragraf pertama setelah judul ikut menjorok
 \RequirePackage{makeidx}
 \RequirePackage[titles]{tocloft}
@@ -82,6 +85,10 @@
 \renewcommand\UrlBreakPenalty{100}   % izinkan patah URL dengan penalti rendah
 \renewcommand\UrlBigBreakPenalty{100}
 \emergencystretch=1.5em % cadangan kelenturan agar baris tidak melebihi margin
+% Hanya laporkan boks yang benar-benar buruk; baris agak renggang
+% (badness kecil) tidak perlu memenuhi log
+\hbadness=3000
+\vbadness=3000
 
 % ---------- Format caption (mengikuti docx: 8pt, tengah) ----------
 % Tabel: "Tabel 1.1. ..." (titik) di atas tabel.

@@ -1,0 +1,7 @@
+% ============================================================
+% bahasa.apc — definisi bahasa apacite untuk babel "bahasa"
+% (Indonesia). apacite tidak menyertakan file ini sehingga
+% memunculkan warning; file ini memakai istilah english.apc
+% apa adanya (sesuai gaya daftar pustaka pada template docx).
+% ============================================================
+\input{english.apc}

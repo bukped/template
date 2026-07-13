@@ -1,0 +1,65 @@
+# ============================================================
+# Build & Release otomatis
+# Setiap push ke main:
+#   1. Kompilasi main.pdf (TeX Live + latexmk)
+#   2. Quality gate: log wajib bebas error, overfull, underfull,
+#      dan warning (standar mutu template)
+#   3. Buat git tag v1.0.<nomor-run> dan GitHub Release berisi
+#      main.pdf + bukupedia.cls, dengan tautan CDN jsDelivr
+# ============================================================
+name: Build & Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    container: texlive/texlive:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Kompilasi PDF
+        run: latexmk -pdf -interaction=nonstopmode main
+
+      - name: Quality gate (bebas error/overfull/underfull/warning)
+        shell: bash
+        run: |
+          err=$(grep -cE '^!' main.log || true)
+          ovf=$(grep -c 'Overfull' main.log || true)
+          unf=$(grep -c 'Underfull' main.log || true)
+          wrn=$(grep -iE 'warning' main.log | grep -viE 'infwarerr|Package: ' | wc -l)
+          echo "errors=$err overfull=$ovf underfull=$unf warnings=$wrn"
+          test "$err" -eq 0 -a "$ovf" -eq 0 -a "$unf" -eq 0 -a "$wrn" -eq 0
+
+      - name: Tentukan versi
+        id: ver
+        run: echo "tag=v1.0.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+
+      - name: Buat tag dan release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.ver.outputs.tag }}
+          name: Template ${{ steps.ver.outputs.tag }}
+          body: |
+            Rilis otomatis dari commit ${{ github.sha }}.
+
+            **Unduh via CDN jsDelivr (terpaku pada versi ini):**
+            - Kelas dokumen: https://cdn.jsdelivr.net/gh/bukped/template@${{ steps.ver.outputs.tag }}/bukupedia.cls
+            - Contoh naskah: https://cdn.jsdelivr.net/gh/bukped/template@${{ steps.ver.outputs.tag }}/main.tex
+            - Referensi contoh: https://cdn.jsdelivr.net/gh/bukped/template@${{ steps.ver.outputs.tag }}/reference.bib
+            - Gaya indeks: https://cdn.jsdelivr.net/gh/bukped/template@${{ steps.ver.outputs.tag }}/main.ist
+            - PDF hasil jadi: https://cdn.jsdelivr.net/gh/bukped/template@${{ steps.ver.outputs.tag }}/main.pdf
+
+            **Versi rilis terbaru (selalu):**
+            https://cdn.jsdelivr.net/gh/bukped/template@latest/bukupedia.cls
+
+            Dokumentasi lengkap: https://universitas.bukupedia.co.id/template/
+          files: |
+            main.pdf
+            bukupedia.cls

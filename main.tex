@@ -12,8 +12,16 @@
 % Margin       : atas-bawah 2 cm, kiri-kanan 1,5 cm, gutter 0 cm
 % Font         : Carlito 11pt (kembaran metrik Calibri), spasi 1
 % Referensi    : BibTeX terpisah di reference.bib (gaya APA)
+%
+% Penomoran halaman:
+%   - Cover depan/belakang, halaman judul, halaman redaksi : tanpa nomor
+%   - Bagian awal (prakata, daftar isi, dst.)              : romawi i, ii, ...
+%   - Bagian isi s.d. akhir (BAB 1 s.d. tentang penulis)   : arab 1, 2, ...
+%   Nomor halaman dicetak di bawah-tengah (gaya plain).
+%   Opsi "oneside": margin simetris (gutter 0) dan tanpa sisipan
+%   halaman kosong otomatis antar bab.
 % ============================================================
-\documentclass[11pt]{book}
+\documentclass[11pt,oneside]{book}
 
 % ---------- Ukuran kertas dan margin ----------
 \usepackage[paperwidth=15.5cm, paperheight=23cm,
@@ -42,6 +50,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{url}
+\usepackage{tikz}
 \usepackage{makeidx}
 \usepackage[hidelinks]{hyperref}
 
@@ -88,11 +97,53 @@
 
 \begin{document}
 
+% Nomor halaman di bawah-tengah, tanpa running header (sesuai docx)
+\pagestyle{plain}
+
 % ============================================================
-% HALAMAN SAMPUL / JUDUL
+% COVER DEPAN (dummy)
+% Halaman cover tidak diberi nomor dan tidak ikut penomoran
+% (penomoran "Alph" tersembunyi agar tidak bentrok dengan hyperref).
 % ============================================================
-\begin{titlepage}
-  \centering
+\pagenumbering{Alph}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay]
+  % Latar belakang penuh (gambar jaringan blockchain)
+  \node at (current page.center)
+    {\includegraphics[height=\paperheight]{images/image4.jpg}};
+  % Lapisan gelap agar teks terbaca
+  \fill[black, opacity=0.45]
+    (current page.south west) rectangle (current page.north east);
+  % Nama penerbit di bagian atas
+  \node[anchor=north, text=white] at ([yshift=-1.2cm]current page.north)
+    {\fontsize{10}{12}\selectfont PT. PENERBIT BUKU PEDIA};
+  % Judul dan sub judul
+  \node[anchor=north, text=white, align=center, text width=12cm]
+    at ([yshift=-4.5cm]current page.north)
+    {{\fontsize{24}{29}\selectfont\bfseries \judulbuku}\\[10pt]
+     {\fontsize{12}{15}\selectfont \subjudulbuku}};
+  % Ilustrasi dummy (JavaScript dan Solana)
+  \node[anchor=center] at ([yshift=-0.5cm]current page.center)
+    {\includegraphics[width=4.2cm]{images/image2.jpg}%
+     \hspace{0.6cm}%
+     \includegraphics[width=2.7cm]{images/image3.jpg}};
+  % Nama penulis
+  \node[anchor=south, text=white, align=center]
+    at ([yshift=3.2cm]current page.south)
+    {{\fontsize{13}{16}\selectfont\bfseries Rolly Maulana Awangga}\\[4pt]
+     {\fontsize{13}{16}\selectfont\bfseries Idam Fadilah}};
+  % Logo penerbit dalam kotak putih di bagian bawah
+  \node[anchor=south, fill=white, rounded corners=2pt, inner sep=5pt]
+    at ([yshift=1cm]current page.south)
+    {\includegraphics[width=2.6cm]{images/image6.png}};
+\end{tikzpicture}
+\clearpage
+
+% ============================================================
+% HALAMAN SAMPUL / JUDUL (tanpa nomor halaman)
+% ============================================================
+\thispagestyle{empty}
+{\centering
   \includegraphics[width=2.2cm]{images/image1.png}\par
   \vspace{3cm}
   {\fontsize{20}{24}\selectfont\bfseries \judulbuku\par}
@@ -109,8 +160,9 @@
       \textbf{PT. Penerbit Buku Pedia}\\[2pt]
       \textbf{2023}
     \end{tabular}
-  \end{tabular}
-\end{titlepage}
+  \end{tabular}\par
+}
+\clearpage
 
 % ============================================================
 % HALAMAN REDAKSI
@@ -634,5 +686,62 @@ Bandung Kota Blogger, Pendiri Saung IT dan wartawan Pikiran Rakyat.
 Menjadi tenaga ahli dan konsultan di aplikasi SDDKN Sekretariat Negara,
 Aplikasi Kementrian Hukum dan Ham, Team DevOps Pekan Olahraga Nasional,
 Cloud Architect Aplikasi Asesment Madrasah Kementrian Agama.
+
+% ============================================================
+% COVER BELAKANG (dummy, tanpa nomor halaman)
+% ============================================================
+\clearpage
+\thispagestyle{empty}
+\definecolor{coverblue}{RGB}{10,30,54}
+\begin{tikzpicture}[remember picture, overlay]
+  % Latar belakang biru gelap penuh
+  \fill[coverblue]
+    (current page.south west) rectangle (current page.north east);
+  % Judul kecil di bagian atas
+  \node[anchor=north, text=white, align=center, text width=11.5cm]
+    at ([yshift=-2cm]current page.north)
+    {{\fontsize{14}{17}\selectfont\bfseries \judulbuku}\\[6pt]
+     {\fontsize{10}{13}\selectfont \subjudulbuku}};
+  % Sinopsis (dummy)
+  \node[anchor=north, text=white, align=justify, text width=11.5cm]
+    at ([yshift=-5cm]current page.north)
+    {\fontsize{10}{14}\selectfont
+     Bagian ini merupakan sinopsis buku yang dicetak pada cover
+     belakang. Sinopsis ditulis ringkas dalam 2--3 paragraf, memuat
+     gambaran besar isi buku, pembaca sasaran, serta manfaat yang akan
+     diperoleh pembaca setelah menyelesaikan buku ini.\\[8pt]
+     Buku ini membahas pengembangan aplikasi Web3 menggunakan JavaScript
+     di atas blockchain Solana. Pembahasan disajikan bertahap untuk
+     pembaca pemula: setiap bab dibuka dengan definisi dan kerangka
+     kerja, dilanjutkan praktik kode program baris per baris, dan
+     ditutup dengan latihan beserta rangkuman. Seluruh kode program
+     dapat diakses melalui repositori GitHub yang disertakan pada
+     setiap bab.};
+  % Logo + alamat penerbit di kiri bawah
+  \node[anchor=south west, fill=white, rounded corners=2pt,
+        inner sep=5pt]
+    at ([xshift=1.5cm, yshift=1.2cm]current page.south west)
+    {\includegraphics[width=2.4cm]{images/image6.png}};
+  \node[anchor=south west, text=white]
+    at ([xshift=4.6cm, yshift=1.2cm]current page.south west)
+    {\fontsize{8}{10}\selectfont
+     \begin{tabular}{@{}l@{}}
+       \textbf{PT. Penerbit Buku Pedia}\\
+       Athena Residence Blok. E No. 1,\\
+       Desa Ciwaruga, Kec. Parongpong,\\
+       Kab. Bandung Barat 40559\\
+       penerbit@bukupedia.co.id
+     \end{tabular}};
+  % Kotak ISBN (placeholder barcode) di kanan bawah
+  \node[anchor=south east, fill=white, inner sep=6pt]
+    (isbn) at ([xshift=-1.5cm, yshift=1.2cm]current page.south east)
+    {\begin{tabular}{@{}c@{}}
+       \fontsize{8}{10}\selectfont ISBN 978-XXX-XXXX-XX-X\\[3pt]
+       \tikz{\foreach \x/\w in {0/0.4, 0.6/0.2, 1.0/0.5, 1.7/0.2,
+             2.1/0.4, 2.7/0.2, 3.1/0.3, 3.6/0.5, 4.3/0.2}
+             {\fill[black] (\x*5mm, 0) rectangle
+              (\x*5mm+\w*5mm, 7mm);}}
+     \end{tabular}};
+\end{tikzpicture}
 
 \end{document}

@@ -51,8 +51,19 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{tikz}
+\usepackage{lettrine} % drop cap pada paragraf pembuka prakata
 \usepackage{makeidx}
+\usepackage[titles]{tocloft}
 \usepackage[hidelinks]{hyperref}
+
+% ---------- Format daftar isi (mengikuti docx) ----------
+% Tanpa titik-titik penghubung, nomor halaman rata kanan,
+% entri bab berawalan "BAB ", kedalaman sampai section (A-H).
+\setcounter{tocdepth}{1}
+\renewcommand{\cftdotsep}{\cftnodots}
+\renewcommand{\cftchappresnum}{BAB }
+\setlength{\cftchapnumwidth}{3.4em}
+\renewcommand{\cftsecaftersnum}{.}
 
 % ---------- Referensi APA dengan BibTeX ----------
 \usepackage{apacite}
@@ -239,7 +250,7 @@ dengan cara apa pun tanpa ijin tertulis dari penerbit\par
 \chapter*{PRAKATA}
 \addcontentsline{toc}{chapter}{PRAKATA}
 
-Membuat prakata menggunakan font Calibri, ukuran 11 dengan spasi 1. Di
+\lettrine[lines=3]{M}{embuat} prakata menggunakan font Calibri, ukuran 11 dengan spasi 1. Di
 dalam prakata penulis menyampaikan sekurang-kurangnya tujuan penulisan,
 pembaca sasaran, keunggulan buku, amanat/pesan untuk pembaca sasaran
 serta tata cara menyajikan kodingan dalam link github yang sudah di atur
@@ -287,9 +298,10 @@ program yang bisa diakses melalui link:
 \url{https://github.com/bukped/Prediksi-Harga-Token-Kripto-Menggunakan-Python}
 
 % ---------- DAFTAR ISI ----------
+% ---------- DAFTAR ISI ----------
+% (Template docx tidak memuat daftar tabel/gambar tersendiri.)
 \tableofcontents
-\listoftables
-\listoffigures
+\addcontentsline{toc}{chapter}{DAFTAR ISI}
 
 % ============================================================
 % BAGIAN ISI BUKU

@@ -58,6 +58,12 @@ bukan laporan penelitian mentah/tugas kuliah, tanpa placeholder tersisa.
   grep -iE 'warning' main.log | grep -viE 'infwarerr|Package: '
   ```
   Jangan commit bila log kotor. CI menolak build yang tidak bersih.
+- Rilis otomatis tiap push ke `main`: tag `v<versi-kelas>.<run>` — versi diambil
+  dari `\ProvidesClass` di `bukupedia.cls`. Menaikkan versi cukup mengubah angka
+  di baris itu; jangan mengedit `.github/workflows/release.yml` untuk urusan versi
+  (push file workflow butuh token ber-scope `workflow`).
+- Setelah mengubah SKILL.md/kelas, jalankan `make skill` agar
+  `template-bukupedia-skill.zip` ikut segar (zip dilampirkan ke setiap release).
 
 ## Jangan "memperbaiki" hal-hal ini (disengaja — detail di README)
 

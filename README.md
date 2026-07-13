@@ -197,14 +197,19 @@ Setiap push ke `main`, GitHub Actions ([`.github/workflows/release.yml`](./.gith
 
 1. mengompilasi PDF di container TeX Live,
 2. menegakkan standar kualitas di atas (build **gagal** bila log tidak bersih),
-3. membuat git tag `v1.0.<n>` dan **GitHub Release** berisi `main.pdf` + `bukupedia.cls`,
-   lengkap dengan tautan CDN jsDelivr yang terpaku pada versi tersebut.
+3. membuat git tag `v<versi-kelas>.<n>` dan **GitHub Release** berisi `main.pdf`,
+   `bukupedia.cls`, dan `template-bukupedia-skill.zip`, lengkap dengan tautan CDN
+   jsDelivr yang terpaku pada versi tersebut.
+
+**Versi diambil otomatis** dari baris `\ProvidesClass` di `bukupedia.cls`
+(mis. `v1.1` → tag `v1.1.12`). Menaikkan versi template = mengubah angka versi
+di baris itu saja; workflow tidak perlu disentuh.
 
 Berkas rilis bisa diambil via jsDelivr tanpa clone:
 
 ```
-https://cdn.jsdelivr.net/gh/bukped/template@latest/bukupedia.cls   (rilis terbaru)
-https://cdn.jsdelivr.net/gh/bukped/template@v1.0.5/bukupedia.cls   (terpaku versi)
+https://cdn.jsdelivr.net/gh/bukped/template@latest/bukupedia.cls    (rilis terbaru)
+https://cdn.jsdelivr.net/gh/bukped/template@v1.1.12/bukupedia.cls   (terpaku versi)
 https://cdn.jsdelivr.net/gh/bukped/template@latest/main.pdf
 ```
 

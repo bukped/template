@@ -12,7 +12,8 @@ sebelum mengubah apa pun yang berkaitan dengan tampilan.
   indeks, penomoran halaman). Naskah tidak boleh mengulang/menimpa aturan ini.
 - `main.tex` — hanya metadata + isi naskah. Metadata: `\judul`, `\subjudul`,
   `\penulis`, `\penulisredaksi`, `\isbn`, `\editor`, `\penyunting`, `\desainsampul`,
-  `\tahun` (bawaan: tahun kompilasi).
+  `\tahun` (bawaan: tahun kompilasi), `\logopenerbit` (bawaan: `images/image6.png`,
+  dipakai halaman judul — berkas ini wajib ada; varian logo resmi lain di `logo/`).
 - Perintah halaman dari kelas: `\coverdepan`, `\halamanjudul`, `\halamanredaksi`,
   `\daftarpustaka{reference}`, `\coverbelakang`.
 - Lingkungan/perintah isi: `kodeprogram` (kode dalam kotak, tak terpotong halaman),

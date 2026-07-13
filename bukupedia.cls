@@ -215,7 +215,12 @@ Jl. Sariasih No. 54\\
 Bandung 40151\\
 Email : irc@ulbi.ac.id}
 
+\newcommand{\bkp@logopenerbit}{images/image6.png}
+
 \newcommand{\judul}[1]{\renewcommand{\bkp@judul}{#1}}
+% Berkas logo penerbit pada halaman judul (bawaan: images/image6.png;
+% aset logo resmi lain tersedia di folder logo/ repo template)
+\newcommand{\logopenerbit}[1]{\renewcommand{\bkp@logopenerbit}{#1}}
 \newcommand{\subjudul}[1]{\renewcommand{\bkp@subjudul}{#1}}
 % Nama penulis pada halaman judul (pisahkan dengan \\)
 \newcommand{\penulis}[1]{\renewcommand{\bkp@penulis}{#1}}
@@ -285,7 +290,7 @@ Email : irc@ulbi.ac.id}
     {\fontsize{16}{19}\selectfont\bfseries \bkp@penulis\par}
     \vfill
     \begin{tabular}{@{}c@{\hspace{1em}}l@{}}
-      \raisebox{-0.45\height}{\includegraphics[width=5cm]{images/image6.png}} &
+      \raisebox{-0.45\height}{\includegraphics[width=5cm]{\bkp@logopenerbit}} &
       \begin{tabular}[c]{@{}l@{}}
         \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries \bkp@penerbit}\\[2pt]
         \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries \tahunterbit}

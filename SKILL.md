@@ -39,7 +39,13 @@ curl -fL  -o contoh-main.tex $BASE/main.tex        # contoh naskah, sebagai acua
 curl -fL  -o contoh-reference.bib $BASE/reference.bib
 curl -fL --create-dirs -o cover/depan.pdf    $BASE/cover/depan.pdf
 curl -fL --create-dirs -o cover/belakang.pdf $BASE/cover/belakang.pdf
+curl -fL --create-dirs -o images/image6.png  $BASE/images/image6.png  # logo penerbit (dipakai \halamanjudul)
 ```
+
+Logo penerbit `images/image6.png` **wajib ada** — halaman judul memuatnya. Bila ingin
+memakai varian logo lain (banner, putih, dsb.), aset resmi tersedia di folder
+[`logo/`](https://github.com/bukped/template/tree/main/logo) repo template; atur
+lokasinya dengan `\logopenerbit{path/berkas.png}` di preamble.
 
 Jika penulis belum punya TeX: install TinyTeX (panduan di
 <https://universitas.bukupedia.co.id/latex/>) lalu

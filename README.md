@@ -202,8 +202,8 @@ https://cdn.jsdelivr.net/gh/bukped/template@latest/main.pdf
 | `Makefile` | Alur kompilasi untuk pengguna make |
 | `.github/workflows/release.yml` | CI: build + quality gate + auto tag & release |
 | `cover/` | `depan.pdf` + `belakang.pdf` (cover), `desain.tex` (sumber desain bawaan) |
-| `images/` | Gambar naskah contoh |
-| `logo/` | Aset logo resmi Bukupedia |
+| `images/` | Gambar naskah contoh; `image6.png` = logo penerbit yang dipakai halaman judul (**wajib ada**, path bisa diganti via `\logopenerbit{...}`) |
+| `logo/` | Aset logo resmi Bukupedia (varian utama, banner, favicon, putih/monokrom) untuk cover atau kebutuhan lain |
 
 ## Mengganti Cover
 

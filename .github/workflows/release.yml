@@ -39,7 +39,9 @@ jobs:
 
       - name: Tentukan versi
         id: ver
-        run: echo "tag=v1.0.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+        run: |
+          ver=$(sed -n 's/.*ProvidesClass{bukupedia}\[[^ ]* v\([0-9.]*\).*/\1/p' bukupedia.cls)
+          echo "tag=v${ver:-1.1}.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
 
       - name: Buat tag dan release
         uses: softprops/action-gh-release@v2

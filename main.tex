@@ -533,21 +533,40 @@ ilmiah yang ditulis oleh akademisi jurusan ilmu sosial dan psikologi.
 Dikutip dari lib.ui.ac.id, contoh penulisan sitasi berdasarkan APA
 Style.
 
-Pada template LaTeX ini, seluruh referensi ditulis terpisah di file
-\texttt{reference.bib} dan disitasi di dalam naskah menggunakan perintah
-\verb|\cite{kunci}|, misalnya sitasi buku \cite{ali2017milenial},
-artikel jurnal \cite{aziri2011job, bencsik2016generations,
-berkup2014working}, maupun contoh sumber lain berikut:
-
 \begin{enumerate}[label=\alph*), leftmargin=*]
-  \item Artikel Jurnal --- \cite{mellers2000choice}
-  \item Buku --- \cite{gerhardt2004love}
-  \item Database Online --- \cite{borman1993role}
-  \item Situs web --- \cite{fredrickson2000cultivating}
+  \item Artikel Jurnal
+  \begin{quote}
+    Mellers, B. A. (2000). Choice and the relative pleasure of
+    consequences. Psychological Bulletin, 126, 910--924
+  \end{quote}
+  \item Buku
+  \begin{quote}
+    Gerhardt, S. (2004). Why love matters: How affection shapes a
+    baby's brain. New York: Brunner-Routledge.
+  \end{quote}
+  \item Database Online
+  \begin{quote}
+    Borman, W. C., Hanson, M. A., Oppler, S. H., Pulakos, E. D., \&
+    White, L. A. (1993). Role of early supervisory experience in
+    supervisor performance. Journal of Applied Psychology, 78,
+    443--449. Retrieved October 23, 2000, from the PsycARTICLES
+    database
+  \end{quote}
+  \item Situs web
+  \begin{quote}
+    Fredrickson, B. L. (2000, March 7). Cultivating positive emotions
+    to optimize health and well-being. Prevention \& Treatment, 3,
+    Article 0001a. Retrieved November 20, 2000, from
+    http://journals.apa.org/prevention/volume3/pre0030001a.html
+  \end{quote}
 \end{enumerate}
 
-Daftar pustaka akan tersusun otomatis dalam gaya APA pada bagian akhir
-buku.
+Pada template LaTeX ini, seluruh referensi ditulis terpisah di file
+\texttt{reference.bib} dan disitasi di dalam naskah menggunakan perintah
+\verb|\cite{kunci}|, misalnya sitasi buku \cite{ali2017milenial} dan
+artikel jurnal \cite{aziri2011job, bencsik2016generations,
+berkup2014working}. Daftar pustaka akan tersusun otomatis dalam gaya
+APA pada bagian akhir buku, hanya memuat pustaka yang disitasi.
 
 % ============================================================
 % BAGIAN AKHIR BUKU
@@ -563,16 +582,21 @@ buku.
 \chapter*{GLOSARIUM}
 \addcontentsline{toc}{chapter}{GLOSARIUM}
 
+% Entri glosarium: istilah bold diikuti definisi.
+% Tiap kelompok huruf dipisah garis horizontal (seperti docx);
+% huruf kepala ditulis polos tanpa bold.
 \newcommand{\glosentry}[2]{\noindent #1: #2\par\medskip}
+\newcommand{\glosletterfirst}[1]{\noindent #1\par\medskip}
+\newcommand{\glosletter}[1]{\par\smallskip\noindent\rule{\textwidth}{0.4pt}\par\medskip\noindent #1\par\medskip}
 
-\noindent\textbf{A}\medskip
+\glosletterfirst{A}
 
 \glosentry{\textbf{Anggaran}}{Suatu rencana yang disusun secara
 sistematis dalam bentuk angka dan dinyatakan dalam unit moneter meliputi
 seluruh kegiatan perusahaan untuk jangka waktu (periode) tertentu di
 masa yang akan datang.}
 
-\noindent\textbf{B}\medskip
+\glosletter{B}
 
 \glosentry{\textbf{\textit{Budget}}}{Seperangkat rencana yang saling
 terkait satu sama lainnya yang secara kuantitatif menjelaskan proyeksi
@@ -580,26 +604,26 @@ operasi perusahaan di masa depan. Rencana ini digunakan sebagai tolok
 ukur untuk mengukur hasil operasi \textit{actual}, untuk alokasi dana,
 dan untuk rencana operasi di masa depan.}
 
-\noindent\textbf{C}\medskip
+\glosletter{C}
 
 \glosentry{\textbf{\textit{Carrying Cost}}}{Biaya penyimpanan}
 
-\noindent\textbf{D}\medskip
+\glosletter{D}
 
 \glosentry{\textbf{\textit{Demand Forecast}}}{Tingkat permintaan yang
 diharapkan untuk produk di masa depan.}
 
-\noindent\textbf{E}\medskip
+\glosletter{E}
 
 \glosentry{\textbf{\textit{Economical Order Quantity}}}{Jumlah pembelian
 ekonomis}
 
-\noindent\textbf{F}\medskip
+\glosletter{F}
 
 \glosentry{\textbf{\textit{Forecast}}}{Proyeksi pendapatan, beban, serta
 pemerolehan dan penyusutan/pembuangan aset perusahaan di masa depan.}
 
-\noindent\textbf{G}\medskip
+\glosletter{G}
 
 \glosentry{\textbf{\textit{Going Concern}}}{Suatu Postulat yang
 menganggap bahwa suatu perusahaan akan terus melaksanakan operasinya
@@ -608,9 +632,9 @@ berlangsung. Perusahaan dianggap tidak berhenti, ditutup atau
 dilikuidasi di masa yang akan datang, perusahaan dianggap akan hidup
 untuk jangka waktu yang tidak terbatas (Harahap, 2007)}
 
-\noindent\textbf{H}\medskip
+\glosletter{H}
 
-\noindent\textbf{I}\medskip
+\glosletter{I}
 
 \glosentry{\textbf{\textit{Indirect} Material}}{Bahan Baku Tidak
 Langsung}
@@ -621,69 +645,69 @@ finansial}
 
 \glosentry{\textbf{IT}}{\textit{Inventory Turnover}}
 
-\noindent\textbf{J}\medskip
+\glosletter{J}
 
-\noindent\textbf{K}\medskip
+\glosletter{K}
 
-\noindent\textbf{L}\medskip
+\glosletter{L}
 
 \glosentry{\textbf{Laporan Laba-Rugi Margin Kontribusi}}{Format laporan
 laba rugi yang didasarkan pada pemisahan biaya menjadi komponen tetap
 dan komponen variabel}
 
-\noindent\textbf{M}\medskip
+\glosletter{M}
 
 \glosentry{\textbf{\textit{Market Leader}}}{Perusahaan atau bisnis yang
 menguasai sebagian pasar untuk produk yang terkait.}
 
-\noindent\textbf{N}\medskip
+\glosletter{N}
 
 \glosentry{\textbf{NPM}}{\textit{Net Profit Margin}}
 
-\noindent\textbf{O}\medskip
+\glosletter{O}
 
 \glosentry{\textbf{\textit{Ordering Cost}}}{Biaya pemesanan}
 
 \glosentry{\textbf{OPM}}{\textit{Operating Profit Margin}}
 
-\noindent\textbf{P}\medskip
+\glosletter{P}
 
 \glosentry{\textbf{Penyusunan Anggaran}}{Proses pengoperasian rencana
 dalam bentuk unit moneter untuk kurun waktu tertentu}
 
-\noindent\textbf{Q}\medskip
+\glosletter{Q}
 
 \glosentry{\textbf{QR}}{\textit{Quick Ratio}}
 
-\noindent\textbf{R}\medskip
+\glosletter{R}
 
 \glosentry{\textbf{Rapat Umum Pemegang Saham (RUPS)}}{Organ Perseroan
 yang mempunyai wewenang yang tidak diberikan kepada Direksi atau Dewan
 Komisaris dalam batas yang ditentukan dalam Undang-undang ini
 dan/anggaran dasar.}
 
-\noindent\textbf{S}\medskip
+\glosletter{S}
 
 \glosentry{\textbf{Standar \textit{Usage Rate}}}{Standar ukuran bahan
 baku}
 
-\noindent\textbf{T}\medskip
+\glosletter{T}
 
 \glosentry{\textbf{TDAR}}{\textit{Total Debt to Total Asset Ratio}}
 
-\noindent\textbf{U}\medskip
+\glosletter{U}
 
-\noindent\textbf{V}\medskip
+\glosletter{V}
 
 \glosentry{\textbf{\textit{Variable Budget}}}{Merencanakan anggaran
 secara sistematis dan menjelaskan secara lebih rinci tingkat perubahan
 biaya kegiatan perusahaan relatif terhadap biaya tidak langsung.}
 
-\noindent\textbf{W}\medskip
+\glosletter{W}
 
-\noindent\textbf{X}\medskip
+\glosletter{X}
 
-\noindent\textbf{Y}
+\glosletter{Y}
 
 % ---------- KREDIT GAMBAR ----------
 \chapter*{KREDIT GAMBAR}

@@ -1,0 +1,638 @@
+% ============================================================
+% TEMPLATE BUKU UNESCO - PT. PENERBIT BUKU PEDIA (versi LaTeX)
+% Konversi dari TEMPLATEUNESCOBUKUPEDIA.docx
+%
+% Kompilasi : pdflatex main
+%             bibtex   main
+%             makeindex main
+%             pdflatex main
+%             pdflatex main
+%
+% Ukuran buku  : 15,5 x 23 cm (standar UNESCO / B5)
+% Margin       : atas-bawah 2 cm, kiri-kanan 1,5 cm, gutter 0 cm
+% Font         : Carlito 11pt (kembaran metrik Calibri), spasi 1
+% Referensi    : BibTeX terpisah di reference.bib (gaya APA)
+% ============================================================
+\documentclass[11pt]{book}
+
+% ---------- Ukuran kertas dan margin ----------
+\usepackage[paperwidth=15.5cm, paperheight=23cm,
+            top=2cm, bottom=2cm,
+            left=1.5cm, right=1.5cm,
+            bindingoffset=0cm]{geometry}
+
+% ---------- Font Carlito (pengganti Calibri) ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[sfdefault,lf]{carlito}
+
+% ---------- Bahasa ----------
+\usepackage[bahasa]{babel}
+
+% ---------- Spasi 1 ----------
+\usepackage{setspace}
+\singlespacing
+
+% ---------- Paket umum ----------
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{makeidx}
+\usepackage[hidelinks]{hyperref}
+
+% ---------- Referensi APA dengan BibTeX ----------
+\usepackage{apacite}
+
+% ---------- Indeks ----------
+\makeindex
+
+% ---------- Penomoran section gaya A. B. C. ----------
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\thesubsection}{\alph{subsection})}
+
+% ---------- Format judul bab: Calibri 16, sub judul 10 ----------
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\centering\bfseries}
+  {\fontsize{16}{19}\selectfont BAB \thechapter}
+  {4pt}
+  {\fontsize{16}{19}\selectfont\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+\titleformat{\section}
+  {\bfseries\fontsize{11}{13}\selectfont}
+  {\thesection.}{0.5em}{\MakeUppercase}
+
+% ---------- Format kode program ----------
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red!60!black},
+  showstringspaces=false,
+  frame=single,
+  framerule=0.3pt,
+  breaklines=true,
+  aboveskip=1em,
+  belowskip=1em
+}
+
+% ---------- Metadata buku ----------
+\newcommand{\judulbuku}{JAVASCRIPT DAN SOLANA WEB3}
+\newcommand{\subjudulbuku}{Tantangan Membangun Aplikasi di Era Disrupsi 4.0}
+
+\begin{document}
+
+% ============================================================
+% HALAMAN SAMPUL / JUDUL
+% ============================================================
+\begin{titlepage}
+  \centering
+  \includegraphics[width=2.2cm]{images/image1.png}\par
+  \vspace{3cm}
+  {\fontsize{20}{24}\selectfont\bfseries \judulbuku\par}
+  \vspace{0.5em}
+  {\large \subjudulbuku\par}
+  \vspace{3cm}
+  {\large\bfseries Rolly Maulana Awangga\par}
+  \vspace{0.3em}
+  {\large\bfseries Idam Fadilah\par}
+  \vfill
+  \begin{tabular}{@{}c@{\hspace{1.5em}}l@{}}
+    \raisebox{-0.4\height}{\includegraphics[width=3.5cm]{images/image6.png}} &
+    \begin{tabular}[c]{@{}l@{}}
+      \textbf{PT. Penerbit Buku Pedia}\\[2pt]
+      \textbf{2023}
+    \end{tabular}
+  \end{tabular}
+\end{titlepage}
+
+% ============================================================
+% HALAMAN REDAKSI
+% (Font Book Antiqua ukuran 8, melekat di bagian bawah halaman)
+% ============================================================
+\thispagestyle{empty}
+{\fontfamily{pplx}\fontsize{8}{10}\selectfont % pplx = Palatino, pengganti Book Antiqua
+\noindent\textbf{\judulbuku}\\
+\subjudulbuku
+
+\vfill
+
+\noindent\textbf{\textit{Penulis:}}\\
+Idam Fadilah\\
+Rolly Maulana Awangga
+
+\medskip
+\noindent\textbf{\textit{ISBN}}:
+
+\medskip
+\noindent\textbf{\textit{Editor:}}\\
+Roni Andarsyah
+
+\medskip
+\noindent\textbf{\textit{Penyunting:}}\\
+Roni Andarsyah
+
+\medskip
+\noindent\textbf{\textit{Desain sampul dan Tata letak:}}\\
+Idam Fadilah
+
+\medskip
+\noindent\textbf{\textit{Font:}}\\
+Calibri
+
+\medskip
+\noindent\textbf{\textit{Penerbit:}}\\
+PT. Penerbit Buku Pedia
+
+\medskip
+\noindent\textbf{\textit{Redaksi:}}\\
+Athena Residence Blok. E No. 1, Desa Ciwaruga,\\
+Kec. Parongpong, Kab. Bandung Barat 40559\\
+Tel. 628-775-2000-300\\
+Email : penerbit@bukupedia.co.id
+
+\medskip
+\noindent\textbf{\textit{Distributor:}}\\
+Informatics Research Center\\
+Jl. Sariasih No. 54\\
+Bandung 40151\\
+Email : irc@ulbi.ac.id
+
+\medskip
+\noindent Cetakan Pertama, 2023
+
+\medskip
+\noindent Hak cipta dilindungi undang-undang\\
+Dilarang memperbanyak karya tulis ini dalam bentuk dan\\
+dengan cara apa pun tanpa ijin tertulis dari penerbit
+}
+\clearpage
+
+% ============================================================
+% BAGIAN AWAL BUKU
+% ============================================================
+\frontmatter
+
+% ---------- PRAKATA ----------
+\chapter*{PRAKATA}
+\addcontentsline{toc}{chapter}{PRAKATA}
+
+Membuat prakata menggunakan font Calibri, ukuran 11 dengan spasi 1. Di
+dalam prakata penulis menyampaikan sekurang-kurangnya tujuan penulisan,
+pembaca sasaran, keunggulan buku, amanat/pesan untuk pembaca sasaran
+serta tata cara menyajikan kodingan dalam link github yang sudah di atur
+per chapter. Dibuka dengan menyajikan data faktual yang berasal dari
+referensi statistik badan tertentu yang dipercaya serta berkaitan erat
+dengan buku yang diterbitkan. Contoh disini: menurut Bappenas, jumlah
+Generasi Milenial (rentang usia 20--35) di Indonesia mencapai 63 juta
+jiwa pada saat ini. Jumlah itu setara 24\% dari jumlah penduduk Indonesia
+kategori usia produktif (\textit{productive age populations}) (usia
+14--64) yang diperkirakan berjumlah 179,1 juta jiwa. Sementara itu Badan
+Pusat Statistik (BPS) menyebutkan bahwa generasi milenial telah menjadi
+kelompok mayoritas dalam struktur demografi Indonesia, terdiri dari
+junior millenial (lahir 1991--1998) dan senior millenial (lahir
+1983--1990).
+
+Dari data yang disajikan Bappenas dan BPS di atas, generasi milenial
+tentunya akan memiliki peran penting (sebagai pemain utama atau
+\textit{key players}) dalam rentang waktu 2025--2030 yang merupakan
+periode bonus demografi di Indonesia. Artinya, generasi milenial
+merupakan sumber daya utama (SDM) dalam memanfaatkan periode bonus
+demografi.
+
+Namun demikian, bonus demografi juga dapat menjadi semacam
+``malapetaka'' alih-alih menjadi ``momentum indah'' bagi Indonesia untuk
+bergerak menuju kemajuan. Lebih jauh, dalam sebuah laporan yang dirilis
+oleh IDN Research Institute (2019) dikatakan bahwa hanya 1 dari 10
+milenial menyatakan ingin bekerja lebih dari 10 tahun di sebuah
+perusahaan, dan hanya 3 dari 10 milenial menyatakan ingin bekerja 2--3
+tahun pada sebuah perusahaan. Data tersebut memperlihatkan tantangan
+yang kelak akan dihadapi baik oleh perusahaan maupun generasi, yaitu
+``membangun komitmen kerja''.
+
+Buku ini sendiri merupakan wujud dari kebutuhan akan pentingnya
+meningkatkan skill dengan tantangan yang akan dihadapi oleh perusahaan
+dan generasi milenial di Era Industri 4.0, terutama yang berkaitan
+dengan komitmen kerja/bisnis dan \textit{adversity quotient} (AQ).
+
+Buku ini disajikan dalam setiap bab yang berisi langkah-langkah untuk
+pembaca pemula. Setiap bab dibuka dengan definisi dan kerangka kerja.
+Pada bagian selanjutnya diterangkan cara membuat kode program beserta
+penjelasan setiap baris kode program tersebut. Pada bagian akhir
+disertakan kode program untuk latihan dan evaluasi pembaca. Setiap
+chapter atau bab yang disajikan dalam buku ini disertakan juga kode
+program yang bisa diakses melalui link:
+\url{https://github.com/bukped/Prediksi-Harga-Token-Kripto-Menggunakan-Python}
+
+% ---------- DAFTAR ISI ----------
+\tableofcontents
+\listoftables
+\listoffigures
+
+% ============================================================
+% BAGIAN ISI BUKU
+% ============================================================
+\mainmatter
+
+\chapter{PENULISAN BUKU}
+
+\section{Format Buku}
+Penulisan menggunakan font Calibri, ukuran 11 dengan spasi 1. Margin
+atas dan bawah 2 cm. Margin kiri dan kanan 1,5 cm. Posisi
+\textit{gutter}\index{Gutter} kiri dengan jarak 0 cm. Ukuran buku 15,5 x
+23 cm. Pada bagian ini merupakan penjelasan singkat terkait pembahasan
+dalam satu BAB, yang dimaksudnya untuk memberikan gambaran umum kepada
+pembaca dan diharapkan dapat memantik motivasi pembaca untuk mempelajari
+sajian materi yang akan di sampaikan.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Catatan Penting dalam Penyusunan Buku}
+  \label{tab:catatan-buku}
+  \begin{tabularx}{\textwidth}{@{}c l X l@{}}
+    \toprule
+    \textbf{No.} & \textbf{Petunjuk} & \textbf{Keterangan} & \textbf{Ukuran} \\
+    \midrule
+    1. & Margin atas bawah & Atas dan bawah & 2 cm \\
+    2. & Margin samping    & Kanan dan kiri & 1,5 cm \\
+    3. & Gutter            & Kiri           & 0 cm \\
+    4. & Ukuran Buku       & B5             & 15,5 x 23 cm \\
+    5. & Font              & Calibri        & 11 \\
+    6. & Line Spacing      & Jarak antar tulisan & 1 \\
+    7. & Halaman redaksi   & Informasi Redaksi Penerbitan setelah
+         halaman judul menggunakan Font Book Antiqua posisi melekat
+         dari bagian bawah & 8 \\
+       &                   & Judul yang melekat pada bagian atas dengan
+         font Calibri 16 untuk judul dan 10 untuk sub judul & 16 dan 10 \\
+    8. & Kata pengantar    & Berisi data faktual penyebab buku terbit,
+         penjelasan tata cara membaca buku dan link github dari kode
+         program & \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{Tujuan Intruksional dan Capaian Pembelajaran}
+Calibri, ukuran 11 dengan spasi 1. Secara garis besar, tujuan
+instruksional dalam buku ajar maupun pengajar memiliki esensi yang sama.
+Yaitu memberikan keterampilan, pengetahuan dan memberikan ketrampilan
+kepada peserta didik. Tujuan instruksional memiliki dua macam, yaitu
+Tujuan Instruksional Umum (TIU) dan Tujuan Instruksional Khusus (TIK).
+
+\subsection{TIU}
+\begin{quote}
+TIU lebih fokus pada hasil yang harus dicapai oleh peserta didik.
+Berbeda dengan TIK, yang lebih menekankan pada pokok bahasan terkait
+dengan cabang ilmu yang lebih spesifik. Misal mengulas tentang Fisika,
+maka isi buku ajar mengulas banyak hal tentang ilmu Fisika.
+\end{quote}
+
+\subsection{TIK}
+\begin{quote}
+TIK memiliki dua aspek yang tidak kalah penting, yaitu aspek perilaku
+peserta didik dan aspek pesan isi yang disampaikan. Jadi
+guru/dosen/pengajar secara tidak langsung berperan untuk mendidik
+perilaku agar berkelakuan baik dan dapat mengamalkan ilmu yang telah di
+dapatkan.
+
+Komponen membuat rumusan TIK yang lengkap meliputi tiga hal, yaitu
+\textit{terminal behavior}, \textit{conditional of demonstration or
+rest} dan \textit{standard of performance}. \textit{Terminal behavior}
+sering juga disebut dengan tingkah laku akhir yang diharapkan. Misalnya,
+siswa bisa menjadi lebih paham.
+
+Berbeda dengan \textit{conditional of demonstration or rest} atau yang
+disebut dengan kondisi demonstrasi. Jadi komponen pendidik diharapkan
+mampu memberikan demonstrasi yang mudah dipahami oleh peserta didik.
+
+Misal, ketika guru/dosen melakukan demonstrasi, peserta didik ketika
+diminta untuk menjelaskan kembali, mereka bisa mendemonstrasikan ulang
+menggunakan cara mereka sendiri, namun inti pesan masih sama. Terakhir
+adalah \textit{Standard of Performance} atau lebih akrab di dengar
+dengan standar keberhasilan. Jadi di tahap inilah pendidik/dosen/guru
+menekankan pada hasil yang telah dicapai.
+\end{quote}
+
+\section{Pembahasan Materi Materi}
+Calibri, ukuran 11 dengan spasi 1, pada bagian ini berisi ulasan lengkap
+terkait materi pembahasan untuk tema setiap bab nya, dan dapat disajikan
+secara rinci melalui pembahasan sub bab. Untuk contoh bagaimana
+menyajikan kode program bisa dilihat pada contoh dibawah ini. Program
+menggunakan Bahasa pemrograman python.
+
+\begin{lstlisting}
+def bad_function(new_elem, starter_list=[]):
+    starter_list.append(new_elem)
+    return starter_list
+\end{lstlisting}
+
+\section{Rangkuman Materi}
+Calibri, ukuran 11 dengan spasi 1, pada bagian ini berisi ulasan singkat
+terkait materi pokok pembahasan, penyajian rangkuman bisa dalam bentuk
+narasi atau berupa penjelasan secara numerik.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=5cm]{images/image6.png}
+  \caption{Logo Bukupedia}
+  \label{fig:logo-bukupedia}
+\end{figure}
+
+\section{Latihan}
+Calibri, ukuran 11 dengan spasi 1, di dalam buku ajar dilengkapi
+soal-soal latihan untuk memperdalam pemahaman siswa dan menguji
+kemampuan siswa dalam memahami materi yang telah disampaikan.
+
+\section{Buku Referensi}
+Struktur pembasahan Memenuhi kaidah ilmiah dan estetika keilmuan yang
+utuh (rumusan masalah yang mengandung nilai kebaharuan, metodologi
+pemecahan masalah, dukungan data atau teori mutakhir yang lengkap dan
+jelas, kesimpulan dan daftar pusaka),
+
+Tetapi daftar isi tidak disarankan disusun secara KAKU dengan pola
+IMRAD, melainkan disajikan dengan pola susunan yang lebih luwes dan
+dapat dipahami oleh masyarakat luas. Catatan penting mengenai buku
+referensi bisa dilihat pada Tabel~\ref{tab:buku-referensi}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Catatan Penting dalam Penyusunan Buku Referensi}
+  \label{tab:buku-referensi}
+  \begin{tabularx}{\textwidth}{|X|}
+    \hline
+    \textbf{CATATAN PENTING YANG PERLU DICERMATI}\newline
+    \textbf{PENYUSUNAN BUKU REFERENSI} \\
+    \hline
+    \begin{enumerate}[leftmargin=*, nosep, before=\vspace{2pt}, after=\vspace{2pt}]
+      \item Merupakan hasil penelitian
+      \item Sistematika buku referensi dan buku monograp secara umum
+            tidak memiliki perbedaan, akan tetapi yang membedakan hanya
+            pada perspektif dan isi pembahasan.
+      \item \textbf{Secara konten, buku referensi membahas persoalan
+            melalui perspektif secara luas dalam satu bidang tertentu
+            sesuai kompetensi penulis.}
+      \item Tebal buku paling sedikit 40 lembar dan berukuran standar
+            unesco ukuran min 15.5 cm x 23 cm.
+      \item Tebal buku paling sedikit 40 lembar dan berukuran standar
+            unesco ukuran min 15.5 cm x 23 cm.
+      \item Meskipun hasil penelitian, penyusunan struktur buku
+            referensi disarankan tidak mengacu kepada struktur IMRAD
+            (\textit{Introduction, Methode, Result, Discussion}), tetapi
+            disajikan dalam bentuk yang lebih luwes dan mudah di fahami
+            oleh pembaca awam. (Kebijakan terbaru perpusnas tekait
+            penerbitan buku hasil penelitian)
+    \end{enumerate} \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\section{Buku Monograph}
+Struktur pembasahan Memenuhi kaidah ilmiah dan estetika keilmuan yang
+utuh (rumusan masalah yang mengandung nilai kebaharuan, metodologi
+pemecahan masalah, dukungan data atau teori mutakhir yang lengkap dan
+jelas, kesimpulan dan daftar pusaka),
+
+Tetapi daftar isi tidak disarankan disusun secara KAKU dengan pola
+IMRAD, melainkan disajikan dengan pola susunan yang lebih luwes dan
+dapat dipahami oleh masyarakat luas. Catatan penting dalam penyusunan
+buku monograph bisa dilihat pada Tabel~\ref{tab:buku-monograph}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Catatan Penting dalam Penyusunan Buku Monograph}
+  \label{tab:buku-monograph}
+  \begin{tabularx}{\textwidth}{|X|}
+    \hline
+    \textbf{CATATAN PENTING YANG PERLU DICERMATI}\newline
+    \textbf{PENYUSUNAN BUKU MONOGRAPH} \\
+    \hline
+    \begin{enumerate}[leftmargin=*, nosep, before=\vspace{2pt}, after=\vspace{2pt}]
+      \item Merupakan hasil penelitian
+      \item Sistamatika buku referensi dan buku monograp secara umum
+            tidak memiliki perbedaan, akan tetapi yang membedakan hanya
+            pada perspektif dan isi pembahasan.
+      \item \textbf{Secara konten, buku monograp membahas persoalan
+            dalam sudut pandang topik tertentu dalam lingkup khusus dan
+            terbatas.}
+      \item Tebal buku paling sedikit 40 lembar dan berukuran standar
+            unesco ukuran min 15.5 cm x 23 cm.
+      \item Tebal buku paling sedikit 40 lembar dan berukuran standar
+            unesco ukuran min 15.5 cm x 23 cm.
+      \item Meskipun hasil penelitian, penyusunan struktur buku
+            referensi disarankan tidak mengacu kepada struktur IMRAD
+            (\textit{Introduction, Methode, Result, Discussion}), tetapi
+            disajikan dalam bentuk yang lebih luwes dan mudah di fahami
+            oleh pembaca awam. (Kebijakan terbaru perpusnas tekait
+            penerbitan buku hasil penelitian)
+    \end{enumerate} \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\section{Daftar Pustaka}
+APA Style atau \textit{American Psychological Association} adalah jenis
+sitasi yang diciptakan organisasi APA terutama untuk bidang psikologi
+dan sosial. Makanya sitasi ini seringkali ditemukan dalam karya tulis
+ilmiah yang ditulis oleh akademisi jurusan ilmu sosial dan psikologi.
+Dikutip dari lib.ui.ac.id, contoh penulisan sitasi berdasarkan APA
+Style.
+
+Pada template LaTeX ini, seluruh referensi ditulis terpisah di file
+\texttt{reference.bib} dan disitasi di dalam naskah menggunakan perintah
+\verb|\cite{kunci}|, misalnya sitasi buku \cite{ali2017milenial},
+artikel jurnal \cite{aziri2011job, bencsik2016generations,
+berkup2014working}, maupun contoh sumber lain berikut:
+
+\begin{enumerate}[label=\alph*), leftmargin=*]
+  \item Artikel Jurnal --- \cite{mellers2000choice}
+  \item Buku --- \cite{gerhardt2004love}
+  \item Database Online --- \cite{borman1993role}
+  \item Situs web --- \cite{fredrickson2000cultivating}
+\end{enumerate}
+
+Daftar pustaka akan tersusun otomatis dalam gaya APA pada bagian akhir
+buku.
+
+% ============================================================
+% BAGIAN AKHIR BUKU
+% ============================================================
+\backmatter
+
+% ---------- DAFTAR PUSTAKA (otomatis dari reference.bib) ----------
+\renewcommand{\bibname}{DAFTAR PUSTAKA}
+\bibliographystyle{apacite}
+\bibliography{reference}
+
+% ---------- GLOSARIUM ----------
+\chapter*{GLOSARIUM}
+\addcontentsline{toc}{chapter}{GLOSARIUM}
+
+\newcommand{\glosentry}[2]{\noindent #1: #2\par\medskip}
+
+\noindent\textbf{A}\medskip
+
+\glosentry{\textbf{Anggaran}}{Suatu rencana yang disusun secara
+sistematis dalam bentuk angka dan dinyatakan dalam unit moneter meliputi
+seluruh kegiatan perusahaan untuk jangka waktu (periode) tertentu di
+masa yang akan datang.}
+
+\noindent\textbf{B}\medskip
+
+\glosentry{\textbf{\textit{Budget}}}{Seperangkat rencana yang saling
+terkait satu sama lainnya yang secara kuantitatif menjelaskan proyeksi
+operasi perusahaan di masa depan. Rencana ini digunakan sebagai tolok
+ukur untuk mengukur hasil operasi \textit{actual}, untuk alokasi dana,
+dan untuk rencana operasi di masa depan.}
+
+\noindent\textbf{C}\medskip
+
+\glosentry{\textbf{\textit{Carrying Cost}}}{Biaya penyimpanan}
+
+\noindent\textbf{D}\medskip
+
+\glosentry{\textbf{\textit{Demand Forecast}}}{Tingkat permintaan yang
+diharapkan untuk produk di masa depan.}
+
+\noindent\textbf{E}\medskip
+
+\glosentry{\textbf{\textit{Economical Order Quantity}}}{Jumlah pembelian
+ekonomis}
+
+\noindent\textbf{F}\medskip
+
+\glosentry{\textbf{\textit{Forecast}}}{Proyeksi pendapatan, beban, serta
+pemerolehan dan penyusutan/pembuangan aset perusahaan di masa depan.}
+
+\noindent\textbf{G}\medskip
+
+\glosentry{\textbf{\textit{Going Concern}}}{Suatu Postulat yang
+menganggap bahwa suatu perusahaan akan terus melaksanakan operasinya
+sepanjang penyelesaian proyek, perjanjian, dan kegiatan yang sedang
+berlangsung. Perusahaan dianggap tidak berhenti, ditutup atau
+dilikuidasi di masa yang akan datang, perusahaan dianggap akan hidup
+untuk jangka waktu yang tidak terbatas (Harahap, 2007)}
+
+\noindent\textbf{H}\medskip
+
+\noindent\textbf{I}\medskip
+
+\glosentry{\textbf{\textit{Indirect} Material}}{Bahan Baku Tidak
+Langsung}
+
+\glosentry{\textbf{Investor}}{Orang atau lembaga yang melakukan
+investasi dalam suatu hal dengan tujuan untuk membuat keuntungan
+finansial}
+
+\glosentry{\textbf{IT}}{\textit{Inventory Turnover}}
+
+\noindent\textbf{J}\medskip
+
+\noindent\textbf{K}\medskip
+
+\noindent\textbf{L}\medskip
+
+\glosentry{\textbf{Laporan Laba-Rugi Margin Kontribusi}}{Format laporan
+laba rugi yang didasarkan pada pemisahan biaya menjadi komponen tetap
+dan komponen variabel}
+
+\noindent\textbf{M}\medskip
+
+\glosentry{\textbf{\textit{Market Leader}}}{Perusahaan atau bisnis yang
+menguasai sebagian pasar untuk produk yang terkait.}
+
+\noindent\textbf{N}\medskip
+
+\glosentry{\textbf{NPM}}{\textit{Net Profit Margin}}
+
+\noindent\textbf{O}\medskip
+
+\glosentry{\textbf{\textit{Ordering Cost}}}{Biaya pemesanan}
+
+\glosentry{\textbf{OPM}}{\textit{Operating Profit Margin}}
+
+\noindent\textbf{P}\medskip
+
+\glosentry{\textbf{Penyusunan Anggaran}}{Proses pengoperasian rencana
+dalam bentuk unit moneter untuk kurun waktu tertentu}
+
+\noindent\textbf{Q}\medskip
+
+\glosentry{\textbf{QR}}{\textit{Quick Ratio}}
+
+\noindent\textbf{R}\medskip
+
+\glosentry{\textbf{Rapat Umum Pemegang Saham (RUPS)}}{Organ Perseroan
+yang mempunyai wewenang yang tidak diberikan kepada Direksi atau Dewan
+Komisaris dalam batas yang ditentukan dalam Undang-undang ini
+dan/anggaran dasar.}
+
+\noindent\textbf{S}\medskip
+
+\glosentry{\textbf{Standar \textit{Usage Rate}}}{Standar ukuran bahan
+baku}
+
+\noindent\textbf{T}\medskip
+
+\glosentry{\textbf{TDAR}}{\textit{Total Debt to Total Asset Ratio}}
+
+\noindent\textbf{U}\medskip
+
+\noindent\textbf{V}\medskip
+
+\glosentry{\textbf{\textit{Variable Budget}}}{Merencanakan anggaran
+secara sistematis dan menjelaskan secara lebih rinci tingkat perubahan
+biaya kegiatan perusahaan relatif terhadap biaya tidak langsung.}
+
+\noindent\textbf{W}\medskip
+
+\noindent\textbf{X}\medskip
+
+\noindent\textbf{Y}
+
+% ---------- KREDIT GAMBAR ----------
+\chapter*{KREDIT GAMBAR}
+\addcontentsline{toc}{chapter}{KREDIT GAMBAR}
+
+Halaman ini memuat daftar kepemilikan hak cipta/perizinan penggunaan
+gambar/foto berikut nomor halaman keberadaan gambar/foto tersebut.
+
+% ---------- INDEKS ----------
+% Istilah diindeks di dalam naskah dengan \index{istilah},
+% lalu dicetak otomatis di sini oleh makeindex.
+\renewcommand{\indexname}{INDEKS}
+\addcontentsline{toc}{chapter}{INDEKS}
+\printindex
+
+% ---------- TENTANG PENULIS ----------
+\chapter*{TENTANG PENULIS}
+\addcontentsline{toc}{chapter}{TENTANG PENULIS}
+
+\noindent
+\begin{minipage}[t]{0.25\textwidth}
+  \vspace{0pt}
+  \includegraphics[width=\linewidth]{images/image7.jpg}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.72\textwidth}
+  \vspace{0pt}
+  \noindent\textbf{Rolly Maulana Awangga}, lahir di Kota Indramayu pada
+  tanggal 10 November 1986. Pendidikan tingkat dasar hingga menengah
+  ditempuh di Indramayu. Mulai merantau sejak SMA, melatih
+  kemandiriannya di SMANDA Cirebon dengan aktif organisasi PPS Betako
+  Merpati Putih, Pengurus OSIS dan Pendiri Dewan Keamanan Sekolah.
+\end{minipage}
+
+\medskip
+\noindent
+Melanjutkan pendidikan S1 di STT Telkom, S2 di IT Telkom Bandung. Selama
+kuliah aktif sebagai TLH Telkom, pengurus Klub Linux Bandung, Pengurus
+Bandung Kota Blogger, Pendiri Saung IT dan wartawan Pikiran Rakyat.
+Menjadi tenaga ahli dan konsultan di aplikasi SDDKN Sekretariat Negara,
+Aplikasi Kementrian Hukum dan Ham, Team DevOps Pekan Olahraga Nasional,
+Cloud Architect Aplikasi Asesment Madrasah Kementrian Agama.
+
+\end{document}

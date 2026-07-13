@@ -140,7 +140,33 @@
 \clearpage
 
 % ============================================================
-% HALAMAN JUDUL + REDAKSI (tanpa nomor halaman, tanpa logo)
+% HALAMAN JUDUL (tanpa nomor halaman, tanpa logo di atas)
+% Ukuran font mengikuti spesifikasi template:
+% judul 16, sub judul 10 (Tabel 1.1 butir 7).
+% ============================================================
+\thispagestyle{empty}
+{\centering
+  \vspace*{3cm}
+  {\fontsize{16}{19}\selectfont\bfseries \judulbuku\par}
+  \vspace{0.5em}
+  {\fontsize{10}{12}\selectfont \subjudulbuku\par}
+  \vspace{3cm}
+  {\fontsize{11}{13}\selectfont\bfseries Rolly Maulana Awangga\par}
+  \vspace{0.3em}
+  {\fontsize{11}{13}\selectfont\bfseries Idam Fadilah\par}
+  \vfill
+  \begin{tabular}{@{}c@{\hspace{1.5em}}l@{}}
+    \raisebox{-0.4\height}{\includegraphics[width=3.5cm]{images/image6.png}} &
+    \begin{tabular}[c]{@{}l@{}}
+      \textbf{PT. Penerbit Buku Pedia}\\[2pt]
+      \textbf{2023}
+    \end{tabular}
+  \end{tabular}\par
+}
+\clearpage
+
+% ============================================================
+% HALAMAN REDAKSI (tanpa nomor halaman)
 % Judul melekat di bagian atas: Calibri 16 untuk judul dan
 % 10 untuk sub judul (Tabel 1.1 butir 7). Info redaksi melekat
 % di bagian bawah dengan font Book Antiqua ukuran 8.

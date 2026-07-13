@@ -4,7 +4,36 @@
 
 ## Versi LaTeX
 
-Repositori ini juga menyediakan versi LaTeX dari template ([main.tex](./main.tex)) dengan hasil jadi [main.pdf](./main.pdf).
+Repositori ini juga menyediakan versi LaTeX dari template dengan hasil jadi [main.pdf](./main.pdf). Seluruh aturan format dikemas dalam kelas dokumen [`bukupedia.cls`](./bukupedia.cls) — penulis cukup mengisi metadata dan naskah di [`main.tex`](./main.tex):
+
+```latex
+\documentclass{bukupedia}
+
+\judul{JUDUL BUKU}
+\subjudul{Sub Judul Buku}
+\penulis{Penulis Satu\\ Penulis Dua}
+\isbn{}                  % diisi begitu nomor ISBN terbit
+\editor{Nama Editor}
+\penyunting{Nama Penyunting}
+\desainsampul{Nama Desainer}
+% \tahun{2023}           % bawaan: tahun saat kompilasi
+
+\begin{document}
+\coverdepan              % dari berkas cover/depan.pdf|png
+\halamanjudul            % dibangun otomatis dari metadata
+\halamanredaksi          % dibangun otomatis dari metadata
+\frontmatter
+% ... prakata, \tableofcontents ...
+\mainmatter
+% ... isi bab ...
+\backmatter
+\daftarpustaka{reference} % DAFTAR PUSTAKA gaya APA dari reference.bib
+% ... glosarium, indeks, tentang penulis ...
+\coverbelakang           % dari berkas cover/belakang.pdf|png
+\end{document}
+```
+
+Perintah lain yang disediakan kelas: lingkungan `kodeprogram` (kotak kode yang tidak terpotong halaman), `isisubsek` (isi sub bab sejajar judulnya), serta `\glosletterfirst`/`\glosletter`/`\glosentry` untuk glosarium.
 
 ### Ukuran kertas dan margin
 
@@ -31,7 +60,8 @@ make clean  # membersihkan berkas hasil kompilasi
 
 | Berkas/Folder | Isi |
 |---|---|
-| `main.tex` | Naskah utama (halaman judul, redaksi, prakata, daftar isi, bab, glosarium, indeks, dst.) |
+| `bukupedia.cls` | Kelas dokumen: seluruh aturan format template (ukuran, margin, font, gaya judul, tabel, dll.) |
+| `main.tex` | Naskah: metadata buku + isi (prakata, bab, glosarium, indeks, dst.) |
 | `reference.bib` | Daftar pustaka terpisah (BibTeX, gaya APA via `apacite`); sitasi dengan `\cite{kunci}` |
 | `main.ist` | Gaya indeks (kepala huruf A/B/C, nomor halaman tanpa koma) |
 | `cover/` | Cover depan dan belakang |

@@ -113,11 +113,22 @@
 \titleformat{\section}
   {\bfseries\fontsize{12}{14}\selectfont}
   {\thesection.}{0.5em}{\MakeUppercase}
-% Sub section "a) ..." : tidak bold, menjorok sejajar indentasi paragraf
+% Jarak judul section: renggang secukupnya dari teks sebelumnya,
+% tipis ke konten di bawahnya (seperti docx)
+\titlespacing*{\section}{0pt}{8pt}{2pt}
+% Sub section "a) ..." : tidak bold, menjorok sejajar indentasi
+% paragraf. Label diberi lebar tetap 1.5em supaya teks judul dan
+% isi di bawahnya (lingkungan isisubsek) mulai di posisi x yang
+% sama persis.
 \titleformat{\subsection}
   {\fontsize{11}{13}\selectfont}
-  {\thesubsection}{0.5em}{}
+  {\makebox[1.5em][l]{\thesubsection}}{0em}{}
 \titlespacing*{\subsection}{\parindent}{6pt}{3pt}
+% Isi sub section: blok menjorok sejajar teks judul sub section
+\newenvironment{isisubsek}
+  {\list{}{\setlength{\leftmargin}{\dimexpr\parindent+1.5em\relax}%
+           \setlength{\rightmargin}{0pt}}\item\relax}
+  {\endlist}
 
 % ---------- Format kode program ----------
 % Kode program disajikan dalam kotak berbingkai tipis dengan
@@ -145,6 +156,9 @@
 % ---------- Metadata buku ----------
 \newcommand{\judulbuku}{JAVASCRIPT DAN SOLANA WEB3}
 \newcommand{\subjudulbuku}{Tantangan Membangun Aplikasi di Era Disrupsi 4.0}
+% Tahun terbit: otomatis mengikuti tahun saat kompilasi.
+% Ganti dengan angka (mis. {2023}) bila perlu tahun tetap.
+\newcommand{\tahunterbit}{\the\year}
 
 \begin{document}
 
@@ -223,7 +237,7 @@
     \raisebox{-0.45\height}{\includegraphics[width=5cm]{images/image6.png}} &
     \begin{tabular}[c]{@{}l@{}}
       \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries PT. Penerbit Buku Pedia}\\[2pt]
-      \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries 2023}
+      \textcolor{penerbitblue}{\fontsize{10}{12}\selectfont\bfseries \tahunterbit}
     \end{tabular}
   \end{tabular}\par
 }
@@ -288,7 +302,7 @@ Bandung 40151\\
 Email : irc@ulbi.ac.id
 
 \bigskip
-\noindent Cetakan Pertama, 2023\\
+\noindent Cetakan Pertama, \tahunterbit\\
 Hak cipta dilindungi undang-undang\\
 Dilarang memperbanyak karya tulis ini dalam bentuk dan\\
 dengan cara apa pun tanpa ijin tertulis dari penerbit\par
@@ -410,15 +424,15 @@ kepada peserta didik. Tujuan instruksional memiliki dua macam, yaitu
 Tujuan Instruksional Umum (TIU)\index{Tujuan Instruksional Umum (TIU)} dan Tujuan Instruksional Khusus (TIK)\index{Tujuan Instruksional Khusus (TIK)}.
 
 \subsection{TIU}
-\begin{quote}
+\begin{isisubsek}
 TIU lebih fokus pada hasil yang harus dicapai oleh peserta didik.
 Berbeda dengan TIK, yang lebih menekankan pada pokok bahasan terkait
 dengan cabang ilmu yang lebih spesifik. Misal mengulas tentang Fisika,
 maka isi buku ajar mengulas banyak hal tentang ilmu Fisika.
-\end{quote}
+\end{isisubsek}
 
 \subsection{TIK}
-\begin{quote}
+\begin{isisubsek}
 TIK memiliki dua aspek yang tidak kalah penting, yaitu aspek perilaku
 peserta didik dan aspek pesan isi yang disampaikan. Jadi
 guru/dosen/pengajar secara tidak langsung berperan untuk mendidik
@@ -441,7 +455,7 @@ menggunakan cara mereka sendiri, namun inti pesan masih sama. Terakhir
 adalah \textit{Standard of Performance} atau lebih akrab di dengar
 dengan standar keberhasilan. Jadi di tahap inilah pendidik/dosen/guru
 menekankan pada hasil yang telah dicapai.
-\end{quote}
+\end{isisubsek}
 
 \section{Pembahasan Materi Materi}
 Calibri, ukuran 11 dengan spasi 1, pada bagian ini berisi ulasan lengkap
